@@ -8,7 +8,7 @@
 #include "Dog_stateRequired.h"
 #include "ProximitySensor.h"
 #include <util/delay.h>
-#include <avr/wdt.h>
+#include <avr/interrupt.h>
 #include <util/atomic.h>
 
 // +--------------------------------------------------------------------------+
@@ -28,7 +28,7 @@ static uint16_t _sub_second_millis = 0;
 // semaphore to tell the main loop to run the state machine asap.
 static volatile bool _do_sm_tick = true;
 
-ISR(TIM0_OVF_vect)
+ISR(TIM0_COMPA_vect)
 {
     _sub_second_millis += 250;
     if (_sub_second_millis == 1000) {
@@ -90,11 +90,14 @@ extern ProximitySensor *init_proximity_sensor();
  */
 static void setup()
 {
-    // 976 times per second the timer/counter will be compared against OCR0A.
+    GTCCR |= (1 << TSM);
     TIMSK |= (1 << OCIE0A);
-    TCCR0B |= (1 << CS00) | (1 << CS02);
-    // 4 times per second the timer ISR will be invoked.
+	TCCR0A = (1 << WGM01); // clear timer on compare match.
+	// F_CPU/1024: 1000000/1024=976 times per second the timer/counter will be compared against OCR0A.
+	TCCR0B = ((1 << CS00) | (1 << CS02));
+    // 976/4=244: 4 times per second the timer ISR will be invoked.
     OCR0A = 244;
+	GTCCR &= ~(1<< TSM);
 
     dog_state_init(&_state_machine);
 
@@ -111,10 +114,10 @@ static void setup()
     PIN_OUT_HIGH(LED_STATUS);
 
     // Initialize Atmel-2561, Using USI as an I2C master
-    _proximity_sensor = init_proximity_sensor();
+    //_proximity_sensor = init_proximity_sensor();
 
-    _proximity_sensor->register_proximity_threshold_breach(_proximity_sensor,
-                                                           _on_proximity_threshold_breached, 0);
+    //_proximity_sensor->register_proximity_threshold_breach(_proximity_sensor,
+    //                                                       _on_proximity_threshold_breached, 0);
     sei();
 }
 
@@ -125,8 +128,8 @@ int main(int argc, const char *argv[])
     uint32_t last_time_seconds = _time_seconds;
 
     while (true) {
-        _proximity_sensor->service(_proximity_sensor);
-        ATOMIC_BLOCK(ATOMIC_FORCEON)
+        //_proximity_sensor->service(_proximity_sensor);
+		ATOMIC_BLOCK(ATOMIC_FORCEON)
         {
             // Do time sensitive stuff here with the interrupts disabled. Don't
             // take more than 100msec or so!

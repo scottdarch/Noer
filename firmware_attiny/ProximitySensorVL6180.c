@@ -35,6 +35,7 @@
 #include "ProximitySensor.h"
 #include "SparkFun_VL6180X.h"
 #include "USI_TWI_Master.h"
+#include <util/delay.h>
 
 #define PROXIMITY_SENSOR_ADDR 0x29
 
@@ -111,7 +112,7 @@ static void VL6180xDefautSettings(ProximitySensorVL6180 *self)
 static uint8_t VL6180x_getDistance(ProximitySensorVL6180 *self)
 {
     VL6180x_setRegister(self, VL6180X_SYSRANGE_START, 0x01); // Start Single shot mode
-    delay(10);
+    _delay_ms(10);
     return VL6180x_getRegister(self, VL6180X_RESULT_RANGE_VAL);
 }
 
