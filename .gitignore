@@ -31,3 +31,11 @@
 # Debug files
 *.dSYM/
 *.su
+
+# Local environment
+.env.local
+.metadata
+.project
+.cproject
+.settings
+
