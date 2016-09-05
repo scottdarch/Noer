@@ -7,6 +7,8 @@
 #include "mcu.h"
 #include "Dog_stateRequired.h"
 #include "ProximitySensor.h"
+#include <util/delay.h>
+#include <avr/wdt.h>
 
 // +--------------------------------------------------------------------------+
 // | DATA
@@ -64,7 +66,7 @@ static void setup()
 
     // Initialize the output to trigger the WTV020SD
     PIN_INIT_OUTPUT(SOUND_TRIGGER);
-    PIN_OUT_HIGH(SOUND_TRIGGER);
+    PIN_OUT_LOW(SOUND_TRIGGER);
 
     // Start with the audio peripherals powered down.
     PIN_INIT_OUTPUT(SOUND_ENABLE);
@@ -72,24 +74,27 @@ static void setup()
 
     // Turn on the status LED to say we're alive.
     PIN_INIT_OUTPUT(LED_STATUS);
-    PIN_OUT_HIGH(LED_STATUS);
+    PIN_OUT_LOW(LED_STATUS);
 
     // Initialize Atmel-2561, Using USI as an I2C master
-    //_proximity_sensor = init_proximity_sensor();
+    _proximity_sensor = init_proximity_sensor();
 
     //_proximity_sensor->register_proximity_threshold_breach(_proximity_sensor,
     //                                                       _on_proximity_threshold_breached, 0);
     sei();
 }
 
-int main(int argc, const char *argv[]) __attribute__((noreturn));
-
 int main(int argc, const char *argv[])
 {
     setup();
 
-    while (1) {
-        // dog_state_runCycle(&_state_machine);
-        //_proximity_sensor->service(_proximity_sensor);
+    while (true) {
+        dog_state_runCycle(&_state_machine);
+        _proximity_sensor->service(_proximity_sensor);
+		PIN_OUT_HIGH(LED_STATUS);
+		_delay_ms(1000);
+		PIN_OUT_LOW(LED_STATUS);
+		_delay_ms(1000);
+		
     }
 }

@@ -6,8 +6,8 @@
  */
 #pragma once
 
-#define __AVR_ATtiny45__
-#define F_CPU 8000.0 // [kHz]
+#define F_CPU 1000000UL
+#define F_CPU_KHZ (F_CPU/1000)
 #define TWI_FAST_MODE
 
 #include <stdbool.h>
@@ -24,19 +24,19 @@
 
 // +--[SOUND TRIGGER GPIO]----------------------------------------------------+
 #define PIN_SOUND_TRIGGER_PORTx PORTB
-#define PIN_SOUND_TRIGGER_PORTxn PORTB4
+#define PIN_SOUND_TRIGGER_PORTxn PB4
 #define PIN_SOUND_TRIGGER_DDRx DDRB
 #define PIN_SOUND_TRIGGER_DDRxn DDB4
 
 // +--[AUDIO PERIPHERALS ENABLE]----------------------------------------------+
 #define PIN_SOUND_ENABLE_PORTx PORTB
-#define PIN_SOUND_ENABLE_PORTxn PORTB3
+#define PIN_SOUND_ENABLE_PORTxn PB3
 #define PIN_SOUND_ENABLE_DDRx DDRB
 #define PIN_SOUND_ENABLE_DDRxn DDB3
 
 // +--[STATUS LED]------------------------------------------------------------+
 #define PIN_LED_STATUS_PORTx PORTB
-#define PIN_LED_STATUS_PORTxn PINB1
+#define PIN_LED_STATUS_PORTxn PB1
 #define PIN_LED_STATUS_DDRx DDRB
 #define PIN_LED_STATUS_DDRxn DDB1
 
