@@ -9,6 +9,7 @@
 #include "ProximitySensor.h"
 #include <util/delay.h>
 #include <avr/wdt.h>
+#include <util/atomic.h>
 
 // +--------------------------------------------------------------------------+
 // | DATA
@@ -24,12 +25,18 @@ static volatile uint32_t _time_seconds = 0;
 // quarter second resolution.
 static uint16_t _sub_second_millis = 0;
 
+// semaphore to tell the main loop to run the state machine asap.
+static volatile bool _do_sm_tick = true;
+
 ISR(TIM0_OVF_vect)
 {
     _sub_second_millis += 250;
     if (_sub_second_millis == 1000) {
         _time_seconds += 1;
         _sub_second_millis = 0;
+        // Run the state machine once per second. This means that 1 tick == 1 second
+        // for its internal logic.
+        _do_sm_tick = true;
     }
 }
 
@@ -48,11 +55,6 @@ bool dog_stateIface_dog_detected(const Dog_state *handle)
     return false;
 }
 
-uint32_t dog_stateIface_get_time_secs(const Dog_state *handle)
-{
-    return _time_seconds;
-}
-
 bool dog_stateIface_object_detected(const Dog_state *handle)
 {
     return false;
@@ -61,7 +63,7 @@ bool dog_stateIface_object_detected(const Dog_state *handle)
 void dog_stateIface_on_sleep(const Dog_state *handle)
 {
     // TODO: CPU sleep then reset time since timers would not be running whilst
-    // we sleet.
+    // we sleep.
     //_time_seconds = 0;
     //_sub_second_millis = 0;
 }
@@ -104,9 +106,9 @@ static void setup()
     PIN_INIT_OUTPUT(SOUND_ENABLE);
     PIN_OUT_LOW(SOUND_ENABLE);
 
-    // Turn on the status LED to say we're alive.
+    // Turn on the status LED to let the meat puppets know we're alive.
     PIN_INIT_OUTPUT(LED_STATUS);
-    PIN_OUT_LOW(LED_STATUS);
+    PIN_OUT_HIGH(LED_STATUS);
 
     // Initialize Atmel-2561, Using USI as an I2C master
     _proximity_sensor = init_proximity_sensor();
@@ -123,12 +125,19 @@ int main(int argc, const char *argv[])
     uint32_t last_time_seconds = _time_seconds;
 
     while (true) {
-        dog_state_runCycle(&_state_machine);
         _proximity_sensor->service(_proximity_sensor);
-        uint32_t now_seconds = _time_seconds;
-        if (now_seconds != last_time_seconds) {
-            PIN_OUT_TOGGLE(LED_STATUS);
-            last_time_seconds = now_seconds;
+        ATOMIC_BLOCK(ATOMIC_FORCEON)
+        {
+            // Do time sensitive stuff here with the interrupts disabled. Don't
+            // take more than 100msec or so!
+            if (_time_seconds != last_time_seconds) {
+                PIN_OUT_TOGGLE(LED_STATUS);
+                last_time_seconds = _time_seconds;
+            }
+            if (_do_sm_tick) {
+                _do_sm_tick = false;
+                dog_state_runCycle(&_state_machine);
+            }
         }
     }
 }

@@ -14,7 +14,6 @@ extern "C"
 
 This state machine makes use of operations declared in the state machines interface or internal scopes. Thus the function prototypes:
 	- dog_stateIface_dog_detected
-	- dog_stateIface_get_time_secs
 	- dog_stateIface_object_detected
 	- dog_stateIface_on_sleep
 	- dog_stateIface_on_play_no
@@ -28,7 +27,6 @@ There are some constraints that have to be considered for the implementation of 
  
 */
 extern bool dog_stateIface_dog_detected(const Dog_state* handle);
-extern uint32_t dog_stateIface_get_time_secs(const Dog_state* handle);
 extern bool dog_stateIface_object_detected(const Dog_state* handle);
 extern void dog_stateIface_on_sleep(const Dog_state* handle);
 extern void dog_stateIface_on_play_no(const Dog_state* handle);

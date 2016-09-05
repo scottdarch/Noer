@@ -14,20 +14,22 @@ extern "C" {
 /*! Enumeration of all states */ 
 typedef enum
 {
-	Dog_state_main_region_no_dog,
-	Dog_state_main_region_no_dog_r1_sleeping,
-	Dog_state_main_region_no_dog_r1_reading_range,
-	Dog_state_main_region_dog,
-	Dog_state_main_region_dog_r1_playing_no,
-	Dog_state_main_region_dog_r1_reading_range,
+	Dog_state_main_region_running,
+	Dog_state_main_region_running_r1_no_dog,
+	Dog_state_main_region_running_r1_no_dog_r1_sleeping,
+	Dog_state_main_region_running_r1_no_dog_r1_reading_range,
+	Dog_state_main_region_running_r1_dog,
+	Dog_state_main_region_running_r1_dog_r1_playing_no,
+	Dog_state_main_region_running_r1_dog_r1_reading_range,
 	Dog_state_last_state
 } Dog_stateStates;
 
 /*! Type definition of the data structure for the Dog_stateInternal interface scope. */
 typedef struct
 {
-	uint16_t last_detection_time_secs;
-	uint32_t last_no_time_secs;
+	uint32_t ticks;
+	uint32_t last_detection_time_ticks;
+	uint32_t last_no_time_ticks;
 } Dog_stateInternal;
 
 
