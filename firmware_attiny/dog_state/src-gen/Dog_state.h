@@ -26,8 +26,8 @@ typedef enum
 /*! Type definition of the data structure for the Dog_stateInternal interface scope. */
 typedef struct
 {
-	uint16_t last_detection_time_millis;
-	uint16_t last_no_time_millis;
+	uint16_t last_detection_time_secs;
+	uint32_t last_no_time_secs;
 } Dog_stateInternal;
 
 

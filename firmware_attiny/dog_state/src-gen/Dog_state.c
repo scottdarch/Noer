@@ -56,8 +56,8 @@ static void dog_state_react_main_region_dog_r1__entry_Default(Dog_state* handle)
 static void dog_state_clearInEvents(Dog_state* handle);
 static void dog_state_clearOutEvents(Dog_state* handle);
 
-const uint16_t DOG_STATE_DOG_STATEINTERNAL_DETECTION_TIMEOUT_MILLIS = 2000;
-const uint16_t DOG_STATE_DOG_STATEINTERNAL_NO_REPLAY_TIME_MILLIS = 3000;
+const uint32_t DOG_STATE_DOG_STATEINTERNAL_DETECTION_TIMEOUT_SECS = 2;
+const uint32_t DOG_STATE_DOG_STATEINTERNAL_NO_REPLAY_TIME_SECS = 3;
 
 void dog_state_init(Dog_state* handle)
 {
@@ -75,8 +75,8 @@ void dog_state_init(Dog_state* handle)
 	dog_state_clearOutEvents(handle);
 
 	/* Default init sequence for statechart dog_state */
-	handle->internal.last_detection_time_millis = 0;
-	handle->internal.last_no_time_millis = 0;
+	handle->internal.last_detection_time_secs = 0;
+	handle->internal.last_no_time_secs = 0;
 
 }
 
@@ -216,7 +216,7 @@ static sc_boolean dog_state_check_main_region_no_dog_r1_reading_range_tr0_tr0(co
 
 static sc_boolean dog_state_check_main_region_no_dog_r1_reading_range_tr1_tr1(const Dog_state* handle)
 {
-	return (dog_stateIface_get_time_millis(handle) - handle->internal.last_detection_time_millis > DOG_STATE_DOG_STATEINTERNAL_DETECTION_TIMEOUT_MILLIS) ? bool_true : bool_false;
+	return (dog_stateIface_get_time_secs(handle) - handle->internal.last_detection_time_secs > DOG_STATE_DOG_STATEINTERNAL_DETECTION_TIMEOUT_SECS) ? bool_true : bool_false;
 }
 
 static sc_boolean dog_state_check_main_region_no_dog_r1_reading_range_lr0_lr0(const Dog_state* handle)
@@ -236,7 +236,7 @@ static sc_boolean dog_state_check_main_region_dog_r1_reading_range_tr0_tr0(const
 
 static sc_boolean dog_state_check_main_region_dog_r1_reading_range_tr1_tr1(const Dog_state* handle)
 {
-	return (dog_stateIface_get_time_millis(handle) - handle->internal.last_no_time_millis > DOG_STATE_DOG_STATEINTERNAL_NO_REPLAY_TIME_MILLIS) ? bool_true : bool_false;
+	return (dog_stateIface_get_time_secs(handle) - handle->internal.last_no_time_secs > DOG_STATE_DOG_STATEINTERNAL_NO_REPLAY_TIME_SECS) ? bool_true : bool_false;
 }
 
 static sc_boolean dog_state_check_main_region_dog_r1_reading_range_lr0_lr0(const Dog_state* handle)
@@ -264,7 +264,7 @@ static void dog_state_effect_main_region_no_dog_r1_reading_range_tr1(Dog_state* 
 
 static void dog_state_effect_main_region_no_dog_r1_reading_range_lr0_lr0(Dog_state* handle)
 {
-	handle->internal.last_detection_time_millis = dog_stateIface_get_time_millis(handle);
+	handle->internal.last_detection_time_secs = dog_stateIface_get_time_secs(handle);
 }
 
 static void dog_state_effect_main_region_dog_r1_playing_no_tr0(Dog_state* handle)
@@ -287,7 +287,7 @@ static void dog_state_effect_main_region_dog_r1_reading_range_tr1(Dog_state* han
 
 static void dog_state_effect_main_region_dog_r1_reading_range_lr0_lr0(Dog_state* handle)
 {
-	handle->internal.last_detection_time_millis = dog_stateIface_get_time_millis(handle);
+	handle->internal.last_detection_time_secs = dog_stateIface_get_time_secs(handle);
 }
 
 /* Entry action for state 'sleeping'. */
@@ -308,14 +308,14 @@ static void dog_state_enact_main_region_dog_r1_playing_no(Dog_state* handle)
 static void dog_state_exact_main_region_no_dog_r1_sleeping(Dog_state* handle)
 {
 	/* Exit action for state 'sleeping'. */
-	handle->internal.last_detection_time_millis = dog_stateIface_get_time_millis(handle);
+	handle->internal.last_detection_time_secs = dog_stateIface_get_time_secs(handle);
 }
 
 /* Exit action for state 'playing_no'. */
 static void dog_state_exact_main_region_dog_r1_playing_no(Dog_state* handle)
 {
 	/* Exit action for state 'playing_no'. */
-	handle->internal.last_no_time_millis = dog_stateIface_get_time_millis(handle);
+	handle->internal.last_no_time_secs = dog_stateIface_get_time_secs(handle);
 }
 
 /* 'default' enter sequence for state no_dog */

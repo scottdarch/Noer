@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_IiC5AHLREeaNIf-RaBMl_Q" specification="interface:&#xA;operation dog_detected() : bool&#xA;operation get_time_millis() : uint16_t&#xA;operation object_detected() : bool&#xA;operation on_sleep() : void&#xA;operation on_play_no() : void&#xA;operation is_done_playing_no() : bool&#xA;&#xA;internal:&#xA;var last_detection_time_millis : uint16_t = 0&#xA;var last_no_time_millis : uint16_t = 0&#xA;const detection_timeout_millis : uint16_t = 2000&#xA;const no_replay_time_millis : uint16_t = 3000&#xA;" name="dog_state" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_IiC5AHLREeaNIf-RaBMl_Q" specification="interface:&#xA;operation dog_detected() : bool&#xA;operation get_time_secs() : uint32_t&#xA;operation object_detected() : bool&#xA;operation on_sleep() : void&#xA;operation on_play_no() : void&#xA;operation is_done_playing_no() : bool&#xA;&#xA;internal:&#xA;var last_detection_time_secs : uint16_t = 0&#xA;var last_no_time_secs : uint32_t = 0&#xA;const detection_timeout_secs : uint32_t = 2&#xA;const no_replay_time_secs : uint32_t = 3&#xA;" name="dog_state" domainID="com.yakindu.domain.c">
     <regions xmi:id="_IiYQMHLREeaNIf-RaBMl_Q" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_Iip9AHLREeaNIf-RaBMl_Q">
         <outgoingTransitions xmi:id="_IivckHLREeaNIf-RaBMl_Q" target="_PnKhkHLREeaNIf-RaBMl_Q"/>
       </vertices>
       <vertices xsi:type="sgraph:State" xmi:id="_PnKhkHLREeaNIf-RaBMl_Q" name="no_dog" incomingTransitions="_IivckHLREeaNIf-RaBMl_Q _IrzKkHLUEeaNIf-RaBMl_Q">
         <regions xmi:id="_PnM90HLREeaNIf-RaBMl_Q" name="r1">
-          <vertices xsi:type="sgraph:State" xmi:id="_IirLIHLREeaNIf-RaBMl_Q" specification="entry/ on_sleep()&#xA;exit/ last_detection_time_millis = get_time_millis()" name="sleeping" incomingTransitions="_YbC8kHLSEeaNIf-RaBMl_Q">
+          <vertices xsi:type="sgraph:State" xmi:id="_IirLIHLREeaNIf-RaBMl_Q" specification="entry/ on_sleep()&#xA;exit/ last_detection_time_secs = get_time_secs()" name="sleeping" incomingTransitions="_YbC8kHLSEeaNIf-RaBMl_Q">
             <outgoingTransitions xmi:id="_SiO5oHLTEeaNIf-RaBMl_Q" specification="oncycle" target="_ksU9cHLREeaNIf-RaBMl_Q"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_ksU9cHLREeaNIf-RaBMl_Q" specification="oncycle [object_detected()]/ last_detection_time_millis = get_time_millis()" name="reading_range" incomingTransitions="_oEEVUHLREeaNIf-RaBMl_Q _SiO5oHLTEeaNIf-RaBMl_Q">
+          <vertices xsi:type="sgraph:State" xmi:id="_ksU9cHLREeaNIf-RaBMl_Q" specification="oncycle [object_detected()]/ last_detection_time_secs = get_time_secs()" name="reading_range" incomingTransitions="_oEEVUHLREeaNIf-RaBMl_Q _SiO5oHLTEeaNIf-RaBMl_Q">
             <outgoingTransitions xmi:id="_wA_voHLREeaNIf-RaBMl_Q" specification="[dog_detected()]" target="_Yku5gHLREeaNIf-RaBMl_Q"/>
-            <outgoingTransitions xmi:id="_YbC8kHLSEeaNIf-RaBMl_Q" specification="[get_time_millis() - last_detection_time_millis > detection_timeout_millis]" target="_IirLIHLREeaNIf-RaBMl_Q"/>
+            <outgoingTransitions xmi:id="_YbC8kHLSEeaNIf-RaBMl_Q" specification="[get_time_secs() - last_detection_time_secs > detection_timeout_secs]" target="_IirLIHLREeaNIf-RaBMl_Q"/>
           </vertices>
           <vertices xsi:type="sgraph:Entry" xmi:id="_mys0EHLREeaNIf-RaBMl_Q">
             <outgoingTransitions xmi:id="_oEEVUHLREeaNIf-RaBMl_Q" specification="" target="_ksU9cHLREeaNIf-RaBMl_Q"/>
@@ -21,15 +21,15 @@
       </vertices>
       <vertices xsi:type="sgraph:State" xmi:id="_Yku5gHLREeaNIf-RaBMl_Q" name="dog" incomingTransitions="_wA_voHLREeaNIf-RaBMl_Q">
         <regions xmi:id="_YkvgknLREeaNIf-RaBMl_Q" name="r1">
-          <vertices xsi:type="sgraph:State" xmi:id="_bZAX8HLREeaNIf-RaBMl_Q" specification="entry/ on_play_no()&#xA;exit/ last_no_time_millis = get_time_millis()" name="playing_no" incomingTransitions="_d_eq8HLREeaNIf-RaBMl_Q _kayaIHLUEeaNIf-RaBMl_Q">
+          <vertices xsi:type="sgraph:State" xmi:id="_bZAX8HLREeaNIf-RaBMl_Q" specification="entry/ on_play_no()&#xA;exit/ last_no_time_secs = get_time_secs()" name="playing_no" incomingTransitions="_d_eq8HLREeaNIf-RaBMl_Q _kayaIHLUEeaNIf-RaBMl_Q">
             <outgoingTransitions xmi:id="_4o_OQHLTEeaNIf-RaBMl_Q" specification="[is_done_playing_no()]" target="_3YjhIHLTEeaNIf-RaBMl_Q"/>
           </vertices>
           <vertices xsi:type="sgraph:Entry" xmi:id="_dZELMHLREeaNIf-RaBMl_Q">
             <outgoingTransitions xmi:id="_d_eq8HLREeaNIf-RaBMl_Q" specification="" target="_bZAX8HLREeaNIf-RaBMl_Q"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_3YjhIHLTEeaNIf-RaBMl_Q" specification="oncycle [object_detected()]/ last_detection_time_millis = get_time_millis()" name="reading_range" incomingTransitions="_4o_OQHLTEeaNIf-RaBMl_Q">
+          <vertices xsi:type="sgraph:State" xmi:id="_3YjhIHLTEeaNIf-RaBMl_Q" specification="oncycle [object_detected()]/ last_detection_time_secs = get_time_secs()" name="reading_range" incomingTransitions="_4o_OQHLTEeaNIf-RaBMl_Q">
             <outgoingTransitions xmi:id="_IrzKkHLUEeaNIf-RaBMl_Q" specification="[!dog_detected()]" target="_PnKhkHLREeaNIf-RaBMl_Q"/>
-            <outgoingTransitions xmi:id="_kayaIHLUEeaNIf-RaBMl_Q" specification="[get_time_millis() - last_no_time_millis&#xA;&#x9;> no_replay_time_millis ]" target="_bZAX8HLREeaNIf-RaBMl_Q"/>
+            <outgoingTransitions xmi:id="_kayaIHLUEeaNIf-RaBMl_Q" specification="[get_time_secs() - last_no_time_secs&#xA;&#x9;> no_replay_time_secs ]" target="_bZAX8HLREeaNIf-RaBMl_Q"/>
           </vertices>
         </regions>
       </vertices>

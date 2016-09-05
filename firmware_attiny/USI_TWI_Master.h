@@ -29,46 +29,9 @@
 #pragma once
 
 #include "mcu.h"
-#include <avr/io.h>
-//********** Defines **********//
-
-#ifdef TWI_FAST_MODE                          // TWI FAST mode timing limits. SCL = 100-400kHz
-#define T2_TWI ((F_CPU_KHZ * 1300) / 1000000) + 1 // >1,3us
-#define T4_TWI ((F_CPU_KHZ * 600) / 1000000) + 1  // >0,6us
-
-#else                                         // TWI STANDARD mode timing limits. SCL <= 100kHz
-#define T2_TWI ((F_CPU_KHZ * 4700) / 1000000) + 1 // >4,7us
-#define T4_TWI ((F_CPU_KHZ * 4000) / 1000000) + 1 // >4,0us
-#endif
-
-// Defines controling code generating
-//#define PARAM_VERIFICATION
-//#define NOISE_TESTING
-//#define SIGNAL_VERIFY
-
-// USI_TWI messages and flags and bit masks
-//#define SUCCESS   7
-//#define MSG       0
-/****************************************************************************
-  Bit and byte definitions
-****************************************************************************/
-#define TWI_READ_BIT 0 // Bit position for R/W bit in "address byte".
-#define TWI_ADR_BITS 1 // Bit position for LSB of the slave address bits in the init byte.
-#define TWI_NACK_BIT 0 // Bit position for (N)ACK bit.
-
-#define USI_TWI_NO_DATA 0x00           // Transmission buffer is empty
-#define USI_TWI_DATA_OUT_OF_BOUND 0x01 // Transmission buffer is outside SRAM space
-#define USI_TWI_UE_START_CON 0x02      // Unexpected Start Condition
-#define USI_TWI_UE_STOP_CON 0x03       // Unexpected Stop Condition
-#define USI_TWI_UE_DATA_COL 0x04       // Unexpected Data Collision (arbitration)
-#define USI_TWI_NO_ACK_ON_DATA 0x05    // The slave did not acknowledge  all data
-#define USI_TWI_NO_ACK_ON_ADDRESS 0x06 // The slave did not acknowledge  the address
-#define USI_TWI_MISSING_START_CON 0x07 // Generated Start Condition not detected on bus
-#define USI_TWI_MISSING_STOP_CON 0x08  // Generated Stop Condition not detected on bus
-
-//********** Prototypes **********//
 
 struct TWIPeripheral_t;
+
 /**
  * Abstraction for a single TWI peripheral on a TWI bus.
  */
@@ -107,4 +70,10 @@ typedef struct TWIPeripheral_t {
     } _state;
 } TWIPeripheral;
 
+/**
+ * Initialize a TWIPeripheral object.
+ * TODO: provide the peripheral bus and address to this method.
+ * @param  peripheral	The object to initialize.
+ * @return The peripheral pointer provided as a parameter.
+ */
 TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral);

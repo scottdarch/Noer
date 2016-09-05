@@ -6,8 +6,12 @@
  */
 #pragma once
 
+#ifndef __AVR_ATtiny45__
+#define __AVR_ATtiny45__
+#endif
+
 #define F_CPU 1000000UL
-#define F_CPU_KHZ (F_CPU/1000)
+#define F_CPU_KHZ (F_CPU / 1000)
 #define TWI_FAST_MODE
 
 #include <stdbool.h>
@@ -21,6 +25,7 @@
 #define PIN_INIT_OUTPUT(NAME) PIN_##NAME##_DDRx |= (1 << PIN_##NAME##_DDRxn)
 #define PIN_OUT_HIGH(NAME) PIN_##NAME##_PORTx |= (1 << PIN_##NAME##_PORTxn)
 #define PIN_OUT_LOW(NAME) PIN_##NAME##_PORTx &= ~(1 << PIN_##NAME##_PORTxn)
+#define PIN_OUT_TOGGLE(NAME) PIN_##NAME##_PORTx ^= (1 << PIN_##NAME##_PORTxn)
 
 // +--[SOUND TRIGGER GPIO]----------------------------------------------------+
 #define PIN_SOUND_TRIGGER_PORTx PORTB
