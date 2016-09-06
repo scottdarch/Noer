@@ -58,16 +58,28 @@ ProximitySensorVL6180 _the_proximity_sensor;
 // +--------------------------------------------------------------------------+
 static uint8_t VL6180x_getRegister(ProximitySensorVL6180 *self, uint16_t address)
 {
-    return 0;
+    uint8_t short_address      = (0xFF & address);
+    uint8_t single_byte_buffer = 0;
+    if (self->_interface.start_with_data(&self->_interface, false, &short_address, 1)) {
+        self->_interface.start_with_data(&self->_interface, true, &single_byte_buffer, 1);
+    }
+    return single_byte_buffer;
 }
 
-static uint8_t VL6180x_setRegister16bit(ProximitySensorVL6180 *self, uint16_t address, uint8_t data)
+static void VL6180x_setRegister16bit(ProximitySensorVL6180 *self, uint16_t address, uint8_t data)
 {
-    return 0;
+    uint8_t long_address[2] = {(0xFF & address), address << 8};
+    if (self->_interface.start_with_data(&self->_interface, false, &long_address, 2)) {
+        self->_interface.start_with_data(&self->_interface, false, &data, 1);
+    }
 }
 
 static void VL6180x_setRegister(ProximitySensorVL6180 *self, uint16_t address, uint8_t data)
 {
+    uint8_t short_address = (0xFF & address);
+    if (self->_interface.start_with_data(&self->_interface, false, &short_address, 1)) {
+        self->_interface.start_with_data(&self->_interface, false, &data, 1);
+    }
 }
 
 static void VL6180xDefautSettings(ProximitySensorVL6180 *self)
@@ -156,50 +168,50 @@ ProximitySensor *init_proximity_sensor()
     _the_proximity_sensor.super.last_proximity = 0;
     _the_proximity_sensor._callback            = 0;
     _the_proximity_sensor._callback_user_data = 0;
-    twi_peripheral_init(&_the_proximity_sensor._interface);
+    twi_peripheral_init(&_the_proximity_sensor._interface, PROXIMITY_SENSOR_ADDR);
+
     // Falling SDA edge (e.g. start condition) triggers the INT0 interrupt.
     MCUCR |= (1 << ISC01);
+
     // Enable INT0
     GIMSK |= (1 << INT0);
 
     const uint8_t data =
         VL6180x_getRegister(&_the_proximity_sensor, VL6180X_SYSTEM_FRESH_OUT_OF_RESET);
 
-    if (data != 1) {
-        return 0;
+    if (data == 1) {
+        // Required by datasheet
+        // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0207, 0x01);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0208, 0x01);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0096, 0x00);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0097, 0xfd);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00e3, 0x00);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00e4, 0x04);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00e5, 0x02);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00e6, 0x01);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00e7, 0x03);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00f5, 0x02);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00d9, 0x05);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00db, 0xce);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00dc, 0x03);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00dd, 0xf8);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x009f, 0x00);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00a3, 0x3c);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00b7, 0x00);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00bb, 0x3c);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00b2, 0x09);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00ca, 0x09);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0198, 0x01);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x01b0, 0x17);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x01ad, 0x00);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x00ff, 0x05);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0100, 0x05);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0199, 0x05);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x01a6, 0x1b);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x01ac, 0x3e);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x01a7, 0x1f);
+        VL6180x_setRegister(&_the_proximity_sensor, 0x0030, 0x00);
     }
-    // Required by datasheet
-    // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0207, 0x01);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0208, 0x01);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0096, 0x00);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0097, 0xfd);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00e3, 0x00);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00e4, 0x04);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00e5, 0x02);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00e6, 0x01);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00e7, 0x03);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00f5, 0x02);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00d9, 0x05);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00db, 0xce);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00dc, 0x03);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00dd, 0xf8);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x009f, 0x00);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00a3, 0x3c);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00b7, 0x00);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00bb, 0x3c);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00b2, 0x09);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00ca, 0x09);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0198, 0x01);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x01b0, 0x17);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x01ad, 0x00);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x00ff, 0x05);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0100, 0x05);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0199, 0x05);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x01a6, 0x1b);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x01ac, 0x3e);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x01a7, 0x1f);
-    VL6180x_setRegister(&_the_proximity_sensor, 0x0030, 0x00);
-
     return &_the_proximity_sensor.super;
 }

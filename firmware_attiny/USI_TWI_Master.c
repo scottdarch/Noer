@@ -41,30 +41,17 @@
 #define T4_TWI ((F_CPU_KHZ * 4000) / 1000000) + 1 // >4,0us
 #endif
 
-// Defines controling code generating
-//#define PARAM_VERIFICATION
-//#define NOISE_TESTING
-//#define SIGNAL_VERIFY
+// Defines controlling code generating
+#define PARAM_VERIFICATION
+#define NOISE_TESTING
+#define SIGNAL_VERIFY
 
-// USI_TWI messages and flags and bit masks
-//#define SUCCESS   7
-//#define MSG       0
 /****************************************************************************
   Bit and byte definitions
 ****************************************************************************/
 #define TWI_READ_BIT 0 // Bit position for R/W bit in "address byte".
 #define TWI_ADR_BITS 1 // Bit position for LSB of the slave address bits in the init byte.
 #define TWI_NACK_BIT 0 // Bit position for (N)ACK bit.
-
-#define USI_TWI_NO_DATA 0x00           // Transmission buffer is empty
-#define USI_TWI_DATA_OUT_OF_BOUND 0x01 // Transmission buffer is outside SRAM space
-#define USI_TWI_UE_START_CON 0x02      // Unexpected Start Condition
-#define USI_TWI_UE_STOP_CON 0x03       // Unexpected Stop Condition
-#define USI_TWI_UE_DATA_COL 0x04       // Unexpected Data Collision (arbitration)
-#define USI_TWI_NO_ACK_ON_DATA 0x05    // The slave did not acknowledge  all data
-#define USI_TWI_NO_ACK_ON_ADDRESS 0x06 // The slave did not acknowledge  the address
-#define USI_TWI_MISSING_START_CON 0x07 // Generated Start Condition not detected on bus
-#define USI_TWI_MISSING_STOP_CON 0x08  // Generated Stop Condition not detected on bus
 
 //********** Prototypes **********//
 
@@ -74,12 +61,7 @@ static unsigned char USI_TWI_Master_Stop(TWIPeripheral *self);
 // +--------------------------------------------------------------------------+
 // | PUBLIC
 // +--------------------------------------------------------------------------+
-static unsigned char USI_TWI_Get_State_Info(TWIPeripheral *self)
-{
-    return (self->_state.errorState); // Return error state.
-}
-
-static bool USI_TWI_Start_Transceiver_With_Data(TWIPeripheral *self, unsigned char *msg,
+static bool USI_TWI_Start_Transceiver_With_Data(TWIPeripheral *self, bool read, uint8_t *msg,
                                                 unsigned char msg_size)
 {
     unsigned char tempUSISR_8bit =
@@ -91,42 +73,35 @@ static bool USI_TWI_Start_Transceiver_With_Data(TWIPeripheral *self, unsigned ch
         (1 << USIDC) |    // Prepare register value to: Clear flags, and
         (0xE << USICNT0); // set USI to shift 1 bit i.e. count 2 clock edges.
 
-    self->_state.errorState  = 0;
-    self->_state.addressMode = true;
+    self->state = USI_TWI_SENDING_ADDRESS;
 
 #ifdef PARAM_VERIFICATION
     if (msg > (unsigned char *)RAMEND) // Test if address is outside SRAM space
     {
-        self->_state.errorState = USI_TWI_DATA_OUT_OF_BOUND;
+        self->state = USI_TWI_ERR_DATA_OUT_OF_BOUND;
         return (false);
     }
     if (msg_size <= 1) // Test if the transmission buffer is empty
     {
-        self->_state.errorState = USI_TWI_NO_DATA;
+        self->state = USI_TWI_NO_DATA;
         return (false);
     }
 #endif
 
 #ifdef NOISE_TESTING // Test if any unexpected conditions have arrived prior to this execution.
     if (USISR & (1 << USISIF)) {
-        self->_state.errorState = USI_TWI_UE_START_CON;
+        self->state = USI_TWI_ERR_UE_START_CON;
         return (false);
     }
     if (USISR & (1 << USIPF)) {
-        self->_state.errorState = USI_TWI_UE_STOP_CON;
+        self->state = USI_TWI_ERR_UE_STOP_CON;
         return (false);
     }
     if (USISR & (1 << USIDC)) {
-        self->_state.errorState = USI_TWI_UE_DATA_COL;
+        self->state = USI_TWI_ERR_UE_DATA_COL;
         return (false);
     }
 #endif
-
-    if (!(*msg & (1 << TWI_READ_BIT))) // The LSB in the address byte determines if is a masterRead
-                                       // or masterWrite operation.
-    {
-        self->_state.masterWriteDataMode = true;
-    }
 
     /* Release SCL to ensure that (repeated) Start can be performed */
     PORT_USI |= (1 << PIN_USI_SCL); // Release SCL.
@@ -146,33 +121,36 @@ static bool USI_TWI_Start_Transceiver_With_Data(TWIPeripheral *self, unsigned ch
 
 #ifdef SIGNAL_VERIFY
     if (!(USISR & (1 << USISIF))) {
-        self->_state.errorState = USI_TWI_MISSING_START_CON;
+        self->state = USI_TWI_ERR_MISSING_START_CON;
         return (false);
     }
 #endif
 
     /*Write address and Read/Write data */
     do {
-        /* If masterWrite cycle (or inital address tranmission)*/
-        if (self->_state.addressMode || self->_state.masterWriteDataMode) {
+        /* If masterWrite cycle (or initial address transmission)*/
+        if (USI_TWI_SENDING_ADDRESS == self->state || USI_TWI_WRITING_DATA == self->state) {
             /* Write a byte */
-            PORT_USI &= ~(1 << PIN_USI_SCL);         // Pull SCL LOW.
-            USIDR = *(msg++);                        // Setup data.
+            PORT_USI &= ~(1 << PIN_USI_SCL); // Pull SCL LOW.
+            if (USI_TWI_WRITING_DATA == self->state) {
+                USIDR = *(msg++);
+            } else {
+                USIDR = (self->_device_address << 1) | (read) ? 1 : 0;
+            }
             USI_TWI_Master_Transfer(tempUSISR_8bit); // Send 8 bits on bus.
 
             /* Clock and verify (N)ACK from slave */
             DDR_USI &= ~(1 << PIN_USI_SDA); // Enable SDA as input.
             if (USI_TWI_Master_Transfer(tempUSISR_1bit) & (1 << TWI_NACK_BIT)) {
-                if (self->_state.addressMode)
-                    self->_state.errorState = USI_TWI_NO_ACK_ON_ADDRESS;
-                else
-                    self->_state.errorState = USI_TWI_NO_ACK_ON_DATA;
+                if (USI_TWI_SENDING_ADDRESS == self->state) {
+                    self->state = USI_TWI_ERR_NO_ACK_ON_ADDRESS;
+                } else {
+                    self->state = USI_TWI_ERR_NO_ACK_ON_DATA;
+                }
                 return (false);
             }
-            self->_state.addressMode = false; // Only perform address transmission once.
-        }
-        /* Else masterRead cycle*/
-        else {
+            self->state = (read) ? USI_TWI_READING_DATA : USI_TWI_WRITING_DATA;
+        } else {
             /* Read a data byte */
             DDR_USI &= ~(1 << PIN_USI_SDA); // Enable SDA as input.
             *(msg++) = USI_TWI_Master_Transfer(tempUSISR_8bit);
@@ -194,10 +172,10 @@ static bool USI_TWI_Start_Transceiver_With_Data(TWIPeripheral *self, unsigned ch
     return true;
 }
 
-TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral)
+TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral, uint8_t device_address)
 {
     if (peripheral) {
-        peripheral->get_state_info  = USI_TWI_Get_State_Info;
+        peripheral->state           = USI_TWI_NO_DATA;
         peripheral->start_with_data = USI_TWI_Start_Transceiver_With_Data;
 
         PORT_USI |= (1 << PIN_USI_SDA); // Enable pullup on SDA, to set high as released state.
@@ -214,6 +192,8 @@ TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral)
                 (0 << USITC);
         USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF) | (1 << USIDC) | // Clear flags,
                 (0x0 << USICNT0);                                             // and reset counter.
+
+        peripheral->_device_address = device_address;
     }
     return peripheral;
 }
@@ -236,7 +216,7 @@ static unsigned char USI_TWI_Master_Transfer(unsigned char temp)
            (1 << USITC);                                   // Toggle Clock Port.
     do {
         _delay_us(T2_TWI / 4);
-        USICR = temp; // Generate positve SCL edge.
+        USICR = temp; // Generate positive SCL edge.
         while (!(PIN_USI & (1 << PIN_USI_SCL)))
             ; // Wait for SCL to go high.
         _delay_us(T4_TWI / 4);
@@ -267,7 +247,7 @@ static unsigned char USI_TWI_Master_Stop(TWIPeripheral *self)
 
 #ifdef SIGNAL_VERIFY
     if (!(USISR & (1 << USIPF))) {
-        self->_state.errorState = USI_TWI_MISSING_STOP_CON;
+        self->state = USI_TWI_ERR_MISSING_STOP_CON;
         return (false);
     }
 #endif

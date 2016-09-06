@@ -30,6 +30,21 @@
 
 #include "mcu.h"
 
+typedef enum {
+    USI_TWI_NO_DATA,
+    USI_TWI_SENDING_ADDRESS,       //< Transmission buffer is empty
+    USI_TWI_WRITING_DATA,          //< Sending data to the peripheral.
+    USI_TWI_READING_DATA,          //< Reading data from a peripheral.
+    USI_TWI_ERR_DATA_OUT_OF_BOUND, //< Transmission buffer is outside SRAM space
+    USI_TWI_ERR_UE_START_CON,      //< Unexpected Start Condition
+    USI_TWI_ERR_UE_STOP_CON,       //< Unexpected Stop Condition
+    USI_TWI_ERR_UE_DATA_COL,       //< Unexpected Data Collision (arbitration)
+    USI_TWI_ERR_NO_ACK_ON_DATA,    //< The slave did not acknowledge  all data
+    USI_TWI_ERR_NO_ACK_ON_ADDRESS, //< The slave did not acknowledge  the address
+    USI_TWI_ERR_MISSING_START_CON, //< Generated Start Condition not detected on bus
+    USI_TWI_ERR_MISSING_STOP_CON   //< Generated Stop Condition not detected on bus
+} USI_TWI_state;
+
 struct TWIPeripheral_t;
 
 /**
@@ -45,35 +60,30 @@ typedef struct TWIPeripheral_t {
      * Function generates (Repeated) Start Condition, sends address and
      * R/W, Reads/Writes Data, and verifies/sends ACK.
      *
-     * @param  self	The object to apply the method to.
+     * @param  self    The object to apply the method to.
+     * @param  read    If true then data will be read from the peripheral else
+     *                 data will be written to the peripheral.
      * @return true if successful or or false on error. Use get_state_info to
      *         obtain an error code.
      */
-    bool (*start_with_data)(struct TWIPeripheral_t *self, unsigned char *msg,
+    bool (*start_with_data)(struct TWIPeripheral_t *self, bool read, uint8_t *msg,
                             unsigned char msg_size);
 
     /**
-     * Retrieve the last error code.
+     * The current state of the driver.
      */
-    unsigned char (*get_state_info)(struct TWIPeripheral_t *self);
+    USI_TWI_state state;
 
     // +--[PRIVATE]-----------------------------------------------------------+
-    union USI_TWI_state {
-        unsigned char
-            errorState; // Can reuse the TWI_state for error states due to that it will not be
-                        // need if there exists an error.
-        struct {
-            unsigned char addressMode : 1;
-            unsigned char masterWriteDataMode : 1;
-            unsigned char unused : 6;
-        };
-    } _state;
+    uint8_t _device_address;
+
 } TWIPeripheral;
 
 /**
  * Initialize a TWIPeripheral object.
  * TODO: provide the peripheral bus and address to this method.
- * @param  peripheral	The object to initialize.
+ * @param   peripheral      The object to initialize.
+ * @param   device_address  The device address on the I2C bus.
  * @return The peripheral pointer provided as a parameter.
  */
-TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral);
+TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral, uint8_t device_address);
