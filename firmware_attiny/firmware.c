@@ -129,7 +129,7 @@ int main(int argc, const char *argv[])
     uint32_t last_time_seconds = _time_seconds;
 
     while (true) {
-        //_proximity_sensor->service(_proximity_sensor);
+        _proximity_sensor->service(_proximity_sensor);
         ATOMIC_BLOCK(ATOMIC_FORCEON)
         {
             // Do time sensitive stuff here with the interrupts disabled. Don't

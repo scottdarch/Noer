@@ -43,7 +43,7 @@
 
 // Defines controlling code generating
 #define PARAM_VERIFICATION
-#define NOISE_TESTING
+//#define NOISE_TESTING
 #define SIGNAL_VERIFY
 
 /****************************************************************************
@@ -81,7 +81,7 @@ static bool USI_TWI_Start_Transceiver_With_Data(TWIPeripheral *self, bool read, 
         self->state = USI_TWI_ERR_DATA_OUT_OF_BOUND;
         return (false);
     }
-    if (msg_size <= 1) // Test if the transmission buffer is empty
+    if (msg_size == 0) // Test if the transmission buffer is empty
     {
         self->state = USI_TWI_NO_DATA;
         return (false);
@@ -135,7 +135,8 @@ static bool USI_TWI_Start_Transceiver_With_Data(TWIPeripheral *self, bool read, 
             if (USI_TWI_WRITING_DATA == self->state) {
                 USIDR = *(msg++);
             } else {
-                USIDR = (self->_device_address << 1) | (read) ? 1 : 0;
+				++msg_size;
+                USIDR = (self->_device_address << 1) | ((read) ? 1 : 0);
             }
             USI_TWI_Master_Transfer(tempUSISR_8bit); // Send 8 bits on bus.
 
@@ -178,6 +179,7 @@ TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral, uint8_t device_add
         peripheral->state           = USI_TWI_NO_DATA;
         peripheral->start_with_data = USI_TWI_Start_Transceiver_With_Data;
 
+        MCUSR |= (1 << PUD);
         PORT_USI |= (1 << PIN_USI_SDA); // Enable pullup on SDA, to set high as released state.
         PORT_USI |= (1 << PIN_USI_SCL); // Enable pullup on SCL, to set high as released state.
 
@@ -188,7 +190,7 @@ TWIPeripheral *twi_peripheral_init(TWIPeripheral *peripheral, uint8_t device_add
         USICR = (0 << USISIE) | (0 << USIOIE) | // Disable Interrupts.
                 (1 << USIWM1) | (0 << USIWM0) | // Set USI in Two-wire mode.
                 (1 << USICS1) | (0 << USICS0) |
-                (1 << USICLK) | // Software stobe as counter clock source
+                (1 << USICLK) | // Software strobe as counter clock source
                 (0 << USITC);
         USISR = (1 << USISIF) | (1 << USIOIF) | (1 << USIPF) | (1 << USIDC) | // Clear flags,
                 (0x0 << USICNT0);                                             // and reset counter.
@@ -251,6 +253,7 @@ static unsigned char USI_TWI_Master_Stop(TWIPeripheral *self)
         return (false);
     }
 #endif
-
+    // Clear the stop condition.
+    USISR |= (1 << USIPF);
     return (true);
 }
