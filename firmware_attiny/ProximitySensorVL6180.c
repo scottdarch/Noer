@@ -46,8 +46,9 @@ typedef enum {
     VL6180STATE_INIT_DEFAULT,
     VL6180STATE_INIT_ADDITIONAL,
     VL6180STATE_WAITING_FOR_RANGE_STATUS,
-    VL6180STATE_START_RANGING,
-    VL6180STATE_RUNNING_RANGE
+    VL6180STATE_RUNNING_RANGE,
+    VL6180STATE_READING_RANGE,
+    VL6180STATE_ERROR
 } VL6180State;
 
 typedef struct ProximitySensorVL6180_t {
@@ -66,8 +67,9 @@ ProximitySensorVL6180 _the_proximity_sensor;
 // +--------------------------------------------------------------------------+
 static uint8_t VL6180x_getRegister(ProximitySensorVL6180 *self, uint8_t address)
 {
+    uint8_t long_address[2] = {0, address};
     uint8_t single_byte_buffer = 0;
-    if (self->_interface.start_with_data(&self->_interface, false, &address, 1)) {
+    if (self->_interface.start_with_data(&self->_interface, false, long_address, 2)) {
         self->_interface.start_with_data(&self->_interface, true, &single_byte_buffer, 1);
     }
     return single_byte_buffer;
@@ -75,17 +77,14 @@ static uint8_t VL6180x_getRegister(ProximitySensorVL6180 *self, uint8_t address)
 
 static void VL6180x_setRegister16bit(ProximitySensorVL6180 *self, uint16_t address, uint8_t data)
 {
-    uint8_t long_address[2] = {(0x0F & address), address >> 8};
-    if (self->_interface.start_with_data(&self->_interface, false, long_address, 2)) {
-        self->_interface.start_with_data(&self->_interface, false, &data, 1);
-    }
+    uint8_t long_address[3] = {0xFF & (address >> 8), (0xFF & address), data};
+    self->_interface.start_with_data(&self->_interface, false, long_address, 3);
 }
 
 static void VL6180x_setRegister(ProximitySensorVL6180 *self, uint8_t address, uint8_t data)
 {
-    if (self->_interface.start_with_data(&self->_interface, false, &address, 1)) {
-        self->_interface.start_with_data(&self->_interface, false, &data, 1);
-    }
+    uint8_t long_address[3] = {0, address, data};
+    self->_interface.start_with_data(&self->_interface, false, long_address, 3);
 }
 
 static void VL6180xAdditionalSettings(ProximitySensorVL6180 *self)
@@ -93,29 +92,23 @@ static void VL6180xAdditionalSettings(ProximitySensorVL6180 *self)
     // Recommended settings from datasheet
     // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
 
-    // Enable Interrupts on Conversion Complete (any source)
+    VL6180x_setRegister(self, VL6180X_SYSTEM_GROUPED_PARAMETER_HOLD, 0x1);
+    VL6180x_setRegister(self, VL6180X_SYSRANGE_THRESH_LOW, 0x4D);
     VL6180x_setRegister(self, VL6180X_SYSTEM_INTERRUPT_CONFIG_GPIO,
-                        (4)); // Set GPIO1 high when sample complete
+                        0x01);
 
     VL6180x_setRegister(self, VL6180X_SYSTEM_MODE_GPIO1,
                         0x10); // Set GPIO1 high when sample complete
     VL6180x_setRegister16bit(self, VL6180X_READOUT_AVERAGING_SAMPLE_PERIOD,
                              0x30);                                // Set Avg sample period
-    VL6180x_setRegister(self, VL6180X_SYSALS_ANALOGUE_GAIN, 0x46); // Set the ALS gain
     VL6180x_setRegister(self, VL6180X_SYSRANGE_VHV_REPEAT_RATE,
                         0xFF); // Set auto calibration period (Max = 255)/(OFF = 0)
-    VL6180x_setRegister(self, VL6180X_SYSALS_INTEGRATION_PERIOD,
-                        0x63); // Set ALS integration time to 100ms
     VL6180x_setRegister(self, VL6180X_SYSRANGE_VHV_RECALIBRATE,
                         0x01); // perform a single temperature calibration
     // Optional settings from datasheet
     // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
     VL6180x_setRegister(self, VL6180X_SYSRANGE_INTERMEASUREMENT_PERIOD,
                         0x09); // Set default ranging inter-measurement period to 100ms
-    VL6180x_setRegister(self, VL6180X_SYSALS_INTERMEASUREMENT_PERIOD,
-                        0x0A); // Set default ALS inter-measurement period to 100ms
-    VL6180x_setRegister(self, VL6180X_SYSTEM_INTERRUPT_CONFIG_GPIO,
-                        0x24); // Configures interrupt on ‘New Sample Ready threshold event’
     // Additional settings defaults from community
     VL6180x_setRegister(self, VL6180X_SYSRANGE_MAX_CONVERGENCE_TIME, 0x32);
     VL6180x_setRegister(self, VL6180X_SYSRANGE_RANGE_CHECK_ENABLES, 0x10 | 0x01);
@@ -123,8 +116,8 @@ static void VL6180xAdditionalSettings(ProximitySensorVL6180 *self)
     VL6180x_setRegister16bit(self, VL6180X_SYSALS_INTEGRATION_PERIOD, 0x64);
 
     VL6180x_setRegister16bit(self, VL6180X_READOUT_AVERAGING_SAMPLE_PERIOD, 0x30);
-    VL6180x_setRegister(self, VL6180X_SYSALS_ANALOGUE_GAIN, 0x40);
     VL6180x_setRegister16bit(self, VL6180X_FIRMWARE_RESULT_SCALER, 0x01);
+    VL6180x_setRegister(self, VL6180X_SYSTEM_GROUPED_PARAMETER_HOLD, 0x0);
 }
 
 static void VL6180xDefautSettings(ProximitySensorVL6180 *self)
@@ -184,6 +177,7 @@ static void _service(ProximitySensor *self)
     ProximitySensorVL6180 *vl6180_self = (ProximitySensorVL6180 *)self;
     switch (vl6180_self->_state) {
     case VL6180STATE_WAITING_FOR_RESET: {
+        PIN_OUT_HIGH(TOF_RESET);
         if (VL6180x_getRegister(vl6180_self, VL6180X_SYSTEM_FRESH_OUT_OF_RESET) == 1) {
             vl6180_self->_state = VL6180STATE_INIT_DEFAULT;
         }
@@ -199,22 +193,28 @@ static void _service(ProximitySensor *self)
     } break;
     case VL6180STATE_WAITING_FOR_RANGE_STATUS: {
         if (VL6180x_getRegister(vl6180_self, VL6180X_RESULT_RANGE_STATUS) & 0x01) {
-            vl6180_self->_state = VL6180STATE_START_RANGING;
+            VL6180x_setRegister(vl6180_self, VL6180X_SYSRANGE_START, 0x03); //< 0x03 for continuous ranging.
+            vl6180_self->_state = VL6180STATE_RUNNING_RANGE;
         }
     } break;
-    case VL6180STATE_START_RANGING: {
-        // TODO: check if ranging has started since this command is, oddly,
-        // a toggle command.
-        VL6180x_setRegister(vl6180_self, VL6180X_SYSRANGE_START,
-                            0x03); //< 0x03 for continuous ranging.
-        vl6180_self->_state = VL6180STATE_RUNNING_RANGE;
-        _set_gpio_mode(vl6180_self, false);
-        // TODO: reset GPIO to disable I2C and enable INT0
+    case VL6180STATE_RUNNING_RANGE: {
+        const uint8_t status = VL6180x_getRegister(vl6180_self, VL6180X_RESULT_INTERRUPT_STATUS_GPIO);
+        if (0xC0 & status) {
+            vl6180_self->_state = VL6180STATE_ERROR;
+        } else if (0x7 & status) {
+            vl6180_self->_state = VL6180STATE_READING_RANGE;
+        }
+    } break;
+    case VL6180STATE_ERROR: {
+         VL6180x_setRegister(vl6180_self, VL6180X_SYSTEM_INTERRUPT_CLEAR, 0x7);
+         vl6180_self->_state = VL6180STATE_RUNNING_RANGE;
     } break;
     default: {
         // ready
         vl6180_self->super.last_proximity =
             VL6180x_getRegister(vl6180_self, VL6180X_RESULT_RANGE_VAL);
+        VL6180x_setRegister(vl6180_self, VL6180X_SYSTEM_INTERRUPT_CLEAR, 0x7);
+        vl6180_self->_state = VL6180STATE_RUNNING_RANGE;
     }
     }
 }
@@ -237,7 +237,11 @@ ProximitySensor *init_proximity_sensor()
     // Enable INT0
     GIMSK |= (1 << INT0);
 
+    PIN_INIT_OUTPUT(TOF_RESET);
+    PIN_OUT_LOW(TOF_RESET);
     _set_gpio_mode(sensor, true);
+    
+    
     return &sensor->super;
 }
 
@@ -252,4 +256,5 @@ ProximitySensor *init_proximity_sensor()
 ISR(INT0_vect)
 {
     // TODO: blink LED to confirm interrupt.
+   // VL6180x_setRegister((ProximitySensorVL6180*)get_instance(), VL6180X_SYSTEM_INTERRUPT_CLEAR, 0x7);
 }

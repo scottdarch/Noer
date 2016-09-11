@@ -30,12 +30,12 @@
 #define PIN_OUT_TOGGLE(NAME) PIN_##NAME##_PORTx ^= (1 << PIN_##NAME##_PORTxn)
 #define PIN_IN_IS_HIGH(NAME) (PIN_##NAME##_PINx & (1 << PIN_##NAME##_PINxn))
 
-//              +---+
-//   |RESET,PB5 |   | VCC
-//          PB3 |   | PB2,SCL,INT0
-// AUD_KEY0,PB4 |   | PB1,STAT
-//          GND |   | PB0,SDA
-//              +---+
+//               +---+
+//    |RESET,PB5 |   | VCC
+// TOF_RESET,PB3 |   | PB2,SCL,INT0
+//  AUD_KEY0,PB4 |   | PB1,STAT
+//           GND |   | PB0,SDA
+//               +---+
 
 // +--[SOUND TRIGGER GPIO]----------------------------------------------------+
 #define PIN_SOUND_TRIGGER_PORTx PORTB
@@ -48,6 +48,12 @@
 #define PIN_RANGE_THRESH_DETECT_PORTxn PB2
 #define PIN_RANGE_THRESH_DETECT_DDRx DDRB
 #define PIN_RANGE_THRESH_DETECT_DDRxn DDB2
+
+// +--[TOF SENSOR HARDWARE RESET]---------------------------------------------+
+#define PIN_TOF_RESET_PORTx PORTB
+#define PIN_TOF_RESET_PORTxn PB3
+#define PIN_TOF_RESET_DDRx DDRB
+#define PIN_TOF_RESET_DDRxn DDB3
 
 // +--[STATUS LED]------------------------------------------------------------+
 #define PIN_LED_STATUS_PORTx PORTB
