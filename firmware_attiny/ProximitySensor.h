@@ -26,19 +26,6 @@ typedef struct ProximitySensor_t {
     uint8_t last_proximity;
 
     /**
-     * Register a callback with this driver.
-     * TODO: provide a mechanism to define the threshold.
-     *
-     * @param  self    		The driver to register with.
-     * @param  callback		The method to invoke when a proximity threshold has
-     *                      been breached.
-     * @param  user_data	Data to provide to the callback method when invoked.
-     */
-    void (*register_proximity_threshold_breach)(struct ProximitySensor_t *self,
-                                                proximity_threshold_breach callback,
-                                                void *user_data);
-
-    /**
      * Run the sensor for a slice of time. This method must not block on I/O.
      * @param  self	The driver to service.
      */

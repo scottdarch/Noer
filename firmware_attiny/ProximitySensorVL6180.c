@@ -43,13 +43,15 @@ typedef void (*proximity_threshold_breach)(struct ProximitySensor_t *, void *use
 
 typedef enum {
     VL6180STATE_WAITING_FOR_RESET,
-    VL6180STATE_READY
+    VL6180STATE_INIT_DEFAULT,
+    VL6180STATE_INIT_ADDITIONAL,
+    VL6180STATE_WAITING_FOR_RANGE_STATUS,
+    VL6180STATE_START_RANGING,
+    VL6180STATE_RUNNING_RANGE
 } VL6180State;
 
 typedef struct ProximitySensorVL6180_t {
     ProximitySensor super;
-    void *_callback_user_data;
-    proximity_threshold_breach _callback;
     TWIPeripheral _interface;
     VL6180State _state;
 } ProximitySensorVL6180;
@@ -86,34 +88,34 @@ static void VL6180x_setRegister(ProximitySensorVL6180 *self, uint8_t address, ui
     }
 }
 
-static void VL6180xDefautSettings(ProximitySensorVL6180 *self)
+static void VL6180xAdditionalSettings(ProximitySensorVL6180 *self)
 {
     // Recommended settings from datasheet
     // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
 
     // Enable Interrupts on Conversion Complete (any source)
     VL6180x_setRegister(self, VL6180X_SYSTEM_INTERRUPT_CONFIG_GPIO,
-    (4 << 3) | (4)); // Set GPIO1 high when sample complete
+                        (4)); // Set GPIO1 high when sample complete
 
     VL6180x_setRegister(self, VL6180X_SYSTEM_MODE_GPIO1,
-    0x10); // Set GPIO1 high when sample complete
+                        0x10); // Set GPIO1 high when sample complete
     VL6180x_setRegister16bit(self, VL6180X_READOUT_AVERAGING_SAMPLE_PERIOD,
-    0x30);                                     // Set Avg sample period
+                             0x30);                                // Set Avg sample period
     VL6180x_setRegister(self, VL6180X_SYSALS_ANALOGUE_GAIN, 0x46); // Set the ALS gain
     VL6180x_setRegister(self, VL6180X_SYSRANGE_VHV_REPEAT_RATE,
-    0xFF); // Set auto calibration period (Max = 255)/(OFF = 0)
+                        0xFF); // Set auto calibration period (Max = 255)/(OFF = 0)
     VL6180x_setRegister(self, VL6180X_SYSALS_INTEGRATION_PERIOD,
-    0x63); // Set ALS integration time to 100ms
+                        0x63); // Set ALS integration time to 100ms
     VL6180x_setRegister(self, VL6180X_SYSRANGE_VHV_RECALIBRATE,
-    0x01); // perform a single temperature calibration
+                        0x01); // perform a single temperature calibration
     // Optional settings from datasheet
     // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
     VL6180x_setRegister(self, VL6180X_SYSRANGE_INTERMEASUREMENT_PERIOD,
-    0x09); // Set default ranging inter-measurement period to 100ms
+                        0x09); // Set default ranging inter-measurement period to 100ms
     VL6180x_setRegister(self, VL6180X_SYSALS_INTERMEASUREMENT_PERIOD,
-    0x0A); // Set default ALS inter-measurement period to 100ms
+                        0x0A); // Set default ALS inter-measurement period to 100ms
     VL6180x_setRegister(self, VL6180X_SYSTEM_INTERRUPT_CONFIG_GPIO,
-    0x24); // Configures interrupt on ‘New Sample Ready threshold event’
+                        0x24); // Configures interrupt on ‘New Sample Ready threshold event’
     // Additional settings defaults from community
     VL6180x_setRegister(self, VL6180X_SYSRANGE_MAX_CONVERGENCE_TIME, 0x32);
     VL6180x_setRegister(self, VL6180X_SYSRANGE_RANGE_CHECK_ENABLES, 0x10 | 0x01);
@@ -125,11 +127,118 @@ static void VL6180xDefautSettings(ProximitySensorVL6180 *self)
     VL6180x_setRegister16bit(self, VL6180X_FIRMWARE_RESULT_SCALER, 0x01);
 }
 
-static uint8_t VL6180x_getDistance(ProximitySensorVL6180 *self)
+static void VL6180xDefautSettings(ProximitySensorVL6180 *self)
 {
-    VL6180x_setRegister(self, VL6180X_SYSRANGE_START, 0x01); // Start Single shot mode
-    _delay_ms(10);
-    return VL6180x_getRegister(self, VL6180X_RESULT_RANGE_VAL);
+    // Required by datasheet
+    // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
+    VL6180x_setRegister16bit(self, 0x0207, 0x01);
+    VL6180x_setRegister16bit(self, 0x0208, 0x01);
+    VL6180x_setRegister(self, 0x0096, 0x00);
+    VL6180x_setRegister(self, 0x0097, 0xfd);
+    VL6180x_setRegister(self, 0x00e3, 0x00);
+    VL6180x_setRegister(self, 0x00e4, 0x04);
+    VL6180x_setRegister(self, 0x00e5, 0x02);
+    VL6180x_setRegister(self, 0x00e6, 0x01);
+    VL6180x_setRegister(self, 0x00e7, 0x03);
+    VL6180x_setRegister(self, 0x00f5, 0x02);
+    VL6180x_setRegister(self, 0x00d9, 0x05);
+    VL6180x_setRegister(self, 0x00db, 0xce);
+    VL6180x_setRegister(self, 0x00dc, 0x03);
+    VL6180x_setRegister(self, 0x00dd, 0xf8);
+    VL6180x_setRegister(self, 0x009f, 0x00);
+    VL6180x_setRegister(self, 0x00a3, 0x3c);
+    VL6180x_setRegister(self, 0x00b7, 0x00);
+    VL6180x_setRegister(self, 0x00bb, 0x3c);
+    VL6180x_setRegister(self, 0x00b2, 0x09);
+    VL6180x_setRegister(self, 0x00ca, 0x09);
+    VL6180x_setRegister16bit(self, 0x0198, 0x01);
+    VL6180x_setRegister16bit(self, 0x01b0, 0x17);
+    VL6180x_setRegister16bit(self, 0x01ad, 0x00);
+    VL6180x_setRegister(self, 0x00ff, 0x05);
+    VL6180x_setRegister16bit(self, 0x0100, 0x05);
+    VL6180x_setRegister16bit(self, 0x0199, 0x05);
+    VL6180x_setRegister16bit(self, 0x01a6, 0x1b);
+    VL6180x_setRegister16bit(self, 0x01ac, 0x3e);
+    VL6180x_setRegister16bit(self, 0x01a7, 0x1f);
+    VL6180x_setRegister(self, 0x0030, 0x00);
+}
+
+static void _set_gpio_mode(ProximitySensorVL6180 *self, bool serial_mode)
+{
+    if (serial_mode) {
+        // enable I2C
+        twi_peripheral_init(&self->_interface, PROXIMITY_SENSOR_ADDR);
+    } else {
+        // enable INT0
+        PIN_INIT_INPUT(RANGE_THRESH_DETECT);
+        PIN_DISABLE_PULLUP(RANGE_THRESH_DETECT);
+    }
+}
+
+// +--------------------------------------------------------------------------+
+// | ProximitySensor API
+// +--------------------------------------------------------------------------+
+
+static void _service(ProximitySensor *self)
+{
+    ProximitySensorVL6180 *vl6180_self = (ProximitySensorVL6180 *)self;
+    switch (vl6180_self->_state) {
+    case VL6180STATE_WAITING_FOR_RESET: {
+        if (VL6180x_getRegister(vl6180_self, VL6180X_SYSTEM_FRESH_OUT_OF_RESET) == 1) {
+            vl6180_self->_state = VL6180STATE_INIT_DEFAULT;
+        }
+    } break;
+    case VL6180STATE_INIT_DEFAULT: {
+        VL6180xDefautSettings(vl6180_self);
+        vl6180_self->_state = VL6180STATE_INIT_ADDITIONAL;
+    } break;
+    case VL6180STATE_INIT_ADDITIONAL: {
+        VL6180xAdditionalSettings(vl6180_self);
+        VL6180x_setRegister(vl6180_self, VL6180X_SYSTEM_FRESH_OUT_OF_RESET, 0x01);
+        vl6180_self->_state = VL6180STATE_WAITING_FOR_RANGE_STATUS;
+    } break;
+    case VL6180STATE_WAITING_FOR_RANGE_STATUS: {
+        if (VL6180x_getRegister(vl6180_self, VL6180X_RESULT_RANGE_STATUS) & 0x01) {
+            vl6180_self->_state = VL6180STATE_START_RANGING;
+        }
+    } break;
+    case VL6180STATE_START_RANGING: {
+        // TODO: check if ranging has started since this command is, oddly,
+        // a toggle command.
+        VL6180x_setRegister(vl6180_self, VL6180X_SYSRANGE_START,
+                            0x03); //< 0x03 for continuous ranging.
+        vl6180_self->_state = VL6180STATE_RUNNING_RANGE;
+        _set_gpio_mode(vl6180_self, false);
+        // TODO: reset GPIO to disable I2C and enable INT0
+    } break;
+    default: {
+        // ready
+        vl6180_self->super.last_proximity =
+            VL6180x_getRegister(vl6180_self, VL6180X_RESULT_RANGE_VAL);
+    }
+    }
+}
+
+ProximitySensor *get_instance()
+{
+    return &_the_proximity_sensor.super;
+}
+
+ProximitySensor *init_proximity_sensor()
+{
+    ProximitySensorVL6180 *sensor = (ProximitySensorVL6180 *)get_instance();
+    sensor->super.service         = _service;
+    sensor->super.last_proximity  = 0;
+    sensor->_state                = VL6180STATE_WAITING_FOR_RESET;
+
+    // Falling SDA edge (e.g. start condition) triggers the INT0 interrupt.
+    MCUCR |= (1 << ISC01);
+
+    // Enable INT0
+    GIMSK |= (1 << INT0);
+
+    _set_gpio_mode(sensor, true);
+    return &sensor->super;
 }
 
 // +--------------------------------------------------------------------------+
@@ -142,84 +251,5 @@ static uint8_t VL6180x_getDistance(ProximitySensorVL6180 *self)
 */
 ISR(INT0_vect)
 {
-}
-
-// +--------------------------------------------------------------------------+
-// | ProximitySensor API
-// +--------------------------------------------------------------------------+
-
-static void _register_proximity_threshold_breach(ProximitySensor *self,
-proximity_threshold_breach callback,
-void *user_data)
-{
-    ProximitySensorVL6180 *vl6180_self = (ProximitySensorVL6180 *)self;
-    ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
-    {
-        vl6180_self->_callback           = callback;
-        vl6180_self->_callback_user_data = user_data;
-    }
-}
-
-static void _service(ProximitySensor *self)
-{
-    ProximitySensorVL6180 *vl6180_self = (ProximitySensorVL6180 *)self;
-    if (VL6180STATE_WAITING_FOR_RESET == vl6180_self->_state) {
-        const uint8_t data = VL6180x_getRegister(&_the_proximity_sensor, VL6180X_SYSTEM_FRESH_OUT_OF_RESET);
-
-        if (data == 1) {
-            vl6180_self->_state = VL6180STATE_READY;
-            // Required by datasheet
-            // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x0207, 0x01);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x0208, 0x01);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x0096, 0x00);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x0097, 0xfd);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00e3, 0x00);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00e4, 0x04);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00e5, 0x02);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00e6, 0x01);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00e7, 0x03);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00f5, 0x02);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00d9, 0x05);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00db, 0xce);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00dc, 0x03);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00dd, 0xf8);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x009f, 0x00);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00a3, 0x3c);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00b7, 0x00);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00bb, 0x3c);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00b2, 0x09);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00ca, 0x09);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x0198, 0x01);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x01b0, 0x17);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x01ad, 0x00);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x00ff, 0x05);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x0100, 0x05);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x0199, 0x05);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x01a6, 0x1b);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x01ac, 0x3e);
-            VL6180x_setRegister16bit(&_the_proximity_sensor, 0x01a7, 0x1f);
-            VL6180x_setRegister(&_the_proximity_sensor, 0x0030, 0x00);
-        }
-    }
-}
-
-ProximitySensor *init_proximity_sensor()
-{
-    _the_proximity_sensor.super.service = _service;
-    _the_proximity_sensor.super.register_proximity_threshold_breach =
-    _register_proximity_threshold_breach;
-    _the_proximity_sensor.super.last_proximity = 0;
-    _the_proximity_sensor._callback            = 0;
-    _the_proximity_sensor._callback_user_data = 0;
-    _the_proximity_sensor._state = VL6180STATE_WAITING_FOR_RESET;
-    twi_peripheral_init(&_the_proximity_sensor._interface, PROXIMITY_SENSOR_ADDR);
-
-    // Falling SDA edge (e.g. start condition) triggers the INT0 interrupt.
-    MCUCR |= (1 << ISC01);
-
-    // Enable INT0
-    GIMSK |= (1 << INT0);
-
-    return &_the_proximity_sensor.super;
+    // TODO: blink LED to confirm interrupt.
 }

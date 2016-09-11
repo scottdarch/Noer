@@ -41,13 +41,6 @@ ISR(TIM0_COMPA_vect)
 }
 
 // +--------------------------------------------------------------------------+
-// | PROXIMITY CALLBACK
-// +--------------------------------------------------------------------------+
-static void _on_proximity_threshold_breached(ProximitySensor *sensor, void *user_data)
-{
-}
-
-// +--------------------------------------------------------------------------+
 // | STATE MACHINE
 // +--------------------------------------------------------------------------+
 bool dog_stateIface_dog_detected(const Dog_state *handle)
@@ -106,10 +99,6 @@ static void setup()
     PIN_INIT_OUTPUT(SOUND_TRIGGER);
     PIN_OUT_LOW(SOUND_TRIGGER);
 
-    // Start with the audio peripherals powered down.
-    PIN_INIT_OUTPUT(SOUND_ENABLE);
-    PIN_OUT_LOW(SOUND_ENABLE);
-
     // Turn on the status LED to let the meat puppets know we're alive.
     PIN_INIT_OUTPUT(LED_STATUS);
     PIN_OUT_HIGH(LED_STATUS);
@@ -117,8 +106,6 @@ static void setup()
     // Initialize Atmel-2561, Using USI as an I2C master
     _proximity_sensor = init_proximity_sensor();
 
-    //_proximity_sensor->register_proximity_threshold_breach(_proximity_sensor,
-    //                                                       _on_proximity_threshold_breached, 0);
     sei();
 }
 
