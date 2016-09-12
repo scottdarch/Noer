@@ -14,13 +14,21 @@ extern "C" {
 /*! Enumeration of all states */ 
 typedef enum
 {
-	Dog_state_main_region_running,
-	Dog_state_main_region_running_r1_no_dog,
-	Dog_state_main_region_running_r1_no_dog_r1_sleeping,
-	Dog_state_main_region_running_r1_no_dog_r1_reading_range,
-	Dog_state_main_region_running_r1_dog,
-	Dog_state_main_region_running_r1_dog_r1_playing_no,
-	Dog_state_main_region_running_r1_dog_r1_reading_range,
+	Dog_state_firmware_running,
+	Dog_state_firmware_running_MCU_no_dog,
+	Dog_state_firmware_running_MCU_no_dog_MCU_sleeping,
+	Dog_state_firmware_running_MCU_no_dog_MCU_reading_range,
+	Dog_state_firmware_running_MCU_dog,
+	Dog_state_firmware_running_MCU_dog_MCU_playing_no,
+	Dog_state_firmware_running_MCU_dog_MCU_reading_range,
+	Dog_state_firmware_running_TOF_handling_error,
+	Dog_state_firmware_running_TOF_waiting_for_range,
+	Dog_state_firmware_running_TOF_resetting_range_status,
+	Dog_state_firmware_initializing,
+	Dog_state_firmware_initializing_TOF_waiting_for_reset,
+	Dog_state_firmware_initializing_TOF_writing_default_settings,
+	Dog_state_firmware_initializing_TOF_writing_application_settings,
+	Dog_state_firmware_initializing_TOF_waiting_for_device,
 	Dog_state_last_state
 } Dog_stateStates;
 
@@ -30,11 +38,12 @@ typedef struct
 	uint32_t ticks;
 	uint32_t last_detection_time_ticks;
 	uint32_t last_no_time_ticks;
+	uint8_t last_range_status;
 } Dog_stateInternal;
 
 
 /*! Define dimension of the state configuration vector for orthogonal states. */
-#define DOG_STATE_MAX_ORTHOGONAL_STATES 1
+#define DOG_STATE_MAX_ORTHOGONAL_STATES 2
 
 /*! 
  * Type definition of the data structure for the Dog_state state machine.

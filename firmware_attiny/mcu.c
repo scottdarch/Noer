@@ -15,7 +15,6 @@
 // | DATA
 // +--------------------------------------------------------------------------+
 static Dog_state _state_machine;
-static ProximitySensor *_proximity_sensor;
 
 // +--------------------------------------------------------------------------+
 // | TIMER
@@ -41,47 +40,9 @@ ISR(TIM0_COMPA_vect)
 }
 
 // +--------------------------------------------------------------------------+
-// | STATE MACHINE
+// | STATE MACHINE :: IFace :: MCU
 // +--------------------------------------------------------------------------+
-bool dog_stateIface_dog_detected(const Dog_state *handle)
-{
-    return false;
-}
-
-bool dog_stateIface_object_detected(const Dog_state *handle)
-{
-    return false;
-}
-
-void dog_stateIface_on_sleep(const Dog_state *handle)
-{
-    // TODO: CPU sleep then reset time since timers would not be running whilst
-    // we sleep.
-    //_time_seconds = 0;
-    //_sub_second_millis = 0;
-}
-
-void dog_stateIface_on_play_no(const Dog_state *handle)
-{
-}
-
-bool dog_stateIface_is_done_playing_no(const Dog_state *handle)
-{
-    return false;
-}
-
-// +--------------------------------------------------------------------------+
-// | MAIN
-// +--------------------------------------------------------------------------+
-/**
- * Initialize and acquire the proximity sensor for this device.
- */
-extern ProximitySensor *init_proximity_sensor();
-
-/**
- * Initialize the MCU and its peripherals.
- */
-static void setup()
+void dog_stateIfaceMCU_on_init(const Dog_state *handle)
 {
     GTCCR |= (1 << TSM);
     TIMSK |= (1 << OCIE0A);
@@ -93,8 +54,6 @@ static void setup()
     OCR0A = 244;
     GTCCR &= ~(1 << TSM);
 
-    dog_state_init(&_state_machine);
-
     // Initialize the output to trigger the WTV020SD
     PIN_INIT_OUTPUT(SOUND_TRIGGER);
     PIN_OUT_LOW(SOUND_TRIGGER);
@@ -103,20 +62,32 @@ static void setup()
     PIN_INIT_OUTPUT(LED_STATUS);
     PIN_OUT_HIGH(LED_STATUS);
 
-    // Initialize Atmel-2561, Using USI as an I2C master
-    _proximity_sensor = init_proximity_sensor();
-
     sei();
 }
 
+void dog_stateIfaceMCU_on_sleep(const Dog_state *handle)
+{
+    // TODO: sleep until the TOF sensor wakes us up.
+}
+
+// +--------------------------------------------------------------------------+
+// | MAIN
+// +--------------------------------------------------------------------------+
 int main(int argc, const char *argv[])
 {
-    setup();
 
+    dog_state_init(&_state_machine);
+
+    // Run the state machine at full speed until we've finished initializing.
+    while (!dog_state_isStateActive(&_state_machine, Dog_state_firmware_running)) {
+        dog_state_runCycle(&_state_machine);
+    }
+
+    // Once Initialized we slow down to 1 tick per second and a whole lot of
+    // bein' asleep.
     uint32_t last_time_seconds = _time_seconds;
 
     while (true) {
-        _proximity_sensor->service(_proximity_sensor);
         ATOMIC_BLOCK(ATOMIC_FORCEON)
         {
             // Do time sensitive stuff here with the interrupts disabled. Don't
@@ -130,5 +101,7 @@ int main(int argc, const char *argv[])
                 dog_state_runCycle(&_state_machine);
             }
         }
+        // TODO: sleep until the next clock tick or until the TOF
+        // sensor wakes us up.
     }
 }
