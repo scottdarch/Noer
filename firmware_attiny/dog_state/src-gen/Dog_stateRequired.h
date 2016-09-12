@@ -25,10 +25,11 @@ This state machine makes use of operations declared in the state machines interf
 	- dog_stateIfaceTOF_did_write_application_settings
 	- dog_stateIfaceTOF_is_sensor_ready
 	- dog_stateIfaceTOF_get_range_status
-	- dog_stateIfaceTOF_on_reset_range_status
-	- dog_stateIfaceTOF_on_handle_error
+	- dog_stateIfaceTOF_did_reset_range_status
+	- dog_stateIfaceTOF_did_handle_error
 	- dog_stateIfaceTOF_on_config_start
 	- dog_stateIfaceTOF_on_config_complete
+	- dog_stateIfaceTOF_on_new_status
 	- dog_stateIfaceTOF_on_start
 are defined.
 
@@ -52,10 +53,11 @@ extern bool dog_stateIfaceTOF_did_write_default_settings(const Dog_state* handle
 extern bool dog_stateIfaceTOF_did_write_application_settings(const Dog_state* handle);
 extern bool dog_stateIfaceTOF_is_sensor_ready(const Dog_state* handle);
 extern uint8_t dog_stateIfaceTOF_get_range_status(const Dog_state* handle);
-extern void dog_stateIfaceTOF_on_reset_range_status(const Dog_state* handle);
-extern void dog_stateIfaceTOF_on_handle_error(const Dog_state* handle, const uint8_t error);
+extern bool dog_stateIfaceTOF_did_reset_range_status(const Dog_state* handle);
+extern bool dog_stateIfaceTOF_did_handle_error(const Dog_state* handle, const uint8_t error);
 extern void dog_stateIfaceTOF_on_config_start(const Dog_state* handle);
 extern void dog_stateIfaceTOF_on_config_complete(const Dog_state* handle);
+extern void dog_stateIfaceTOF_on_new_status(const Dog_state* handle, const uint8_t status);
 extern void dog_stateIfaceTOF_on_start(const Dog_state* handle);
 
 

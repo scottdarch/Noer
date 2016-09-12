@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_IiC5AHLREeaNIf-RaBMl_Q" specification="interface Dog:&#xA;operation dog_detected() : bool&#xA;operation on_play_no() : void&#xA;operation is_done_playing_no() : bool&#xA;&#xA;interface MCU:&#xA;operation on_init() : void&#xA;operation on_sleep() : void&#xA;&#xA;interface TOF:&#xA;operation on_init() : void&#xA;operation object_detected() : bool&#xA;operation is_sensor_reset() : bool&#xA;operation did_write_default_settings() : bool&#xA;operation did_write_application_settings() : bool&#xA;operation is_sensor_ready() : bool&#xA;operation get_range_status() : uint8_t&#xA;operation on_reset_range_status() : void&#xA;operation on_handle_error(error:uint8_t) : void&#xA;operation on_config_start() : void&#xA;operation on_config_complete() : void&#xA;operation on_start() : void&#xA;&#xA;internal:&#xA;var ticks : uint32_t = 0&#xA;var last_detection_time_ticks : uint32_t = 0&#xA;var last_no_time_ticks : uint32_t = 0&#xA;var last_range_status : uint8_t = 0&#xA;const detection_timeout_ticks : uint32_t = 2&#xA;const no_replay_time_ticks : uint32_t = 3&#xA;&#xA;" name="dog_state" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_IiC5AHLREeaNIf-RaBMl_Q" specification="interface Dog:&#xA;operation dog_detected() : bool&#xA;operation on_play_no() : void&#xA;operation is_done_playing_no() : bool&#xA;&#xA;interface MCU:&#xA;operation on_init() : void&#xA;operation on_sleep() : void&#xA;&#xA;interface TOF:&#xA;operation on_init() : void&#xA;operation object_detected() : bool&#xA;operation is_sensor_reset() : bool&#xA;operation did_write_default_settings() : bool&#xA;operation did_write_application_settings() : bool&#xA;operation is_sensor_ready() : bool&#xA;operation get_range_status() : uint8_t&#xA;operation did_reset_range_status() : bool&#xA;operation did_handle_error(error:uint8_t) : bool&#xA;operation on_config_start() : void&#xA;operation on_config_complete() : void&#xA;operation on_new_status(status:uint8_t) : void&#xA;operation on_start() : void&#xA;&#xA;internal:&#xA;var ticks : uint32_t = 0&#xA;var last_detection_time_ticks : uint32_t = 0&#xA;var last_no_time_ticks : uint32_t = 0&#xA;var last_range_status : uint8_t = 0&#xA;const detection_timeout_ticks : uint32_t = 2&#xA;const no_replay_time_ticks : uint32_t = 3&#xA;&#xA;" name="dog_state" domainID="com.yakindu.domain.c">
     <regions xmi:id="_IiYQMHLREeaNIf-RaBMl_Q" name="firmware">
       <vertices xsi:type="sgraph:Entry" xmi:id="_Sd5q0HOlEeaXXPEulBF8Yg">
         <outgoingTransitions xmi:id="_TJe-cHOlEeaXXPEulBF8Yg" specification="" target="_ZzlPAHhzEeanhN2-LUUuJg"/>
@@ -19,7 +19,7 @@
                 <outgoingTransitions xmi:id="_qTtVHHhVEeanhN2-LUUuJg" specification="" target="_qTsHAHhVEeanhN2-LUUuJg"/>
               </vertices>
               <vertices xsi:type="sgraph:State" xmi:id="_qTsHAHhVEeanhN2-LUUuJg" specification="oncycle [TOF.object_detected()]/ &#xA;    last_detection_time_ticks = ticks" name="reading_range" incomingTransitions="_qTtVHHhVEeanhN2-LUUuJg _qTsG_XhVEeanhN2-LUUuJg">
-                <outgoingTransitions xmi:id="_qTtVE3hVEeanhN2-LUUuJg" specification="[ticks - last_detection_time_ticks > &#xA;&#x9;detection_timeout_ticks&#xA;]" target="_qTrf43hVEeanhN2-LUUuJg"/>
+                <outgoingTransitions xmi:id="_qTtVE3hVEeanhN2-LUUuJg" specification="[ticks - last_detection_time_ticks > &#xA;&#x9;detection_timeout_ticks &amp;&amp;&#xA;&#x9;last_range_status != 0&#xA;]" target="_qTrf43hVEeanhN2-LUUuJg"/>
                 <outgoingTransitions xmi:id="_xOvfoHh4EeanhN2-LUUuJg" specification="[Dog.dog_detected()]" target="_qTvxUHhVEeanhN2-LUUuJg"/>
               </vertices>
             </regions>
@@ -43,14 +43,14 @@
           <vertices xsi:type="sgraph:Entry" xmi:id="_7oBVgHhVEeanhN2-LUUuJg">
             <outgoingTransitions xmi:id="_8PN4YHhVEeanhN2-LUUuJg" specification="" target="__5ZaYHhxEeanhN2-LUUuJg"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_375_YHhxEeanhN2-LUUuJg" specification="entry/ &#xA;    TOF.on_handle_error((last_range_status >> 6) &amp; 0x3)" name="handling_error" incomingTransitions="_36LSUHh3EeanhN2-LUUuJg">
-            <outgoingTransitions xmi:id="_XjFZwHh4EeanhN2-LUUuJg" specification="oncycle" target="_uR04AHh3EeanhN2-LUUuJg"/>
+          <vertices xsi:type="sgraph:State" xmi:id="_375_YHhxEeanhN2-LUUuJg" specification="" name="handling_error" incomingTransitions="_36LSUHh3EeanhN2-LUUuJg">
+            <outgoingTransitions xmi:id="_XjFZwHh4EeanhN2-LUUuJg" specification="[TOF.did_handle_error((last_range_status >> 6) &amp; 0x3)]" target="_uR04AHh3EeanhN2-LUUuJg"/>
           </vertices>
           <vertices xsi:type="sgraph:State" xmi:id="__5ZaYHhxEeanhN2-LUUuJg" specification="oncycle/ &#xA;    last_range_status = TOF.get_range_status()" name="waiting_for_range" incomingTransitions="_8PN4YHhVEeanhN2-LUUuJg _1YRWQHh3EeanhN2-LUUuJg">
             <outgoingTransitions xmi:id="_Kz-igHh7EeaHvrToUMwPsA" specification="[last_range_status != 0]" target="_JkFA4Hh7EeaHvrToUMwPsA"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_uR04AHh3EeanhN2-LUUuJg" specification="entry/ TOF.on_reset_range_status()" name="resetting_range_status" incomingTransitions="_XjFZwHh4EeanhN2-LUUuJg _TN1wcHh7EeaHvrToUMwPsA">
-            <outgoingTransitions xmi:id="_1YRWQHh3EeanhN2-LUUuJg" specification="oncycle" target="__5ZaYHhxEeanhN2-LUUuJg"/>
+          <vertices xsi:type="sgraph:State" xmi:id="_uR04AHh3EeanhN2-LUUuJg" specification="entry/ &#xA;    TOF.on_new_status(last_range_status)" name="resetting_range_status" incomingTransitions="_XjFZwHh4EeanhN2-LUUuJg _TN1wcHh7EeaHvrToUMwPsA">
+            <outgoingTransitions xmi:id="_1YRWQHh3EeanhN2-LUUuJg" specification="[TOF.did_reset_range_status()]" target="__5ZaYHhxEeanhN2-LUUuJg"/>
           </vertices>
           <vertices xsi:type="sgraph:Choice" xmi:id="_JkFA4Hh7EeaHvrToUMwPsA" incomingTransitions="_Kz-igHh7EeaHvrToUMwPsA">
             <outgoingTransitions xmi:id="_36LSUHh3EeanhN2-LUUuJg" specification="[(0xC0 &amp; last_range_status) != 0]" target="_375_YHhxEeanhN2-LUUuJg"/>
@@ -361,7 +361,7 @@
           <styles xsi:type="notation:ShapeStyle" xmi:id="_hsK3gXhVEeanhN2-LUUuJg" fontName="Verdana" fillColor="15981773" lineColor="12632256"/>
           <styles xsi:type="notation:FontStyle" xmi:id="_hsK3gnhVEeanhN2-LUUuJg"/>
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_hsLelXhVEeanhN2-LUUuJg" name="isHorizontal" booleanValue="true"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_hsK3g3hVEeanhN2-LUUuJg" x="307" y="19" width="900" height="639"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_hsK3g3hVEeanhN2-LUUuJg" x="307" y="19" width="927" height="639"/>
         </children>
         <children xmi:id="_Zzl2EXhzEeanhN2-LUUuJg" type="State" element="_ZzlPAHhzEeanhN2-LUUuJg">
           <children xsi:type="notation:DecorationNode" xmi:id="_ZzmdIHhzEeanhN2-LUUuJg" type="StateName">
@@ -483,7 +483,7 @@
         <layoutConstraint xsi:type="notation:Bounds" xmi:id="_Iiou4XLREeaNIf-RaBMl_Q"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" xmi:id="_IichoXLREeaNIf-RaBMl_Q" fontName="Verdana" fillColor="15790320" lineColor="12632256"/>
-      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_IipV8HLREeaNIf-RaBMl_Q" x="276" y="8" width="1249" height="708"/>
+      <layoutConstraint xsi:type="notation:Bounds" xmi:id="_IipV8HLREeaNIf-RaBMl_Q" x="276" y="8" width="1276" height="708"/>
     </children>
     <children xsi:type="notation:Shape" xmi:id="_IizuBHLREeaNIf-RaBMl_Q" type="StatechartText" fontName="Verdana" lineColor="4210752">
       <children xsi:type="notation:DecorationNode" xmi:id="_Ii0VEHLREeaNIf-RaBMl_Q" type="StatechartName">
@@ -668,12 +668,12 @@
     <edges xmi:id="_1YSkYHh3EeanhN2-LUUuJg" type="Transition" element="_1YRWQHh3EeanhN2-LUUuJg" source="_uR1fEnh3EeanhN2-LUUuJg" target="__5aBcHhxEeanhN2-LUUuJg">
       <children xsi:type="notation:DecorationNode" xmi:id="_1YSkZHh3EeanhN2-LUUuJg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_1YSkZXh3EeanhN2-LUUuJg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_1YSkZnh3EeanhN2-LUUuJg" x="33" y="-55"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_1YSkZnh3EeanhN2-LUUuJg" x="-24" y="-80"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_1YSkYXh3EeanhN2-LUUuJg" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_1YSkY3h3EeanhN2-LUUuJg" fontName="Verdana"/>
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_1YSkYnh3EeanhN2-LUUuJg" points="[0, -2, 91, 124]$[0, -118, 91, 8]$[-84, -118, 7, 8]"/>
-      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_1YTygHh3EeanhN2-LUUuJg" id="(0.6458333333333334,0.05660377358490566)"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_1YTygHh3EeanhN2-LUUuJg" id="(0.8359375,0.0)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_1YTygXh3EeanhN2-LUUuJg" id="(0.9713114754098361,0.32075471698113206)"/>
     </edges>
     <edges xmi:id="_36MgcHh3EeanhN2-LUUuJg" type="Transition" element="_36LSUHh3EeanhN2-LUUuJg" source="_JkG2EHh7EeaHvrToUMwPsA" target="_376mcnhxEeanhN2-LUUuJg">
@@ -685,18 +685,18 @@
       <styles xsi:type="notation:FontStyle" xmi:id="_36Mgc3h3EeanhN2-LUUuJg" fontName="Verdana"/>
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_36Mgcnh3EeanhN2-LUUuJg" points="[-7, 0, 4, -79]$[-7, 78, 4, -1]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_NjhR8Hh7EeaHvrToUMwPsA" id="(0.4,0.8)"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_36NHgXh3EeanhN2-LUUuJg" id="(0.09375,0.07547169811320754)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_36NHgXh3EeanhN2-LUUuJg" id="(0.23255813953488372,0.03773584905660377)"/>
     </edges>
     <edges xmi:id="_XjGA0Hh4EeanhN2-LUUuJg" type="Transition" element="_XjFZwHh4EeanhN2-LUUuJg" source="_376mcnhxEeanhN2-LUUuJg" target="_uR1fEnh3EeanhN2-LUUuJg">
       <children xsi:type="notation:DecorationNode" xmi:id="_XjGA1Hh4EeanhN2-LUUuJg" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_XjGA1Xh4EeanhN2-LUUuJg"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_XjGA1nh4EeanhN2-LUUuJg" x="33" y="25"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_XjGA1nh4EeanhN2-LUUuJg" x="-16" y="13"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_XjGA0Xh4EeanhN2-LUUuJg" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_XjGA03h4EeanhN2-LUUuJg" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_XjGA0nh4EeanhN2-LUUuJg" points="[0, 0, -224, 106]$[226, -101, 2, 5]"/>
-      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_XjGn4Hh4EeanhN2-LUUuJg" id="(0.7916666666666666,0.018867924528301886)"/>
-      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_XjGn4Xh4EeanhN2-LUUuJg" id="(0.14583333333333334,0.8679245283018868)"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_XjGA0nh4EeanhN2-LUUuJg" points="[2, 0, -201, 133]$[203, 0, 0, 133]$[203, -129, 0, 4]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_XjGn4Hh4EeanhN2-LUUuJg" id="(0.9767441860465116,0.5849056603773585)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_XjGn4Xh4EeanhN2-LUUuJg" id="(0.7109375,0.9245283018867925)"/>
     </edges>
     <edges xmi:id="_xOwGsHh4EeanhN2-LUUuJg" type="Transition" element="_xOvfoHh4EeanhN2-LUUuJg" source="_ZigiuHhyEeanhN2-LUUuJg" target="_Zigi23hyEeanhN2-LUUuJg">
       <children xsi:type="notation:DecorationNode" xmi:id="_xOwGtHh4EeanhN2-LUUuJg" type="TransitionExpression">

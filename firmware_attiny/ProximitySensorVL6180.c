@@ -240,12 +240,24 @@ uint8_t dog_stateIfaceTOF_get_range_status(const Dog_state *handle)
     return VL6180x_getRegister(get_instance(), VL6180X_RESULT_INTERRUPT_STATUS_GPIO);
 }
 
-void dog_stateIfaceTOF_on_reset_range_status(const Dog_state *handle)
+void dog_stateIfaceTOF_on_new_status(const Dog_state *handle, const uint8_t status)
 {
-    VL6180x_setRegister(get_instance(), VL6180X_SYSTEM_INTERRUPT_CLEAR, 0x7);
+    if ((0xC0 & status) == 0x00 && (0x7 & status) != 0x00) {
+        // If the new status doesn't include an error and does include range
+        // then get the range and store it.
+        ProximitySensorVL6180 *sensor = get_instance();
+        sensor->_last_range           = VL6180x_getRegister(sensor, VL6180X_RESULT_RANGE_VAL);
+    }
 }
 
-void dog_stateIfaceTOF_on_handle_error(const Dog_state *handle, const uint8_t error)
+bool dog_stateIfaceTOF_did_reset_range_status(const Dog_state *handle)
+{
+    VL6180x_setRegister(get_instance(), VL6180X_SYSTEM_INTERRUPT_CLEAR, 0x7);
+    return true;
+}
+
+bool dog_stateIfaceTOF_did_handle_error(const Dog_state *handle, const uint8_t error)
 {
     // TODO: determine if we need to reset the MCU for some or all errors.
+    return true;
 }

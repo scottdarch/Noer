@@ -50,7 +50,6 @@ static void dog_state_effect_firmware_running_TOF__choice_0_tr1(Dog_state* handl
 static void dog_state_enact_firmware_running(Dog_state* handle);
 static void dog_state_enact_firmware_running_MCU_no_dog_MCU_sleeping(Dog_state* handle);
 static void dog_state_enact_firmware_running_MCU_dog_MCU_playing_no(Dog_state* handle);
-static void dog_state_enact_firmware_running_TOF_handling_error(Dog_state* handle);
 static void dog_state_enact_firmware_running_TOF_resetting_range_status(Dog_state* handle);
 static void dog_state_enact_firmware_initializing(Dog_state* handle);
 static void dog_state_enact_firmware_initializing_TOF_waiting_for_reset(Dog_state* handle);
@@ -357,7 +356,7 @@ static sc_boolean dog_state_check_firmware_running_MCU_no_dog_MCU_sleeping_tr0_t
 
 static sc_boolean dog_state_check_firmware_running_MCU_no_dog_MCU_reading_range_tr0_tr0(const Dog_state* handle)
 {
-	return (handle->internal.ticks - handle->internal.last_detection_time_ticks > DOG_STATE_DOG_STATEINTERNAL_DETECTION_TIMEOUT_TICKS) ? bool_true : bool_false;
+	return (handle->internal.ticks - handle->internal.last_detection_time_ticks > DOG_STATE_DOG_STATEINTERNAL_DETECTION_TIMEOUT_TICKS && handle->internal.last_range_status != 0) ? bool_true : bool_false;
 }
 
 static sc_boolean dog_state_check_firmware_running_MCU_no_dog_MCU_reading_range_tr1_tr1(const Dog_state* handle)
@@ -392,7 +391,7 @@ static sc_boolean dog_state_check_firmware_running_MCU_dog_MCU_reading_range_lr0
 
 static sc_boolean dog_state_check_firmware_running_TOF_handling_error_tr0_tr0(const Dog_state* handle)
 {
-	return bool_true;
+	return dog_stateIfaceTOF_did_handle_error(handle, (handle->internal.last_range_status >> 6) & 0x3);
 }
 
 static sc_boolean dog_state_check_firmware_running_TOF_waiting_for_range_tr0_tr0(const Dog_state* handle)
@@ -407,7 +406,7 @@ static sc_boolean dog_state_check_firmware_running_TOF_waiting_for_range_lr0_lr0
 
 static sc_boolean dog_state_check_firmware_running_TOF_resetting_range_status_tr0_tr0(const Dog_state* handle)
 {
-	return bool_true;
+	return dog_stateIfaceTOF_did_reset_range_status(handle);
 }
 
 static sc_boolean dog_state_check_firmware_initializing_TOF_waiting_for_reset_tr0_tr0(const Dog_state* handle)
@@ -575,18 +574,11 @@ static void dog_state_enact_firmware_running_MCU_dog_MCU_playing_no(Dog_state* h
 	dog_stateIfaceDog_on_play_no(handle);
 }
 
-/* Entry action for state 'handling_error'. */
-static void dog_state_enact_firmware_running_TOF_handling_error(Dog_state* handle)
-{
-	/* Entry action for state 'handling_error'. */
-	dog_stateIfaceTOF_on_handle_error(handle, (handle->internal.last_range_status >> 6) & 0x3);
-}
-
 /* Entry action for state 'resetting_range_status'. */
 static void dog_state_enact_firmware_running_TOF_resetting_range_status(Dog_state* handle)
 {
 	/* Entry action for state 'resetting_range_status'. */
-	dog_stateIfaceTOF_on_reset_range_status(handle);
+	dog_stateIfaceTOF_on_new_status(handle, handle->internal.last_range_status);
 }
 
 /* Entry action for state 'initializing'. */
@@ -686,7 +678,6 @@ static void dog_state_enseq_firmware_running_MCU_dog_MCU_reading_range_default(D
 static void dog_state_enseq_firmware_running_TOF_handling_error_default(Dog_state* handle)
 {
 	/* 'default' enter sequence for state handling_error */
-	dog_state_enact_firmware_running_TOF_handling_error(handle);
 	handle->stateConfVector[1] = Dog_state_firmware_running_TOF_handling_error;
 	handle->stateConfVectorPosition = 1;
 }
@@ -1173,7 +1164,10 @@ static void dog_state_react_firmware_running_MCU_dog_MCU_reading_range(Dog_state
 static void dog_state_react_firmware_running_TOF_handling_error(Dog_state* handle)
 {
 	/* The reactions of state handling_error. */
-	dog_state_effect_firmware_running_TOF_handling_error_tr0(handle);
+	if (dog_state_check_firmware_running_TOF_handling_error_tr0_tr0(handle) == bool_true)
+	{ 
+		dog_state_effect_firmware_running_TOF_handling_error_tr0(handle);
+	} 
 }
 
 /* The reactions of state waiting_for_range. */
@@ -1193,7 +1187,10 @@ static void dog_state_react_firmware_running_TOF_waiting_for_range(Dog_state* ha
 static void dog_state_react_firmware_running_TOF_resetting_range_status(Dog_state* handle)
 {
 	/* The reactions of state resetting_range_status. */
-	dog_state_effect_firmware_running_TOF_resetting_range_status_tr0(handle);
+	if (dog_state_check_firmware_running_TOF_resetting_range_status_tr0_tr0(handle) == bool_true)
+	{ 
+		dog_state_effect_firmware_running_TOF_resetting_range_status_tr0(handle);
+	} 
 }
 
 /* The reactions of state waiting_for_reset. */
