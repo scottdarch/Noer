@@ -40,6 +40,7 @@
 #define PROXIMITY_SENSOR_ADDR 0x29
 
 typedef struct ProximitySensorVL6180_t {
+    uint8_t _last_range;
     TWIPeripheral _interface;
 } ProximitySensorVL6180;
 
@@ -77,7 +78,7 @@ static void VL6180xAdditionalSettings(ProximitySensorVL6180 *self)
     VL6180x_setRegister(self, VL6180X_SYSTEM_INTERRUPT_CONFIG_GPIO, 0x01);
 
     VL6180x_setRegister(self, VL6180X_SYSTEM_MODE_GPIO1,
-                        0x10); // Set GPIO1 high when sample complete
+                        0x10); // Set GPIO1 low when sample completes.
     VL6180x_setRegister(self, VL6180X_READOUT_AVERAGING_SAMPLE_PERIOD,
                         0x30); // Set Avg sample period
     VL6180x_setRegister(self, VL6180X_SYSRANGE_VHV_REPEAT_RATE,
@@ -158,6 +159,7 @@ static ProximitySensorVL6180 *init_proximity_sensor(ProximitySensorVL6180 *senso
         // Hardware reset the TOF sensor.
         // We'll release it out of reset when we start configuration.
         PIN_OUT_LOW(TOF_RESET);
+        sensor->_last_range = 0;
         twi_peripheral_init(&sensor->_interface, PROXIMITY_SENSOR_ADDR);
     }
     return sensor;

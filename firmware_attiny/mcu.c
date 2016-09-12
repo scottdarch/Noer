@@ -77,6 +77,8 @@ int main(int argc, const char *argv[])
 {
 
     dog_state_init(&_state_machine);
+    
+    dog_state_enter(&_state_machine);
 
     // Run the state machine at full speed until we've finished initializing.
     while (!dog_state_isStateActive(&_state_machine, Dog_state_firmware_running)) {

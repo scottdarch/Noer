@@ -135,6 +135,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dog.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="dog_state\src-gen\Dog_state.c">
       <SubType>compile</SubType>
     </Compile>
@@ -147,7 +150,7 @@
     <Compile Include="dog_state\src\sc_types.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="firmware.c">
+    <Compile Include="mcu.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="mcu.h">
