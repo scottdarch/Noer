@@ -97,7 +97,7 @@ typedef struct VL6180X_ID_t {
     uint8_t man_day : 5;
     uint8_t man_phase : 3;
     uint16_t man_time : 16;
-} VL6180X_ID __attribute__((packed));
+} VL6180X_ID;
 
 void vl6180x_emit_version()
 {
@@ -143,8 +143,42 @@ void vl6180x_setup_for_range()
     write_to_vl6180x_16(VL6180X_REG_SYSRANGE_EARLY_CONVERGENCE_ESTIMATE, 204, false);
 
     write_to_vl6180x(VL6180X_REG_SYSTEM_GROUPED_PARAMETER_HOLD, 0x0, false);
+}
 
-    write_to_vl6180x(VL6180X_REG_SYSRANGE_START, 0x03, true);
+static void write_vl6180x_sr03(boolean send_stop)
+{
+    // Required by datasheet
+    // http://www.st.com/st-web-ui/static/active/en/resource/technical/document/application_note/DM00122600.pdf
+    write_to_vl6180x(0x0207, 0x01, false);
+    write_to_vl6180x(0x0208, 0x01, false);
+    write_to_vl6180x(0x0096, 0x00, false);
+    write_to_vl6180x(0x0097, 0xfd, false);
+    write_to_vl6180x(0x00e3, 0x00, false);
+    write_to_vl6180x(0x00e4, 0x04, false);
+    write_to_vl6180x(0x00e5, 0x02, false);
+    write_to_vl6180x(0x00e6, 0x01, false);
+    write_to_vl6180x(0x00e7, 0x03, false);
+    write_to_vl6180x(0x00f5, 0x02, false);
+    write_to_vl6180x(0x00d9, 0x05, false);
+    write_to_vl6180x(0x00db, 0xce, false);
+    write_to_vl6180x(0x00dc, 0x03, false);
+    write_to_vl6180x(0x00dd, 0xf8, false);
+    write_to_vl6180x(0x009f, 0x00, false);
+    write_to_vl6180x(0x00a3, 0x3c, false);
+    write_to_vl6180x(0x00b7, 0x00, false);
+    write_to_vl6180x(0x00bb, 0x3c, false);
+    write_to_vl6180x(0x00b2, 0x09, false);
+    write_to_vl6180x(0x00ca, 0x09, false);
+    write_to_vl6180x(0x0198, 0x01, false);
+    write_to_vl6180x(0x01b0, 0x17, false);
+    write_to_vl6180x(0x01ad, 0x00, false);
+    write_to_vl6180x(0x00ff, 0x05, false);
+    write_to_vl6180x(0x0100, 0x05, false);
+    write_to_vl6180x(0x0199, 0x05, false);
+    write_to_vl6180x(0x01a6, 0x1b, false);
+    write_to_vl6180x(0x01ac, 0x3e, false);
+    write_to_vl6180x(0x01a7, 0x1f, false);
+    write_to_vl6180x(0x0030, 0x00, send_stop);
 }
 
 static const char *const VL6180X_ERR_0000 = "No error";
@@ -208,20 +242,11 @@ const char *vl6180x_get_error(uint8_t error)
 void vl6180x_wait_for_standby()
 {
     digitalWrite(PIN_LED, HIGH);
-    while (!read_from_vl6180x(VL6180X_REG_FIRMWARE_BOOTUP, true)) {
-        digitalWrite(PIN_LED, LOW);
-        delay(500);
-        digitalWrite(PIN_LED, HIGH);
-    }
     while (!read_from_vl6180x(VL6180X_REG_SYSTEM_FRESH_OUT_OF_RESET, true)) {
         digitalWrite(PIN_LED, LOW);
-        delay(500);
+        delay(100);
         digitalWrite(PIN_LED, HIGH);
     }
-    digitalWrite(PIN_LED, LOW);
-    delay(100);
-    digitalWrite(PIN_LED, HIGH);
-    write_to_vl6180x(VL6180X_REG_SYSTEM_FRESH_OUT_OF_RESET, 0x00, true);
     digitalWrite(PIN_LED, LOW);
 }
 
@@ -244,19 +269,39 @@ int main()
     setup();
 
     digitalWrite(PIN_TRIGGER, HIGH);
+    {
+        vl6180x_wait_for_standby();
 
-    vl6180x_wait_for_standby();
+        delay(100);
 
-    digitalWrite(PIN_LED, HIGH);
-    vl6180x_setup_for_range();
-    digitalWrite(PIN_LED, LOW);
+        digitalWrite(PIN_LED, HIGH);
+        write_vl6180x_sr03(true);
+        digitalWrite(PIN_LED, LOW);
+
+        delay(100);
+
+        digitalWrite(PIN_LED, HIGH);
+        vl6180x_setup_for_range();
+        digitalWrite(PIN_LED, LOW);
+
+        delay(100);
+
+        digitalWrite(PIN_LED, HIGH);
+        write_to_vl6180x(VL6180X_REG_SYSTEM_FRESH_OUT_OF_RESET, 0x00, true);
+        digitalWrite(PIN_LED, LOW);
+
+        delay(100);
+
+        digitalWrite(PIN_LED, HIGH);
+        vl6180x_emit_version();
+        digitalWrite(PIN_LED, LOW);
+    }
+    digitalWrite(PIN_TRIGGER, LOW);
 
     delay(100);
 
-    digitalWrite(PIN_LED, HIGH);
-    vl6180x_emit_version();
-    digitalWrite(PIN_LED, LOW);
-
+    digitalWrite(PIN_TRIGGER, HIGH);
+    write_to_vl6180x(VL6180X_REG_SYSRANGE_START, 0x03, true);
     digitalWrite(PIN_TRIGGER, LOW);
 
     while (1) {
