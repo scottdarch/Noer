@@ -66,10 +66,9 @@ processor_version: 1.0.1
 board: FRDM-K66F
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR THE CLOCKS TOOL **/
 
-_2.1_FRDM-K66F-GCC-Full/de#include "../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_rtc.h"
-#include "../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_smc.h"
-vices/MK66F18/drivers/fsl_rtc.h"
-#include "../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_smc.h"
+#include "fsl_smc.h"
+#include "fsl_rtc.h"
+#include "clock_config.h"
 
 /*******************************************************************************
  * Definitions
@@ -82,8 +81,7 @@ vices/MK66F18/drivers/fsl_rtc.h"
 #define RTC_RTC32KCLK_PERIPHERALS_ENABLED 1U      /*!< RTC32KCLK to other peripherals: enabled */
 #define SIM_CLKOUT_SEL_FLEXBUS_CLK 0U             /*!< CLKOUT pin clock select: FlexBus clock */
 #define SIM_ENET_1588T_CLK_SEL_CORE_SYSTEM_CLK 0U /*!< SDHC clock select: Core/system clock */
-#define SIM_ENET_RMII_CLK_SEL_CLKIN_CLK                                                            \
-    1U                                       /*!< SDHC clock select: CLKIN (External bypass clock) \
+#define SIM_ENET_RMII_CLK_SEL_CLKIN_CLK 1U   /*!< SDHC clock select: CLKIN (External bypass clock) \
                                                 */
 #define SIM_LPUART_CLK_SEL_OSCERCLK_CLK 2U   /*!< LPUART clock select: OSCERCLK clock */
 #define SIM_OSC32KSEL_OSC32KCLK_CLK 0U       /*!< OSC32KSEL select: OSC32KCLK clock */
@@ -140,9 +138,7 @@ static void CLOCK_CONFIG_SetRtcClock(uint32_t capLoad, uint8_t enableOutPeriph)
     CLOCK_SetXtal32Freq(BOARD_XTAL32K_CLK_HZ);
     /* Set RTC_TSR if there is fault value in RTC */
     if (RTC->SR & RTC_SR_TIF_MASK) {
-#ifndef __CDT_PARSER__
         RTC->TSR = RTC->TSR;
-#endif
     }
     /* RTC clock gate disable */
     CLOCK_DisableClock(kCLOCK_Rtc0);
@@ -262,7 +258,7 @@ outputs:
 - {id: LPO_clock.outFreq, value: 1 kHz}
 - {id: LPUARTCLK.outFreq, value: 12 MHz}
 - {id: MCGFFCLK.outFreq, value: 375 kHz}
-- {id: MCGIRCLK.outFreq, value: 32.768 kHz}
+- {id: MCGIRCLK.outFreq, value: 2 MHz}
 - {id: OSCERCLK.outFreq, value: 12 MHz}
 - {id: OSCERCLK_UNDIV.outFreq, value: 12 MHz}
 - {id: PLLFLLCLK.outFreq, value: 48 MHz}
@@ -274,17 +270,20 @@ outputs:
 - {id: TRACECLKIN.outFreq, value: 60 MHz}
 - {id: USB48MCLK.outFreq, value: 48 MHz}
 - {id: USBPHYPLLCLK.outFreq, value: 480 MHz}
-- {id: USBSLCLK.outFreq, value: 32.768 kHz}
+- {id: USBSLCLK.outFreq, value: 2 MHz}
 settings:
 - {id: MCGMode, value: PEE}
 - {id: USBPHYConfig, value: PLL_PFD}
+- {id: powerMode, value: HSRUN}
 - {id: CLKOUTConfig, value: 'yes'}
 - {id: ENETTimeSrcConfig, value: 'yes'}
 - {id: LPUARTClkConfig, value: 'yes'}
 - {id: MCG.FRDIV.scale, value: '32'}
+- {id: MCG.IRCS.sel, value: MCG.FCRDIV}
 - {id: MCG.IREFS.sel, value: MCG.FRDIV}
 - {id: MCG.PLLS.sel, value: MCG.PLLCS}
-- {id: MCG.VDIV.scale, value: '20'}
+- {id: MCG.PRDIV.scale, value: '1', locked: true}
+- {id: MCG.VDIV.scale, value: '20', locked: true}
 - {id: MCG_C1_IRCLKEN_CFG, value: Enabled}
 - {id: MCG_C2_OSC_MODE_CFG, value: ModeOscLowPower}
 - {id: MCG_C2_RANGE0_CFG, value: Very_high}
@@ -326,7 +325,7 @@ sources:
 const mcg_config_t mcgConfig_BOARD_BootClockHSRUN = {
     .mcgMode                                      = kMCG_ModePEE, /* PEE - PLL Engaged External */
     .irclkEnableMode                              = kMCG_IrclkEnable, /* MCGIRCLK enabled, MCGIRCLK disabled in STOP mode */
-    .ircs                                         = kMCG_IrcSlow, /* Slow internal reference clock selected */
+    .ircs                                         = kMCG_IrcFast, /* Fast internal reference clock selected */
     .fcrdiv                                       = 0x1U, /* Fast IRC divider: divided by 2 */
     .frdiv                                        = 0x0U, /* FLL reference clock divider: divided by 32 */
     .drs                                          = kMCG_DrsLow, /* Low frequency range */
@@ -362,6 +361,11 @@ const osc_config_t oscConfig_BOARD_BootClockHSRUN = {
  ******************************************************************************/
 void BOARD_BootClockHSRUN(void)
 {
+    /* Set HSRUN power mode */
+    SMC_SetPowerModeProtection(SMC, kSMC_AllowPowerModeAll);
+    SMC_SetPowerModeHsrun(SMC);
+    while (SMC_GetPowerModeState(SMC) != kSMC_PowerStateHsrun) {
+    }
     /* Set the system clock dividers in SIM to safe value. */
     CLOCK_SetSimSafeDivs();
     /* Configure RTC clock including enabling RTC oscillator. */

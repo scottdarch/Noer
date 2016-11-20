@@ -13,7 +13,7 @@ build/debug/FRDM-K66F/source/board.o: source/board.c include/board.h \
  include/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_clock.h \
  include/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h \
  include/clock_config.h \
- include/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h \
+ SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h \
  source/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h \
  source/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h \
  source/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h
@@ -48,7 +48,7 @@ include/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/../../../../SDK_2.
 
 include/clock_config.h:
 
-include/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h:
+SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h:
 
 source/../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h:
 

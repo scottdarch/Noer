@@ -14,7 +14,13 @@ void SysTick_Handler(void)
 int main()
 {
     BOARD_InitPins();
-    BOARD_BootClockRUN();
+    BOARD_InitBUTTONs();
+    BOARD_InitLEDs();
+    BOARD_InitSDHC0();
+    BOARD_InitDEBUG_UART();
+    BOARD_InitVL6180();
+    BOARD_InitUSB();
+    BOARD_BootClockHSRUN();
     BOARD_InitDebugConsole();
 
     while (1) {

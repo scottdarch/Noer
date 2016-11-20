@@ -1,0 +1,3 @@
+[submodule "FRDMK66NoEr/CMSIS_5"]
+	path = FRDMK66NoEr/CMSIS_5
+	url = git@github.com:ARM-software/CMSIS_5.git

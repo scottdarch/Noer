@@ -81,7 +81,7 @@ PROJECT_ASSEMBLY           := $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/gcc/startup_
 PROJECT_SOURCE             := source/board.c \
                               source/clock_config.c \
                               source/pin_mux.c \
-                              source/touchy.c \
+                              source/main.c \
                               $(call CALL_FIND_ALL_C_FILES, $(DIR_KSDK)/devices/$(PROJECT_DEVICE)) \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers/fsl_clock.c \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/utilities/fsl_debug_console.c \
