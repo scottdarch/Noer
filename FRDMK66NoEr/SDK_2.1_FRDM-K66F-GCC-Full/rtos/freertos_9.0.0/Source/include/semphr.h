@@ -74,7 +74,7 @@
 	#error "include FreeRTOS.h" must appear in source files before "include semphr.h"
 #endif
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/queue.h"
+#include "queue.h"
 
 typedef QueueHandle_t SemaphoreHandle_t;
 

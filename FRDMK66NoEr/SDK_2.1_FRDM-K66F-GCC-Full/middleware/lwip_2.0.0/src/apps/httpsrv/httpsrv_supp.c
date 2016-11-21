@@ -31,20 +31,18 @@
 *   HTTPSRV support functions.
 */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_supp.h"
-
+#include "httpsrv.h"
+#include "httpsrv_prv.h"
+#include "httpsrv_supp.h"
+#include "httpsrv_script.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <ctype.h>
 #include <limits.h>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_base64.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_prv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_script.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_tls.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sockets.h"
+#include "httpsrv_base64.h"
+#include "httpsrv_tls.h"
+#include "lwip/sockets.h"
 
 #define HTTPSRV_CALLBACK_TASK_NAME "HTTP server callback handler"
 

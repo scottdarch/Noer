@@ -31,9 +31,8 @@
 /*-----------------------------------------------------------------------*/
 /* Based on Low level disk I/O module skeleton for FatFs  (C)ChaN, 2014  */
 /*-----------------------------------------------------------------------*/
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/diskio.h"     /* FatFs lower layer API */
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard_fatfs/ffconf.h"     /* FatFs configuration options */
+#include "ffconf.h"     /* FatFs configuration options */
+#include "diskio.h"     /* FatFs lower layer API */
 #ifdef RAM_DISK_ENABLE
 #include "fsl_ram_disk.h"
 #endif
@@ -43,7 +42,7 @@
 #endif
 
 #ifdef SD_DISK_ENABLE
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/fsl_sd_disk/fsl_sd_disk.h"
+#include "fsl_sd_disk.h"
 #endif
 
 #ifdef MMC_DISK_ENABLE

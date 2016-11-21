@@ -30,8 +30,8 @@
 #ifndef _EMBEDDED_RPC__TOKEN_H_
 #define _EMBEDDED_RPC__TOKEN_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/smart_ptr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Value.h"
+#include "smart_ptr.h"
+#include "Value.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

@@ -30,7 +30,7 @@
 #ifndef _FSL_RNGA_DRIVER_H_
 #define _FSL_RNGA_DRIVER_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
 
 #if defined(FSL_FEATURE_SOC_RNG_COUNT) && FSL_FEATURE_SOC_RNG_COUNT
 /*!

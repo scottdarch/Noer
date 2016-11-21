@@ -53,15 +53,15 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mem.h"
+#include "lwip/opt.h"
+#include "lwip/mem.h"
+#include "lwip/def.h"
+#include "lwip/sys.h"
+#include "lwip/stats.h"
+#include "lwip/err.h"
 
 #include <string.h>
 #include <stdlib.h>
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/err.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
 
 #if MEM_LIBC_MALLOC || MEM_USE_POOLS
 /** mem_init is not used when using pools instead of a heap or using

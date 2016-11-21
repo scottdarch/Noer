@@ -30,9 +30,9 @@
 #ifndef _USB_CDC_VCOM_H_
 #define _USB_CDC_VCOM_H_ 1
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/event_groups.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "event_groups.h"
 
 /*******************************************************************************
 * Definitions

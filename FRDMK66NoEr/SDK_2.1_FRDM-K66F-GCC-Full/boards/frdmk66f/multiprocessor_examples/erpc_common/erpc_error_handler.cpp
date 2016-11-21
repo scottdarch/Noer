@@ -27,9 +27,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_common/erpc_error_handler.h"
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
+#include "erpc_error_handler.h"
+#include "fsl_debug_console.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Variables

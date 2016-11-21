@@ -30,18 +30,17 @@
  *
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/fs.h"
-
+#include "lwip/apps/httpd_opts.h"
+#include "lwip/def.h"
+#include "lwip/apps/fs.h"
+#include "fsdata.h"
 #include <string.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpd/fsdata.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/httpd_opts.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
 
 
 #if HTTPD_USE_CUSTOM_FSDATA
 #include "fsdata_custom.c"
 #else /* HTTPD_USE_CUSTOM_FSDATA */
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpd/fsdata.c"
+#include "fsdata.c"
 #endif /* HTTPD_USE_CUSTOM_FSDATA */
 
 /*-----------------------------------------------------------------------------------*/

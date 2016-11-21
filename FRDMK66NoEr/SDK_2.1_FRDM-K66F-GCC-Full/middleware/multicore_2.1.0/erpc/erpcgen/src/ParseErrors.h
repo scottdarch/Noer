@@ -31,10 +31,9 @@
 #define _EMBEDDED_RPC__PARSEERRORS_H
 
 #include <stdexcept>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Logging.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/os_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Token.h"
+#include "Logging.h"
+#include "Token.h"
+#include "os_config.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Definitions

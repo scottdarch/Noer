@@ -31,20 +31,19 @@
 #include <stdlib.h>
 #include <stdexcept>
 #include <vector>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/AstNode.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/AstWalker.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/CGenerator.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/erpcgen_version.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/ErpcLexer.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/InterfaceDefinition.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Logging.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/options.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/PythonGenerator.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/SearchPath.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Program.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/UniqueIdChecker.h"
+#include "options.h"
+#include "Logging.h"
+#include "AstNode.h"
+#include "ErpcLexer.h"
+#include "AstWalker.h"
 #include "erpcgen_parser.tab.hpp"
+#include "InterfaceDefinition.h"
+#include "CGenerator.h"
+#include "PythonGenerator.h"
+#include "types/Program.h"
+#include "SearchPath.h"
+#include "UniqueIdChecker.h"
+#include "erpcgen_version.h"
 
 /*!
  * @brief Entry point for the tool.

@@ -35,11 +35,11 @@
 #ifndef LWIP_HDR_APPS_SNMP_V3_PRIV_H
 #define LWIP_HDR_APPS_SNMP_V3_PRIV_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_opts.h"
+#include "lwip/apps/snmp_opts.h"
 
 #if LWIP_SNMP && LWIP_SNMP_V3
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/snmp/snmp_pbuf_stream.h"
+#include "snmp_pbuf_stream.h"
 
 /* According to RFC 3411 */
 #define SNMP_V3_MAX_ENGINE_ID_LENGTH  32

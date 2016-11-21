@@ -31,8 +31,8 @@
 #ifndef _FSL_CARD_H_
 #define _FSL_CARD_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_sdhc.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/sdmmc_2.1.1/inc/fsl_specification.h"
+#include "fsl_sdhc.h"
+#include "fsl_specification.h"
 
 /*!
  * @addtogroup CARD

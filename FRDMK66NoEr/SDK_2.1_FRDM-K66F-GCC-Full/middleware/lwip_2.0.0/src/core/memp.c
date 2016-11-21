@@ -43,43 +43,45 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/memp.h"
+#include "lwip/opt.h"
+
+#include "lwip/memp.h"
+#include "lwip/sys.h"
+#include "lwip/stats.h"
 
 #include <string.h>
 
 /* Make sure we include everything we need for size calculation required by memp_std.h */
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/api.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/dns.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/etharp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/igmp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip4_frag.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip6_frag.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mld6.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/nd6.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netbuf.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netdb.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netifapi.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/pbuf.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/api_msg.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/tcp_priv.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/tcpip_priv.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/raw.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sockets.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/tcp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/timeouts.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/udp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "lwip/pbuf.h"
+#include "lwip/raw.h"
+#include "lwip/udp.h"
+#include "lwip/tcp.h"
+#include "lwip/priv/tcp_priv.h"
+#include "lwip/ip4_frag.h"
+#include "lwip/netbuf.h"
+#include "lwip/api.h"
+#include "lwip/priv/tcpip_priv.h"
+#include "lwip/priv/api_msg.h"
+#include "lwip/sockets.h"
+#include "lwip/netifapi.h"
+#include "lwip/etharp.h"
+#include "lwip/igmp.h"
+#include "lwip/timeouts.h"
+/* needed by default MEMP_NUM_SYS_TIMEOUT */
+#include "netif/ppp/ppp_opts.h"
+#include "lwip/netdb.h"
+#include "lwip/dns.h"
+#include "lwip/nd6.h"
+#include "lwip/ip6_frag.h"
+#include "lwip/mld6.h"
 
 
 #define LWIP_MEMPOOL(name,num,size,desc) LWIP_MEMPOOL_DECLARE(name,num,size,desc)
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/memp_std.h"
+#include "lwip/priv/memp_std.h"
 
 const struct memp_desc* const memp_pools[MEMP_MAX] = {
 #define LWIP_MEMPOOL(name,num,size,desc) &memp_ ## name,
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/memp_std.h"
+#include "lwip/priv/memp_std.h"
 };
 
 #if MEMP_MEM_MALLOC && MEMP_OVERFLOW_CHECK >= 2

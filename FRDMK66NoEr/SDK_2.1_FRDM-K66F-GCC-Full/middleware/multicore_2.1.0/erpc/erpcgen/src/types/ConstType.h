@@ -31,9 +31,8 @@
 #define _EMBEDDED_RPC__CONST_H_
 
 #include <string>
-
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/DataType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Symbol.h"
+#include "DataType.h"
+#include "Symbol.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

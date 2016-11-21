@@ -27,14 +27,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/transports/spi_slave_transport.h"
-
 #include <cassert>
 #include <cstdio>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/sai/board.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
+#include "spi_slave_transport.h"
 #include "fsl_spi.h"
+#include "fsl_gpio.h"
+#include "board.h"
 
 using namespace erpc;
 

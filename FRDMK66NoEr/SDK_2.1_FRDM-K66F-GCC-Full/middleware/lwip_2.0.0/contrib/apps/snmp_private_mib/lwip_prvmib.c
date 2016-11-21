@@ -42,7 +42,7 @@
  * Author: Christiaan Simons <christiaan.simons@axon.tv>
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/snmp_private_mib/private_mib.h"
+#include "private_mib.h"
 
 #if LWIP_SNMP
 

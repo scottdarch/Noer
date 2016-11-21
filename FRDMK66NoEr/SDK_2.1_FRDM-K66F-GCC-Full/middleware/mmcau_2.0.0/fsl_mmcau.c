@@ -28,9 +28,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/mmcau_2.0.0/fsl_mmcau.h"
-
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/mmcau_2.0.0/cau_api.h"
+#include "fsl_mmcau.h"
+#include "cau_api.h"
 
 #define MMCAU_AES_BLOCK_SIZE (16)
 #define MMCAU_DES_BLOCK_SIZE (8)

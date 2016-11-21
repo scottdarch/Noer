@@ -32,10 +32,9 @@
 
 #include <string>
 #include <vector>
-
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Function.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Symbol.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/SymbolScope.h"
+#include "Symbol.h"
+#include "Function.h"
+#include "SymbolScope.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

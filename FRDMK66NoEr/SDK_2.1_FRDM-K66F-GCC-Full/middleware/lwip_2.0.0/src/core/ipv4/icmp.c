@@ -39,15 +39,15 @@
 /* Some ICMP messages should be passed to the transport protocols. This
    is not implemented. */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_IPV4 && LWIP_ICMP /* don't build if not configured for use in lwipopts.h */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/icmp.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/inet_chksum.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
+#include "lwip/icmp.h"
+#include "lwip/inet_chksum.h"
+#include "lwip/ip.h"
+#include "lwip/def.h"
+#include "lwip/stats.h"
 
 #include <string.h>
 

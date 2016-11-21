@@ -28,11 +28,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_uart_freertos.h"
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/event_groups.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
+#include "fsl_uart_freertos.h"
+#include <FreeRTOS.h>
+#include <event_groups.h>
+#include <semphr.h>
 
 static void UART_RTOS_Callback(UART_Type *base, uart_handle_t *state, status_t status, void *param)
 {

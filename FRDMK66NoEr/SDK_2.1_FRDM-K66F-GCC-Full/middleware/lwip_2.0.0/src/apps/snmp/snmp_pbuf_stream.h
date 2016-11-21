@@ -38,7 +38,7 @@
 #ifndef LWIP_HDR_APPS_SNMP_PBUF_STREAM_H
 #define LWIP_HDR_APPS_SNMP_PBUF_STREAM_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_opts.h"
+#include "lwip/apps/snmp_opts.h"
 
 #if LWIP_SNMP
 

@@ -29,14 +29,13 @@
 */
 
 #include <stdlib.h>
-#include "pin_mux.h"
+#include "fsl_enet.h"
+#include "fsl_phy.h"
+#include "board.h"
+#include "fsl_debug_console.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/enet/txrx_transfer/board.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/enet/txrx_transfer/fsl_phy.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/enet/txrx_transfer/pin_mux.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_enet.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_mpu.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
+#include "pin_mux.h"
+#include "fsl_mpu.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

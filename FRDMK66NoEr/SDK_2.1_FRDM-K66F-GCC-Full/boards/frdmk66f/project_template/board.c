@@ -28,12 +28,10 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/project_template/board.h"
-
 #include <stdint.h>
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
+#include "fsl_common.h"
+#include "fsl_debug_console.h"
+#include "board.h"
 
 /* Initialize debug console. */
 void BOARD_InitDebugConsole(void)

@@ -28,7 +28,7 @@
 #ifndef LWIP_PPP_OPTS_H
 #define LWIP_PPP_OPTS_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 /**
  * PPP_SUPPORT==1: Enable PPP.

@@ -767,9 +767,8 @@ void BOARD_InitENET(void)
         &porte26_pinK4_config); /* PORTE26 (pin K4) is configured as ENET_1588_CLKIN */
     SIM->SOPT2 =
         ((SIM->SOPT2 & (~(SIM_SOPT2_RMIISRC_MASK))) /* Mask bits to zero which are setting */
-         |
-         SIM_SOPT2_RMIISRC(SOPT2_RMIISRC_ENET) /* RMII clock source select: External bypass clock
-                                                  (ENET_1588_CLKIN). */
+         | SIM_SOPT2_RMIISRC(SOPT2_RMIISRC_ENET) /* RMII clock source select: External bypass clock
+                                                    (ENET_1588_CLKIN). */
          );
 }
 
@@ -859,7 +858,6 @@ void BOARD_InitOSCs(void)
     0x01u /*!< Pull Select: Internal pullup resistor is enabled on the corresponding pin, if the \
              corresponding PE field is set. */
 #define PIN1_IDX 1u   /*!< Pin number for pin 1 in a port */
-#define PIN2_IDX 2u   /*!< Pin number for pin 2 in a port */
 #define PIN3_IDX 3u   /*!< Pin number for pin 3 in a port */
 #define PIN10_IDX 10u /*!< Pin number for pin 10 in a port */
 #define PIN11_IDX 11u /*!< Pin number for pin 11 in a port */
@@ -876,9 +874,6 @@ void BOARD_InitOSCs(void)
                       ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b/FTM3_CH1/FB_CS0_b, direction: OUTPUT, pull_select: up}
                         - {pin_num: B4, peripheral: GPIOD, signal: 'GPIO, 3', pin_signal:
                       PTD3/SPI0_SIN/UART2_TX/FTM3_CH3/FB_AD3/SDRAM_A11/I2C0_SDA, direction: INPUT, pull_select: up}
-                        - {pin_num: C4, peripheral: GPIOD, signal: 'GPIO, 2', pin_signal:
-                      PTD2/LLWU_P13/SPI0_SOUT/UART2_RX/FTM3_CH2/FB_AD4/SDRAM_A12/I2C0_SCL, direction: INPUT, pull_select:
-                      up}
                        * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR THE PINS TOOL ***
                        */
 
@@ -898,27 +893,16 @@ void BOARD_InitVL6180(void)
     PORTC->PCR[10] =
         ((PORTC->PCR[10] &
           (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
-         | PORT_PCR_PS(PCR_PS_UP) /* Pull Select: Internal pullup resistor is enabled on the
-                                     corresponding pin, if the corresponding PE field is set. */
          );
     PORT_SetPinMux(PORTC, PIN11_IDX,
                    kPORT_MuxAlt2); /* PORTC11 (pin B7) is configured as I2C1_SDA */
     PORTC->PCR[11] =
         ((PORTC->PCR[11] &
           (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
-         | PORT_PCR_PS(PCR_PS_UP) /* Pull Select: Internal pullup resistor is enabled on the
-                                     corresponding pin, if the corresponding PE field is set. */
          );
     PORT_SetPinMux(PORTD, PIN1_IDX, kPORT_MuxAsGpio); /* PORTD1 (pin D4) is configured as PTD1 */
     PORTD->PCR[1] =
         ((PORTD->PCR[1] &
-          (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
-         | PORT_PCR_PS(PCR_PS_UP) /* Pull Select: Internal pullup resistor is enabled on the
-                                     corresponding pin, if the corresponding PE field is set. */
-         );
-    PORT_SetPinMux(PORTD, PIN2_IDX, kPORT_MuxAsGpio); /* PORTD2 (pin C4) is configured as PTD2 */
-    PORTD->PCR[2] =
-        ((PORTD->PCR[2] &
           (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
          | PORT_PCR_PS(PCR_PS_UP) /* Pull Select: Internal pullup resistor is enabled on the
                                      corresponding pin, if the corresponding PE field is set. */

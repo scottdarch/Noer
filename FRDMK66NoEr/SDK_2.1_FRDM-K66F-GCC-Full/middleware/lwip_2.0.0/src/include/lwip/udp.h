@@ -38,15 +38,15 @@
 #ifndef LWIP_HDR_UDP_H
 #define LWIP_HDR_UDP_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_UDP /* don't build if not configured for use in lwipopts.h */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/pbuf.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip6_addr.h"
+#include "lwip/pbuf.h"
+#include "lwip/netif.h"
+#include "lwip/ip_addr.h"
+#include "lwip/ip.h"
+#include "lwip/ip6_addr.h"
 
 #ifdef __cplusplus
 extern "C" {

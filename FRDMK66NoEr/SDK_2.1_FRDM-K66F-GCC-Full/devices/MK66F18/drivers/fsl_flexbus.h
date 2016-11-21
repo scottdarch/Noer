@@ -31,7 +31,7 @@
 #ifndef _FSL_FLEXBUS_H_
 #define _FSL_FLEXBUS_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
 
 /*!
  * @addtogroup flexbus

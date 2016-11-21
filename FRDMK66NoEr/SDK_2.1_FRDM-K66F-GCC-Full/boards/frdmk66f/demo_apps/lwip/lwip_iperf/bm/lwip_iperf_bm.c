@@ -32,22 +32,22 @@
  * Includes
  ******************************************************************************/
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 /* Currently, only TCP-over-IPv4 is implemented */
 #if LWIP_IPV4 && LWIP_TCP
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/lwiperf.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/timeouts.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/init.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ethernet.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/ethernetif.h"
+#include "apps/lwiperf.h"
+#include "lwip/timeouts.h"
+#include "lwip/init.h"
+#include "netif/ethernet.h"
+#include "ethernetif.h"
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_iperf/bm/board.h"
+#include "board.h"
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_iperf/bm/pin_mux.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_iperf/bm/clock_config.h"
+#include "fsl_device_registers.h"
+#include "pin_mux.h"
+#include "clock_config.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

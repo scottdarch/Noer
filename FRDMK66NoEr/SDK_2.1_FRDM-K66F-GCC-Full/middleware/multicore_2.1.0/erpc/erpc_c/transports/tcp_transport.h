@@ -29,8 +29,8 @@
 #ifndef _EMBEDDED_RPC__TCP_TRANSPORT_H_
 #define _EMBEDDED_RPC__TCP_TRANSPORT_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/framed_transport.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/port/erpc_threading.h"
+#include "framed_transport.h"
+#include "erpc_threading.h"
 
 /*!
  * @addtogroup tcp_transport

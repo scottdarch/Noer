@@ -42,13 +42,13 @@
  * $Id: lcp.h,v 1.20 2004/11/14 22:53:42 carlsonj Exp $
  */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPP_SUPPORT /* don't build if not configured for use in lwipopts.h */
 
 #ifndef LCP_H
 #define	LCP_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp.h"
+#include "ppp.h"
 
 /*
  * Options.

@@ -37,14 +37,15 @@
 #ifndef LWIP_HDR_IP_H__
 #define LWIP_HDR_IP_H__
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/err.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip4.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip6.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/pbuf.h"
+#include "lwip/opt.h"
+
+#include "lwip/def.h"
+#include "lwip/pbuf.h"
+#include "lwip/ip_addr.h"
+#include "lwip/err.h"
+#include "lwip/netif.h"
+#include "lwip/ip4.h"
+#include "lwip/ip6.h"
 
 #ifdef __cplusplus
 extern "C" {

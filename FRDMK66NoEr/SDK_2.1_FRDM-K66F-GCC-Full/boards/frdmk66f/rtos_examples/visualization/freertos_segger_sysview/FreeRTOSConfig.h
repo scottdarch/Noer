@@ -176,8 +176,8 @@ standard names. */
 
 /* Do not include if processing assembly file */
 #if (!defined(__IAR_SYSTEMS_ASM__) && !defined(__ASSEMBLER__))
-#   include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#   include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/Sample/OS/SEGGER_SYSVIEW_FreeRTOS.h"
+#   include "fsl_device_registers.h"
+#   include "SEGGER_SYSVIEW_FreeRTOS.h"
 #endif
 
 

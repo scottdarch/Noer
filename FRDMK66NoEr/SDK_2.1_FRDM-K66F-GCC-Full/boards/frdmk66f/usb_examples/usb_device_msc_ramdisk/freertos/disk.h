@@ -31,9 +31,9 @@
 #ifndef __USB_DISK_H__
 #define __USB_DISK_H__ 1
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/event_groups.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "event_groups.h"
 
 #if defined(USB_DEVICE_CONFIG_EHCI) && (USB_DEVICE_CONFIG_EHCI > 0)
 #define CONTROLLER_ID kUSB_ControllerEhci0

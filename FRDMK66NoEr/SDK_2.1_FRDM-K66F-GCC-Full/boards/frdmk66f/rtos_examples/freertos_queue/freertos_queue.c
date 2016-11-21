@@ -32,16 +32,18 @@
 #include <stdio.h>
 
 /* Kernel includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "timers.h"
+
+/* Freescale includes. */
+#include "fsl_device_registers.h"
+#include "fsl_debug_console.h"
+#include "board.h"
+
 #include "pin_mux.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/freertos_queue/board.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/freertos_queue/clock_config.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/freertos_queue/pin_mux.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/queue.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/task.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/timers.h"
+#include "clock_config.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

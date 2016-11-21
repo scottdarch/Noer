@@ -31,8 +31,8 @@
 #ifndef _USB_DEVICE_COMPOSITE_H_
 #define _USB_DEVICE_COMPOSITE_H_ 1
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard/bm/disk_sdcard.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard/bm/virtual_com.h"
+#include "virtual_com.h"
+#include "disk_sdcard.h"
 
 /*******************************************************************************
 * Definitions

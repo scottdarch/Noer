@@ -32,9 +32,8 @@
 
 #include <string>
 #include <vector>
-
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/DataType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/EnumMember.h"
+#include "DataType.h"
+#include "EnumMember.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

@@ -30,8 +30,7 @@
 
 #include <new>
 #include <stdlib.h>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/port/erpc_port.h"
+#include "erpc_port.h"
 
 #if __cplusplus >= 201103
 #define NOEXCEPT noexcept

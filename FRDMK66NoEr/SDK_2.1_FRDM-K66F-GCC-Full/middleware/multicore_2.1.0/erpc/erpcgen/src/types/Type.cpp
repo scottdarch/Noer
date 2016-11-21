@@ -27,25 +27,25 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "Function.h"
+#include "Interface.h"
+#include "ListType.h"
+#include "ArrayType.h"
+#include "AliasType.h"
+#include "EnumType.h"
+#include "EnumMember.h"
+#include "StructType.h"
+#include "StructMember.h"
+#include "UnionType.h"
+#include "UnionCase.h"
+#include "Symbol.h"
+#include "SymbolScope.h"
+#include "DataType.h"
+#include "Annotation.h"
+#include "Logging.h"
+#include "ParseErrors.h"
+#include "annotations.h"
 #include <string.h>
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/annotations.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Logging.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/ParseErrors.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/AliasType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Annotation.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/ArrayType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/DataType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/EnumMember.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/EnumType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Function.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Interface.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/ListType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/StructMember.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/StructType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Symbol.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/SymbolScope.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/UnionCase.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/UnionType.h"
 
 using namespace erpcgen;
 

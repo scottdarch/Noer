@@ -35,20 +35,20 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_ARP || LWIP_ETHERNET
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ethernet.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/etharp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/snmp.h"
+#include "netif/ethernet.h"
+#include "lwip/def.h"
+#include "lwip/stats.h"
+#include "lwip/etharp.h"
+#include "lwip/ip.h"
+#include "lwip/snmp.h"
 
 #include <string.h>
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPPOE_SUPPORT
 #include "netif/ppp/pppoe.h"
 #endif /* PPPOE_SUPPORT */

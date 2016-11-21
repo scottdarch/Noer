@@ -44,7 +44,7 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_SOCKET /* don't build if not configured for use in lwipopts.h */
 
@@ -70,9 +70,9 @@
 #if !LWIP_NETCONN
 #undef LWIP_NETCONN
 #define LWIP_NETCONN 1
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/api/api_msg.c"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/api/api_lib.c"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/api/netbuf.c"
+#include "api_msg.c"
+#include "api_lib.c"
+#include "netbuf.c"
 #undef LWIP_NETCONN
 #define LWIP_NETCONN 0
 #endif

@@ -68,7 +68,7 @@ Notes:
 #ifndef SYSVIEW_FREERTOS_H
 #define SYSVIEW_FREERTOS_H
 
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER_SYSVIEW.h"
+#include "SEGGER_SYSVIEW.h"
 
 /*********************************************************************
 *

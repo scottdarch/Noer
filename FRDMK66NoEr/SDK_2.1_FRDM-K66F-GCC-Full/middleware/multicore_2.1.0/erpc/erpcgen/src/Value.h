@@ -32,8 +32,7 @@
 
 #include <stdint.h>
 #include <string>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/format_string.h"
+#include "format_string.h"
 //#include "Blob.h"
 
 typedef enum

@@ -31,7 +31,7 @@
 #ifndef __FSL_RAMDISK_H__
 #define __FSL_RAMDISK_H__
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/diskio.h"
+#include "diskio.h"
 
 /*******************************************************************************
  * Definitions

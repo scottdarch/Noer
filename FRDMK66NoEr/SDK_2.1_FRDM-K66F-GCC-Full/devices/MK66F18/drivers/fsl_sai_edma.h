@@ -30,8 +30,8 @@
 #ifndef _FSL_SAI_EDMA_H_
 #define _FSL_SAI_EDMA_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_edma.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_sai.h"
+#include "fsl_sai.h"
+#include "fsl_edma.h"
 
 /*!
  * @addtogroup sai_edma

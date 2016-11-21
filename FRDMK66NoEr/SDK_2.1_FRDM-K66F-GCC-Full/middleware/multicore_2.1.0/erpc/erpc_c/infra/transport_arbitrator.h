@@ -29,10 +29,10 @@
 #if !defined(__embedded_rpc__transport_arbitrator__)
 #define __embedded_rpc__transport_arbitrator__
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/client_manager.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/codec.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/transport.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/port/erpc_threading.h"
+#include "transport.h"
+#include "codec.h"
+#include "client_manager.h"
+#include "erpc_threading.h"
 
 /*!
  * @addtogroup infra_transport

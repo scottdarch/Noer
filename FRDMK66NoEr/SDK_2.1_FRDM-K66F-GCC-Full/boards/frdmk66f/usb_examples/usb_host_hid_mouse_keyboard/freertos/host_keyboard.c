@@ -28,12 +28,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_hid_mouse_keyboard/freertos/host_keyboard.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_hid_mouse_keyboard/freertos/host_keyboard_mouse.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_hid_mouse_keyboard/freertos/usb_host_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/class/usb_host_hid.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
+#include "usb_host_config.h"
+#include "usb_host.h"
+#include "usb_host_hid.h"
+#include "host_keyboard_mouse.h"
+#include "host_keyboard.h"
 
 /*******************************************************************************
  * Definitions

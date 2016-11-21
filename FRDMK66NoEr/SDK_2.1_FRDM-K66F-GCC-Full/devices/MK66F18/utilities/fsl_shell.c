@@ -61,9 +61,8 @@
  * However, I am not about to post a copy of anything licensed by AT&T.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_shell.h"
-
 #include <assert.h>
+#include "fsl_shell.h"
 
 /*******************************************************************************
  * Definitions

@@ -28,10 +28,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_cdc/bm/usb_host_config.h"
+#include "usb_host_config.h"
 #if ((defined USB_HOST_CONFIG_AUDIO) && (USB_HOST_CONFIG_AUDIO))
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/class/usb_host_audio.h"
+#include "usb_host.h"
+#include "usb_host_audio.h"
 
 /*******************************************************************************
  * Variables

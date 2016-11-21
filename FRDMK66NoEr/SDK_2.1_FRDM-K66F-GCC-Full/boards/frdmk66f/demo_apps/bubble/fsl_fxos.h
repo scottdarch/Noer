@@ -30,11 +30,11 @@
 #ifndef _FSL_FXOS_H_
 #define _FSL_FXOS_H_
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
 #if defined(FSL_FEATURE_SOC_LPI2C_COUNT) && (FSL_FEATURE_SOC_LPI2C_COUNT > 0)
 #include "fsl_lpi2c.h"
 #else
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_i2c.h"
+#include "fsl_i2c.h"
 #endif
 
 /*

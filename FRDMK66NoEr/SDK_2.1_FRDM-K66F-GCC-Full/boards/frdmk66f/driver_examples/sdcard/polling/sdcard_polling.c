@@ -29,19 +29,18 @@
  */
 
 #include <stdio.h>
-#include "fsl_mpu.h"
+#include "fsl_port.h"
+#include "fsl_gpio.h"
+#include "fsl_uart.h"
+#include "fsl_sdhc.h"
+#include "fsl_card.h"
+#include "fsl_debug_console.h"
+#include "board.h"
+#include "event.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard/polling/board.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard/polling/clock_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard/polling/event.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard/polling/pin_mux.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_mpu.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_port.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_sdhc.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_uart.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/sdmmc_2.1.1/inc/fsl_card.h"
+#include "fsl_mpu.h"
+#include "pin_mux.h"
+#include "clock_config.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

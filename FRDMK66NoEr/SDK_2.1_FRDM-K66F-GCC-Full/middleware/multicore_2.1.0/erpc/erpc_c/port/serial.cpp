@@ -35,7 +35,7 @@
 #include <termios.h>
 #endif
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/port/serial.h"
+#include "serial.h"
 
 int serial_setup(int fd, speed_t speed)
 {

@@ -75,7 +75,7 @@
 #endif
 
 /* FreeRTOS includes. */
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/timers.h"
+#include "timers.h"
 
 #ifdef __cplusplus
 extern "C" {

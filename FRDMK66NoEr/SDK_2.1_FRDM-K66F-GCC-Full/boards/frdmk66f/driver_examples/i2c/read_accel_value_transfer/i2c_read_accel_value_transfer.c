@@ -29,14 +29,14 @@
 */
 
 /*  SDK Included Files */
+#include "board.h"
+#include "fsl_debug_console.h"
+#include "fsl_i2c.h"
+
 #include "pin_mux.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/i2c/read_accel_value_transfer/board.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/i2c/read_accel_value_transfer/clock_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/i2c/read_accel_value_transfer/pin_mux.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_i2c.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_port.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
+#include "clock_config.h"
+#include "fsl_gpio.h"
+#include "fsl_port.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

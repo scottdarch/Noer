@@ -35,8 +35,8 @@
 #define HTTP_SUPP_H_
 
 #define ERR_PAGE_FORMAT "<HTML><HEAD><TITLE>%s</TITLE></HEAD>\n<BODY><H1>%s</H1>\n</BODY></HTML>\n"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_prv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
+#include "httpsrv_prv.h"
+#include "httpsrv.h"
 
 #ifdef __cplusplus
 extern "C" {

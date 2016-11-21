@@ -31,21 +31,21 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_UDP
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/udpecho_raw/udpecho_raw.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/timeouts.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/init.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ethernet.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/ethernetif.h"
+#include "udpecho_raw/udpecho_raw.h"
+#include "lwip/timeouts.h"
+#include "lwip/init.h"
+#include "netif/ethernet.h"
+#include "ethernetif.h"
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_udpecho/bm/board.h"
+#include "board.h"
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_udpecho/bm/pin_mux.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_udpecho/bm/clock_config.h"
+#include "fsl_device_registers.h"
+#include "pin_mux.h"
+#include "clock_config.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

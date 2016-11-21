@@ -33,10 +33,9 @@
 
 #include <stdint.h>
 #include <stdio.h>
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb_misc.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb_spec.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/osa/usb_osa.h"
+#include "usb_osa.h"
+#include "usb_misc.h"
+#include "usb_spec.h"
 
 /*!
  * @addtogroup usb_drv

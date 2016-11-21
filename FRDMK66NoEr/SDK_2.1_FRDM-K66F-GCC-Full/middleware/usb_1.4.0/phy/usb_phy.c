@@ -28,8 +28,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb.h"
+#include "usb.h"
+#include "fsl_device_registers.h"
 
 /*!
  * @brief ehci phy initialization.

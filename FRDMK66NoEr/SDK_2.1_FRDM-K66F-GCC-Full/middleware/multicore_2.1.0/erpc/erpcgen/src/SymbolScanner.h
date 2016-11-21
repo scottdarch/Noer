@@ -30,15 +30,15 @@
 #ifndef _EMBEDDED_RPC__SYMBOLSCANNER_H_
 #define _EMBEDDED_RPC__SYMBOLSCANNER_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/AstWalker.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/AliasType.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/EnumMember.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/EnumType.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Interface.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Program.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/StructType.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/SymbolScope.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/UnionType.h"
+#include "AstWalker.h"
+#include "types/SymbolScope.h"
+#include "types/Program.h"
+#include "types/Interface.h"
+#include "types/StructType.h"
+#include "types/EnumType.h"
+#include "types/EnumMember.h"
+#include "types/AliasType.h"
+#include "types/UnionType.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

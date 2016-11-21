@@ -28,14 +28,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_cdc/bm/host_cdc.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_cdc/bm/board.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_cdc/bm/usb_host_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_cdc/bm/usb_uart_drv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/class/usb_host_cdc.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
+#include "usb_host_config.h"
+#include "usb_host.h"
+#include "usb_host_cdc.h"
+#include "host_cdc.h"
+#include "fsl_debug_console.h"
+#include "board.h"
+#include "usb_uart_drv.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

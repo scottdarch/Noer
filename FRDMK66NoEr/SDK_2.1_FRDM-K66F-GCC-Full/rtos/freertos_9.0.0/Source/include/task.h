@@ -75,7 +75,7 @@
 	#error "include FreeRTOS.h must appear in source files before include task.h"
 #endif
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/list.h"
+#include "list.h"
 
 #ifdef __cplusplus
 extern "C" {

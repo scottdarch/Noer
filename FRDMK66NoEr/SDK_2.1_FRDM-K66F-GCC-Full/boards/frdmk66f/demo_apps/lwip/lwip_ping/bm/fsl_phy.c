@@ -28,7 +28,7 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_ping/bm/fsl_phy.h"
+#include "fsl_phy.h"
 
 /*******************************************************************************
  * Definitions

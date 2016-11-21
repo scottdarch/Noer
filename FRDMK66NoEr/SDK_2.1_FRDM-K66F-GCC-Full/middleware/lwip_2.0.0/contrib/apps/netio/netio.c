@@ -1,8 +1,7 @@
-#include "lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/netio/netio.h"
+#include "netio.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/tcp.h"
+#include "lwip/opt.h"
+#include "lwip/tcp.h"
 
 /* See http://www.nwlab.net/art/netio/netio.html to get the netio tool */
 

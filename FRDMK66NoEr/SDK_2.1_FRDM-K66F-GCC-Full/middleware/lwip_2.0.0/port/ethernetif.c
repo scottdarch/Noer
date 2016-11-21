@@ -31,27 +31,27 @@
  */
 
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ethip6.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/igmp.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mem.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mld6.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/pbuf.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/snmp.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/etharp.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/pppoe.h"
+#include "lwip/opt.h"
+#include "lwip/def.h"
+#include "lwip/mem.h"
+#include "lwip/pbuf.h"
+#include "lwip/stats.h"
+#include "lwip/snmp.h"
+#include "lwip/ethip6.h"
+#include "netif/etharp.h"
+#include "netif/ppp/pppoe.h"
+#include "lwip/igmp.h"
+#include "lwip/mld6.h"
 
 #if USE_RTOS && defined(FSL_RTOS_FREE_RTOS)
 #include "FreeRTOS.h"
 #include "event_groups.h"
 #endif
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/ethernetif.h"
+#include "ethernetif.h"
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_enet.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_ping/bm/fsl_phy.h"
+#include "fsl_enet.h"
+#include "fsl_phy.h"
 
 /*******************************************************************************
  * Definitions

@@ -31,8 +31,7 @@
 #define _EMBEDDED_RPC__ALIASTYPE_H_
 
 #include <string>
-
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/DataType.h"
+#include "DataType.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

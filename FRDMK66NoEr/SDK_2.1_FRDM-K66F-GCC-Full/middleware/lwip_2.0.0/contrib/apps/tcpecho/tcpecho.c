@@ -29,10 +29,9 @@
  * Author: Adam Dunkels <adam@sics.se>
  *
  */
-#include "lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/tcpecho/tcpecho.h"
+#include "tcpecho.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_NETCONN
 

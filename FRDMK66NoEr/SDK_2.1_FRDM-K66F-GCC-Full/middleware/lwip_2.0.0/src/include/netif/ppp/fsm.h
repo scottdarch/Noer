@@ -42,13 +42,13 @@
  * $Id: fsm.h,v 1.10 2004/11/13 02:28:15 paulus Exp $
  */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPP_SUPPORT /* don't build if not configured for use in lwipopts.h */
 
 #ifndef FSM_H
 #define	FSM_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp.h"
+#include "ppp.h"
 
 /*
  * Packet header = Code, id, length.

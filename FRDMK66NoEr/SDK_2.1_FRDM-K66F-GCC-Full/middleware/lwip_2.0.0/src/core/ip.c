@@ -53,12 +53,12 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_IPV4 || LWIP_IPV6
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip.h"
+#include "lwip/ip_addr.h"
+#include "lwip/ip.h"
 
 /** Global data for both IPv4 and IPv6 */
 struct ip_globals ip_data;

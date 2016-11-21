@@ -28,7 +28,7 @@
  * OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPP_SUPPORT && DEMAND_SUPPORT  /* don't build if not configured for use in lwipopts.h */
 
 #include <stdio.h>

@@ -54,7 +54,6 @@ PROJECT_CFLAGS             := -O0 \
                               -fdata-sections \
                               -ffunction-sections \
                               -fsigned-char \
-                              -flto \
                               -mlong-calls \
                               -g3 \
                               -Werror \
@@ -71,9 +70,12 @@ PROJECT_LSS                := $(DIR_BUILD)/$(PROJECT_NAME).lss
 PROJECT_INCLUDE_PATHS      := include \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE) \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers \
+                              $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/cmsis_drivers \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/utilities \
+                              $(DIR_KSDK)/middleware/dma_manager_2.0.0 \
                               $(CMSIS_DSP_BASE)/Include \
                               $(CMSIS_BASE)/Core/Include \
+                              $(CMSIS_BASE)/Driver/Include \
 
 PROJECT_ARCHIVES           :=
 PROJECT_LD_SCRIPT          := $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/gcc/MK66FN2M0xxx18_flash.ld
@@ -91,7 +93,8 @@ PROJECT_SOURCE             := source/board.c \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers/fsl_adc16.c \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers/fsl_pmc.c \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers/fsl_smc.c \
- 
+                              $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers/fsl_i2c.c \
+
 PROJECT_OBJECTS            := $(addprefix $(DIR_BUILD)/,$(PROJECT_ASSEMBLY:.S=.o) $(PROJECT_SOURCE:.c=.o))
 
 .PHONY : all clean info disassemble size flash console

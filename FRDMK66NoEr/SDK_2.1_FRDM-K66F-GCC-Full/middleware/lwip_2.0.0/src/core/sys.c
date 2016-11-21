@@ -36,9 +36,9 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
+#include "lwip/opt.h"
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/sys.h"
 
 /* Most of the functions defined in sys.h must be implemented in the
  * architecture-dependent file sys_arch.c */

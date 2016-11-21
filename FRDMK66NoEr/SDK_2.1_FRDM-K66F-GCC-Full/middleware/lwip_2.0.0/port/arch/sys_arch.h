@@ -32,9 +32,9 @@
 #ifndef __ARCH_SYS_ARCH_H__
 #define __ARCH_SYS_ARCH_H__
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/arch/cc.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "fsl_debug_console.h"
+#include "lwip/opt.h"
+#include "arch/cc.h"
 
 #if !NO_SYS
 
@@ -43,7 +43,7 @@
 #include "queue.h"
 #include "semphr.h"
 #else
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_pit.h"
+#include "fsl_pit.h"
 #endif
 
 #define SYS_MBOX_NULL					( ( QueueHandle_t ) NULL )

@@ -84,14 +84,14 @@ Purely for reasons of backward compatibility the old method is still valid, but
 to make it clear that new projects should not use it, support for the port
 specific constants has been moved into the deprecated_definitions.h header
 file. */
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/deprecated_definitions.h"
+#include "deprecated_definitions.h"
 
 /* If portENTER_CRITICAL is not defined then including deprecated_definitions.h
 did not result in a portmacro.h header file being included - and it should be
 included here.  In this case the path to the correct portmacro.h header file
 must be set in the compiler's include path. */
 #ifndef portENTER_CRITICAL
-	#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h"
+	#include "portmacro.h"
 #endif
 
 #if portBYTE_ALIGNMENT == 32
@@ -130,7 +130,7 @@ must be set in the compiler's include path. */
 extern "C" {
 #endif
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/mpu_wrappers.h"
+#include "mpu_wrappers.h"
 
 /*
  * Setup the stack of a new task so it is ready to be placed under the

@@ -31,13 +31,13 @@
  *
  */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPP_SUPPORT && PPPOL2TP_SUPPORT /* don't build if not configured for use in lwipopts.h */
 
 #ifndef PPPOL2TP_H_
 #define PPPOL2TP_H_
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp.h"
+#include "ppp.h"
 
 /* Timeout */
 #define PPPOL2TP_CONTROL_TIMEOUT         (5*1000)  /* base for quick timeout calculation */

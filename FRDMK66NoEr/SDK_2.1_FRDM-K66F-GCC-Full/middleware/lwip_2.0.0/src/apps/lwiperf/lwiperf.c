@@ -45,11 +45,12 @@
  * Author: Simon Goldschmidt
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/lwiperf.h"
+#include "lwip/apps/lwiperf.h"
+
+#include "lwip/tcp.h"
+#include "lwip/sys.h"
 
 #include <string.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/tcp.h"
 
 /* Currently, only TCP-over-IPv4 is implemented (does iperf support IPv6 anyway?) */
 #if LWIP_IPV4 && LWIP_TCP

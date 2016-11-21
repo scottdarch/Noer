@@ -4,7 +4,7 @@
 /*------------------------------------------------------------------------*/
 
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/ff.h"
+#include "../ff.h"
 
 
 #if _FS_REENTRANT

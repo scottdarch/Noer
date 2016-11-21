@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_server_dac_adc/fsl_fxos.h"
+#include "fsl_fxos.h"
 
 /******************************************************************************
  * Code

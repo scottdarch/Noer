@@ -31,8 +31,8 @@
 #ifndef _HOST_MSD_FATFS_H_
 #define _HOST_MSD_FATFS_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/class/usb_host_msd.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
+#include "usb_host.h"
+#include "usb_host_msd.h"
 
 /*******************************************************************************
  * Definitions

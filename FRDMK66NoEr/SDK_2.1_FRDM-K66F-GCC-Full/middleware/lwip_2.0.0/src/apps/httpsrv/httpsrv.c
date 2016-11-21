@@ -30,11 +30,10 @@
 
 /*   This file contains the HTTPSRV implementation.*/
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
-
+#include "httpsrv.h"
+#include "httpsrv_supp.h"
+#include "httpsrv_prv.h"
 #include <string.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_prv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_supp.h"
 
 #define HTTPSRV_SERVER_TASK_NAME "HTTP server"
 

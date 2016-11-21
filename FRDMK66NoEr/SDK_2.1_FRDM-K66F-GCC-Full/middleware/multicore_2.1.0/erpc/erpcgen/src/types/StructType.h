@@ -32,10 +32,9 @@
 
 #include <string>
 #include <vector>
-
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/DataType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/StructMember.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/SymbolScope.h"
+#include "SymbolScope.h"
+#include "DataType.h"
+#include "StructMember.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

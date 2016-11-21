@@ -39,14 +39,14 @@
  * Tabs are used for indent in this file (1 tab = 4 spaces)
  ******************************************************************************/
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcKernelPort.h"
+#include "trcKernelPort.h"
 
 #if (USE_TRACEALYZER_RECORDER == 1)
 
 #include <stdint.h>
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/task.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/queue.h"
+#include "task.h"
+#include "queue.h"
 
 /* For classes implemented as FreeRTOS Queues: 
 This translates queue.type to the corresponding trace object class. */

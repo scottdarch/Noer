@@ -30,7 +30,7 @@
  * $Id: chap_ms.h,v 1.13 2004/11/15 22:13:26 paulus Exp $
  */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPP_SUPPORT && MSCHAP_SUPPORT  /* don't build if not configured for use in lwipopts.h */
 
 #ifndef CHAPMS_INCLUDE

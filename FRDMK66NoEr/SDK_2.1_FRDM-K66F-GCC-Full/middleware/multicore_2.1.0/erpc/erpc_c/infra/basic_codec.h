@@ -30,8 +30,8 @@
 #ifndef _EMBEDDED_RPC__BASIC_SERIALIZATION_H_
 #define _EMBEDDED_RPC__BASIC_SERIALIZATION_H_
 
+#include "codec.h"
 #include <new>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/codec.h"
 
 #if !(__embedded_cplusplus)
 using namespace std;

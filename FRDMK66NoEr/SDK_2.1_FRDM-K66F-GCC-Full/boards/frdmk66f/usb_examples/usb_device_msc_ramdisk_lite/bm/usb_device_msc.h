@@ -33,7 +33,7 @@
 #ifndef __USB_DEVICE_MSC_H__
 #define __USB_DEVICE_MSC_H__ 1
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_msc_ramdisk_lite/bm/usb_device_msc_ufi.h"
+#include "usb_device_msc_ufi.h"
 /*******************************************************************************
 * Definitions
 ******************************************************************************/

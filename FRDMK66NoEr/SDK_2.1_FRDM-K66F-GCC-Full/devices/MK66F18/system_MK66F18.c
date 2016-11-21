@@ -86,8 +86,7 @@
  */
 
 #include <stdint.h>
-
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
+#include "fsl_device_registers.h"
 
 
 

@@ -27,15 +27,15 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+#include "fsl_debug_console.h"
+#include "fsl_fxos.h"
+#include "board.h"
 #include "math.h"
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/ecompass/board.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/ecompass/fsl_fxos.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/ecompass/pin_mux.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_port.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
+#include "fsl_common.h"
+#include "pin_mux.h"
+#include "fsl_gpio.h"
+#include "fsl_port.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

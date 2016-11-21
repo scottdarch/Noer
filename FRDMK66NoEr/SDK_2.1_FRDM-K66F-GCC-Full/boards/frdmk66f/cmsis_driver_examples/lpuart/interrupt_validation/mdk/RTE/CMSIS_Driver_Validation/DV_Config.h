@@ -8,8 +8,7 @@
 #define __DV_CONFIG_H
 
 #include <stdint.h>
-
-#include "../../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/CMSIS/DSP_Lib/Examples/arm_fir_example/ARM/RTE/RTE_Components.h"
+#include "RTE_Components.h"
 
 //-------- <<< Use Configuration Wizard in Context Menu >>> --------------------
 

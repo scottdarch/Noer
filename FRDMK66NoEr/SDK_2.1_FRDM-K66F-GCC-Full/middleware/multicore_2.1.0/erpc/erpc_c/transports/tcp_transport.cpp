@@ -26,19 +26,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/transports/tcp_transport.h"
-
+#include "tcp_transport.h"
 #include <cassert>
 #include <cstdio>
 #include <string>
 #include <unistd.h>
 #include <signal.h>
+#include <sys/socket.h>
 #include <sys/types.h>
+#include <netdb.h>
 #include <errno.h>
+#include <err.h>
 #include <new>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/err.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netdb.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/posix/sys/socket.h"
 
 #if !(__embedded_cplusplus)
 using namespace std;

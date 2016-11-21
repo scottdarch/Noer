@@ -31,7 +31,7 @@
 *   Original derived from BSD codes.
 *****************************************************************************/
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPP_SUPPORT /* don't build if not configured for use in lwipopts.h */
 
 #ifndef PPP_H
@@ -161,31 +161,31 @@ typedef unsigned short u_short;
 typedef unsigned char  u_char;
 #endif
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/fsm.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/lcp.h"
+#include "fsm.h"
+#include "lcp.h"
 #if CCP_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ccp.h"
+#include "ccp.h"
 #endif /* CCP_SUPPORT */
 #if MPPE_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/mppe.h"
+#include "mppe.h"
 #endif /* MPPE_SUPPORT */
 #if PPP_IPV4_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ipcp.h"
+#include "ipcp.h"
 #endif /* PPP_IPV4_SUPPORT */
 #if PPP_IPV6_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ipv6cp.h"
+#include "ipv6cp.h"
 #endif /* PPP_IPV6_SUPPORT */
 #if PAP_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/upap.h"
+#include "upap.h"
 #endif /* PAP_SUPPORT */
 #if CHAP_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/chap-new.h"
+#include "chap-new.h"
 #endif /* CHAP_SUPPORT */
 #if EAP_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/eap.h"
+#include "eap.h"
 #endif /* EAP_SUPPORT */
 #if VJ_SUPPORT
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/vj.h"
+#include "vj.h"
 #endif /* VJ_SUPPORT */
 
 /* Link status callback function prototype */

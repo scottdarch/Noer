@@ -27,15 +27,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/setup/erpc_server_setup.h"
-
+#include "erpc_server_setup.h"
+#include "simple_server.h"
+#include "manually_constructed.h"
+#include "basic_codec.h"
+#include "message_buffer.h"
+#include "erpc_config_internal.h"
 #include <new>
 #include <assert.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/basic_codec.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/manually_constructed.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/message_buffer.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/simple_server.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/port/erpc_config_internal.h"
 
 #if !(__embedded_cplusplus)
 using namespace std;

@@ -43,7 +43,7 @@
  * something that better describes your network interface.
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if 0 /* don't build, this is only a skeleton, see previous comment */
 

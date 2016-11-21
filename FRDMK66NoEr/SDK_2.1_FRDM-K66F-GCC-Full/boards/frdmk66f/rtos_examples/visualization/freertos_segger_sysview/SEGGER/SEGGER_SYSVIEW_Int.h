@@ -71,9 +71,9 @@ Revision: $Rev: 3734 $
 **********************************************************************
 */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/Config/SEGGER_SYSVIEW_Conf.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER_SYSVIEW.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER_SYSVIEW_ConfDefaults.h"
+#include "SEGGER_SYSVIEW.h"
+#include "SEGGER_SYSVIEW_Conf.h"
+#include "SEGGER_SYSVIEW_ConfDefaults.h"
 
 #ifdef __cplusplus
 extern "C" {

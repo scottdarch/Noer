@@ -31,14 +31,15 @@
 #ifndef HTTPSRV_PRV_H_
 #define HTTPSRV_PRV_H_
 
+#include "httpsrv.h"
+#include "httpsrv_port.h"
+#include "httpsrv_fs.h"
+#include "httpsrv_ws_prv.h"
+#include "httpsrv_tls.h"
+
 #include <stdio.h>
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_fs.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_port.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_tls.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_ws_prv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
+#include "lwip/sys.h"
 
 #define HTTPSRV_PRODUCT_STRING "HTTPSRV/0.1 - NXP Embedded Web Server v0.1"
 #define HTTPSRV_PROTOCOL_STRING "HTTP/1.1"

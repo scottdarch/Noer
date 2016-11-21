@@ -42,12 +42,12 @@
  *
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/netbiosns.h"
+#include "lwip/apps/netbiosns.h"
 
 #if LWIP_IPV4 && LWIP_UDP  /* don't build if not configured for use in lwipopts.h */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/udp.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
+#include "lwip/udp.h"
+#include "lwip/netif.h"
 
 #include <string.h>
 

@@ -6,9 +6,8 @@
 
 #include <stdio.h>
 #include <string.h>
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/diskio.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/ff.h"
+#include "ff.h"
+#include "diskio.h"
 
 
 static

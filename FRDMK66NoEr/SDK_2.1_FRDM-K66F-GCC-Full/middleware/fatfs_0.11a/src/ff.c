@@ -16,9 +16,8 @@
 /----------------------------------------------------------------------------*/
 
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/ff.h"			/* Declarations of FatFs API */
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/diskio.h"		/* Declarations of disk I/O functions */
+#include "ff.h"			/* Declarations of FatFs API */
+#include "diskio.h"		/* Declarations of disk I/O functions */
 
 
 /*--------------------------------------------------------------------------

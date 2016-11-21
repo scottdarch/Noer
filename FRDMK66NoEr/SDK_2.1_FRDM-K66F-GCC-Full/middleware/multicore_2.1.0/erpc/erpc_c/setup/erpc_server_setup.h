@@ -30,10 +30,10 @@
 #ifndef _EMBEDDED_RPC__SERVER_SETUP_H_
 #define _EMBEDDED_RPC__SERVER_SETUP_H_
 
+#include "erpc_transport_setup.h"
+#include "erpc_common.h"
 #include <stdint.h>
 #include <stdbool.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/erpc_common.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/setup/erpc_transport_setup.h"
 
 /*!
  * @addtogroup server_setup

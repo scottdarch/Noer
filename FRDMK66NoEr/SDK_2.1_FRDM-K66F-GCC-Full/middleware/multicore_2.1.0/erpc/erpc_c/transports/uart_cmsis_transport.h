@@ -31,10 +31,9 @@
 #define _EMBEDDED_RPC__UART_TRANSPORT_H_
 
 #include <stdlib.h>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/CMSIS/Driver/Include/Driver_USART.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/framed_transport.h"
+#include "fsl_common.h"
+#include "framed_transport.h"
+#include "Driver_USART.h"
 
 /*!
  * @addtogroup uart_transport

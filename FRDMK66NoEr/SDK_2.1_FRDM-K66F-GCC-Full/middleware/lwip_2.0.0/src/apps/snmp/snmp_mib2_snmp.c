@@ -33,11 +33,11 @@
  *         Christiaan Simons <christiaan.simons@axon.tv>
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_core.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_mib2.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_scalar.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/snmp.h"
+#include "lwip/snmp.h"
+#include "lwip/apps/snmp.h"
+#include "lwip/apps/snmp_core.h"
+#include "lwip/apps/snmp_mib2.h"
+#include "lwip/apps/snmp_scalar.h"
 
 #if LWIP_SNMP && SNMP_LWIP_MIB2
 

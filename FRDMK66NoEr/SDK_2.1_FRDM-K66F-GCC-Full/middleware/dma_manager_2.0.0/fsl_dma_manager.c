@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/dma_manager_2.0.0/fsl_dma_manager.h"
+#include "fsl_dma_manager.h"
 
 /*******************************************************************************
  * Definitions

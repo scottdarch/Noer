@@ -30,11 +30,11 @@
 #ifndef __FSL_UART_RTOS_H__
 #define __FSL_UART_RTOS_H__
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_uart.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/event_groups.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/template_application/FreeRTOSConfig.h"
+#include "FreeRTOSConfig.h"
+#include "fsl_uart.h"
+#include <FreeRTOS.h>
+#include <event_groups.h>
+#include <semphr.h>
 
 /*!
  * @addtogroup uart_freertos_driver

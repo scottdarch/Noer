@@ -33,9 +33,8 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard_fatfs/board.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_sdhc.h"
+#include "fsl_sdhc.h"
+#include "board.h"
 
 /*!
  * @addtogroup SDHC Configure

@@ -43,7 +43,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/cmsis_drivers/fsl_dspi_cmsis.h"
+#include "fsl_dspi_cmsis.h"
 
 #define ARM_DSPI_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(2, 0) /* driver version */
 

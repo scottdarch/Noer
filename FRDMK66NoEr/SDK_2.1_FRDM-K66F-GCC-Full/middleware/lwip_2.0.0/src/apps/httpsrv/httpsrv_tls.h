@@ -33,10 +33,10 @@
 #ifndef _HTTPSRV_TLS_H_
 #define _HTTPSRV_TLS_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_config.h"
+#include "httpsrv_config.h"
 
 #if HTTPSRV_CFG_WOLFSSL_ENABLE || HTTPSRV_CFG_MBEDTLS_ENABLE
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
+#include "httpsrv.h"
 
 #if HTTPSRV_CFG_WOLFSSL_ENABLE 
 #include "wolfssl/ssl.h"

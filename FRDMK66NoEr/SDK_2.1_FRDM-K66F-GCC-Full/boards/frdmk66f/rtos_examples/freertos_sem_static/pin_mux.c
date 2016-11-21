@@ -28,10 +28,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/freertos_sem_static/pin_mux.h"
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_port.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
+#include "fsl_device_registers.h"
+#include "fsl_port.h"
+#include "pin_mux.h"
 
 /*******************************************************************************
  * Code

@@ -36,12 +36,12 @@
  *
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_IPV4
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
+#include "lwip/ip_addr.h"
+#include "lwip/netif.h"
 
 /* used by IP_ADDR_ANY and IP_ADDR_BROADCAST in ip_addr.h */
 const ip_addr_t ip_addr_any = IPADDR4_INIT(IPADDR_ANY);

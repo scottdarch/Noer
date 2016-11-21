@@ -31,16 +31,16 @@
  * 
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_SOCKET && LWIP_IGMP /* don't build if not configured for use in lwipopts.h */
 
 #include "lwip/sys.h"
 #include "lwip/sockets.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/rtp/rtp.h"
+#include "rtp.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/rtp/rtpdata.h"
+#include "rtpdata.h"
 
 #include <string.h>
 

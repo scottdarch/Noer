@@ -59,9 +59,8 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/slipif.h"
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "netif/slipif.h"
+#include "lwip/opt.h"
 
 #if LWIP_HAVE_SLIPIF
 

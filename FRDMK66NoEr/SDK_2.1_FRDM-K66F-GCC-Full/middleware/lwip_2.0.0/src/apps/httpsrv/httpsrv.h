@@ -33,12 +33,13 @@
 #ifndef _HTTPSRV_H_
 #define _HTTPSRV_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_fs.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/inet.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sockets.h"
+#include "httpsrv_config.h"
+
+#include "lwip/sockets.h"
+#include "lwip/inet.h"
+#include "httpsrv_fs.h"
 #if HTTPSRV_CFG_WEBSOCKET_ENABLED
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_ws.h"
+#include "httpsrv_ws.h"
 #endif
 
 /*

@@ -30,8 +30,8 @@
 #ifndef _ERPC_TRANSPORT_SETUP_H_
 #define _ERPC_TRANSPORT_SETUP_H_
 
+#include "erpc_version.h"
 #include <stdint.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/erpc_version.h"
 
 /*!
  * @addtogroup transport_setup

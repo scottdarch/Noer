@@ -37,8 +37,8 @@
 #ifndef LWIP_HDR_APPS_SNTP_H
 #define LWIP_HDR_APPS_SNTP_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/sntp_opts.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
+#include "lwip/apps/sntp_opts.h"
+#include "lwip/ip_addr.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -32,11 +32,10 @@
  * Author: Elias Oenal <lwip@eliasoenal.com>
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmpv3.h"
-
+#include "snmpv3_priv.h"
+#include "lwip/apps/snmpv3.h"
+#include "lwip/sys.h"
 #include <string.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/snmp/snmpv3_priv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
 
 #if LWIP_SNMP && LWIP_SNMP_V3
 

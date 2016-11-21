@@ -67,10 +67,9 @@
     1 tab == 4 spaces!
 */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/croutine.h"
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/task.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "croutine.h"
 
 /* Remove the whole file is co-routines are not being used. */
 #if( configUSE_CO_ROUTINES != 0 )

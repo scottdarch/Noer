@@ -30,11 +30,12 @@
 #ifndef __FSL_I2C_FREERTOS_H__
 #define __FSL_I2C_FREERTOS_H__
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_i2c.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/portable.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/template_application/FreeRTOSConfig.h"
+#include "FreeRTOSConfig.h"
+#include "FreeRTOS.h"
+#include "portable.h"
+#include "semphr.h"
+
+#include "fsl_i2c.h"
 
 /*!
  * @addtogroup i2c_freertos_driver I2C FreeRTOS driver

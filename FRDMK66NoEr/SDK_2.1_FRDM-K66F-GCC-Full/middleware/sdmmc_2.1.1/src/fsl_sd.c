@@ -28,8 +28,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/sdmmc_2.1.1/inc/fsl_card.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/sdmmc_2.1.1/inc/fsl_sdmmc.h"
+#include "fsl_card.h"
+#include "fsl_sdmmc.h"
 
 /*******************************************************************************
  * Prototypes

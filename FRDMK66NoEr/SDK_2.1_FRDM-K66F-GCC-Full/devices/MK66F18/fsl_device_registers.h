@@ -42,9 +42,9 @@
 #define K66F18_SERIES
 
 /* CMSIS-style register definitions */
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/MK66F18.h"
+#include "MK66F18.h"
 /* CPU specific feature definitions */
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/MK66F18_features.h"
+#include "MK66F18_features.h"
 
 #else
     #error "No valid CPU defined!"

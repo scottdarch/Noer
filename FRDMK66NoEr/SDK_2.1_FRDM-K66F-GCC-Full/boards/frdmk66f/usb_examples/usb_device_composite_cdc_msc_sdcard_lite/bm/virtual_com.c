@@ -27,20 +27,23 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+#include "fsl_device_registers.h"
+#include "clock_config.h"
+#include "board.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard_lite/bm/board.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard_lite/bm/clock_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard_lite/bm/composite.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard_lite/bm/usb_device_cdc_acm.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard_lite/bm/usb_device_ch9.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard_lite/bm/usb_device_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard_lite/bm/usb_device_descriptor.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/device/usb_device.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb.h"
+#include "usb_device_config.h"
+#include "usb.h"
+#include "usb_device.h"
+
+#include "usb_device_cdc_acm.h"
+#include "usb_device_ch9.h"
+#include "fsl_debug_console.h"
+
+#include "usb_device_descriptor.h"
+#include "composite.h"
 /*******************************************************************************
 * Definitions
 ******************************************************************************/

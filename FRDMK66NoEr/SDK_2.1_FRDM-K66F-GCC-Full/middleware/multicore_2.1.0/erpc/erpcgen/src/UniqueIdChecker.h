@@ -35,9 +35,9 @@
 #include <utility>
 #include <string>
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/InterfaceDefinition.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Interface.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/SymbolScope.h"
+#include "InterfaceDefinition.h"
+#include "Interface.h"
+#include "SymbolScope.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

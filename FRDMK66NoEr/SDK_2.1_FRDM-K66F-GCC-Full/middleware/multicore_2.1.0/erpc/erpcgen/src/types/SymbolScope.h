@@ -33,8 +33,7 @@
 #include <string>
 #include <map>
 #include <vector>
-
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Symbol.h"
+#include "Symbol.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

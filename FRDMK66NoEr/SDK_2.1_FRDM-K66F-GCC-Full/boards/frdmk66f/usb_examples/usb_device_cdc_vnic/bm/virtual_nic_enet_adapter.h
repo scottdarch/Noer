@@ -31,7 +31,7 @@
 #ifndef _VIRTUAL_NIC_ENET_ADAPTER_H_
 #define _VIRTUAL_NIC_ENET_ADAPTER_H_ 1
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_cdc_vnic/bm/virtual_nic.h"
+#include "virtual_nic.h"
 /*******************************************************************************
 * Definitions
 ******************************************************************************/

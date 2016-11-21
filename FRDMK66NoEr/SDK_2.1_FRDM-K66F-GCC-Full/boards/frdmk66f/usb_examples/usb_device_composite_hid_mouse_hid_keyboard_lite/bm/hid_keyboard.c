@@ -28,15 +28,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_mouse_hid_keyboard_lite/bm/hid_keyboard.h"
+#include "usb_device_config.h"
+#include "usb.h"
+#include "usb_device.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_mouse_hid_keyboard_lite/bm/composite.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_mouse_hid_keyboard_lite/bm/usb_device_ch9.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_mouse_hid_keyboard_lite/bm/usb_device_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_mouse_hid_keyboard_lite/bm/usb_device_descriptor.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_mouse_hid_keyboard_lite/bm/usb_device_hid.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/device/usb_device.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb.h"
+#include "usb_device_hid.h"
+
+#include "usb_device_ch9.h"
+#include "usb_device_descriptor.h"
+
+#include "composite.h"
+
+#include "hid_keyboard.h"
 
 /*******************************************************************************
  * Definitions

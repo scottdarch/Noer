@@ -32,7 +32,7 @@
 #ifndef LWIP_HDR_APPS_NETBIOS_OPTS_H
 #define LWIP_HDR_APPS_NETBIOS_OPTS_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 /**
  * @defgroup netbiosns_opts Options

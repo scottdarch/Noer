@@ -31,7 +31,7 @@
 #ifndef _POWER_MODE_SWITCH_H_
 #define _POWER_MODE_SWITCH_H_
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
 
 /*******************************************************************************
  * Definitions

@@ -46,10 +46,10 @@
 #ifndef _FSL_UART_CMSIS_H_
 #define _FSL_UART_CMSIS_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/cmsis_driver_examples/i2c/edma_transfer/RTE_Device.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/CMSIS/Driver/Include/Driver_USART.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_uart.h"
+#include "fsl_common.h"
+#include "Driver_USART.h"
+#include "RTE_Device.h"
+#include "fsl_uart.h"
 #if (defined(FSL_FEATURE_SOC_DMAMUX_COUNT) && FSL_FEATURE_SOC_DMAMUX_COUNT)
 #include "fsl_dmamux.h"
 #endif

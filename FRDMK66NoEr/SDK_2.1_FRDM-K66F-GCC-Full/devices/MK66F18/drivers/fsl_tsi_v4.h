@@ -30,7 +30,7 @@
 #ifndef _FSL_TSI_V4_H_
 #define _FSL_TSI_V4_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
 
 /*!
  * @addtogroup tsi_v4_driver

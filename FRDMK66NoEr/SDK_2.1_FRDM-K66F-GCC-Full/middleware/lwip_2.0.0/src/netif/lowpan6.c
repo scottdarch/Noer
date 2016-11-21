@@ -45,7 +45,7 @@
  * 6LowPAN netif implementation
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/lowpan6.h"
+#include "netif/lowpan6.h"
 
 #if LWIP_IPV6 && LWIP_6LOWPAN
 

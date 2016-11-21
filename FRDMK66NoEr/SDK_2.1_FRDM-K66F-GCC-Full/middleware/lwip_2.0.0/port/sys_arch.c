@@ -37,18 +37,19 @@
 //*****************************************************************************
 
 /* ------------------------ System architecture includes ----------------------------- */
-#include "lwip/debug.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/arch/sys_arch.h"
+#include "arch/sys_arch.h"
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/debug.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mem.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
+/* ------------------------ lwIP includes --------------------------------- */
+#include "lwip/opt.h"
+
+#include "lwip/debug.h"
+#include "lwip/def.h"
+#include "lwip/sys.h"
+#include "lwip/mem.h"
+#include "lwip/stats.h"
 #if NO_SYS
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_pit.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/init.h"
+#include "fsl_pit.h"
+#include "lwip/init.h"
 #endif
 
 #if LWIP_SOCKET_SET_ERRNO

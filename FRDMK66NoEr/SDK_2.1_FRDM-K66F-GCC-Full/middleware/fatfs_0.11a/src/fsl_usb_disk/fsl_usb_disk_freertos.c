@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/fsl_usb_disk/fsl_usb_disk.h" /* FatFs lower layer API */
+#include "fsl_usb_disk.h" /* FatFs lower layer API */
 
 /*******************************************************************************
  * Definitons

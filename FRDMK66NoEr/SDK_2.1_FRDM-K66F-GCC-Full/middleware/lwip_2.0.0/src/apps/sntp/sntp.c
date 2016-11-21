@@ -4,7 +4,7 @@
  */
 
 /*
- * Copyright (c) 2007-2009 Frï¿½dï¿½ric Bernon, Simon Goldschmidt
+ * Copyright (c) 2007-2009 Frédéric Bernon, Simon Goldschmidt
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -31,7 +31,7 @@
  *
  * This file is part of the lwIP TCP/IP stack.
  *
- * Author: Frï¿½dï¿½ric Bernon, Simon Goldschmidt
+ * Author: Frédéric Bernon, Simon Goldschmidt
  */
 
 
@@ -50,17 +50,18 @@
  * - complete SNTP_CHECK_RESPONSE checks 3 and 4
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/sntp.h"
+#include "lwip/apps/sntp.h"
+
+#include "lwip/opt.h"
+#include "lwip/timeouts.h"
+#include "lwip/udp.h"
+#include "lwip/dns.h"
+#include "lwip/ip_addr.h"
+#include "lwip/pbuf.h"
+#include "lwip/dhcp.h"
 
 #include <string.h>
 #include <time.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/dhcp.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/dns.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/pbuf.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/timeouts.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/udp.h"
 
 #if LWIP_UDP
 

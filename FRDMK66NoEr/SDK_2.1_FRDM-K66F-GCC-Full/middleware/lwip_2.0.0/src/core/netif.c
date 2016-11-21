@@ -37,19 +37,19 @@
  * Author: Adam Dunkels <adam@sics.se>
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
+#include "lwip/opt.h"
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/etharp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/igmp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip6_addr.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/tcp_priv.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/snmp.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/udp.h"
+#include "lwip/def.h"
+#include "lwip/ip_addr.h"
+#include "lwip/ip6_addr.h"
+#include "lwip/netif.h"
+#include "lwip/priv/tcp_priv.h"
+#include "lwip/udp.h"
+#include "lwip/snmp.h"
+#include "lwip/igmp.h"
+#include "lwip/etharp.h"
+#include "lwip/stats.h"
+#include "lwip/sys.h"
 #if ENABLE_LOOPBACK
 #if LWIP_NETIF_LOOPBACK_MULTITHREADING
 #include "lwip/tcpip.h"
@@ -60,7 +60,7 @@
 #include "lwip/autoip.h"
 #endif /* LWIP_AUTOIP */
 #if LWIP_DHCP
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/dhcp.h"
+#include "lwip/dhcp.h"
 #endif /* LWIP_DHCP */
 #if LWIP_IPV6_DHCP6
 #include "lwip/dhcp6.h"

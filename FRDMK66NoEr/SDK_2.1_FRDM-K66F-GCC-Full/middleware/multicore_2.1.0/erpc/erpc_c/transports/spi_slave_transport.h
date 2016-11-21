@@ -31,10 +31,9 @@
 #define _EMBEDDED_RPC__SPI_SLAVE_TRANSPORT_H_
 
 #include <stdlib.h>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/framed_transport.h"
+#include "framed_transport.h"
 #include "fsl_spi.h"
+#include "fsl_gpio.h"
 
 /*!
  * @addtogroup spi_slave_transport

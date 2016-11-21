@@ -32,8 +32,8 @@
 #ifndef LWIP_HDR_APPS_FS_H
 #define LWIP_HDR_APPS_FS_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/httpd_opts.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/err.h"
+#include "httpd_opts.h"
+#include "lwip/err.h"
 
 #ifdef __cplusplus
 extern "C" {

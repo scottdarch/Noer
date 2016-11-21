@@ -37,8 +37,8 @@ extern "C" {
 	#include "os.h"
 #endif
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/integer.h"	/* Basic integer types */
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard_fatfs/ffconf.h"		/* FatFs configuration options */
+#include "integer.h"	/* Basic integer types */
+#include "ffconf.h"		/* FatFs configuration options */
 #if _FATFS != _FFCONF
 #error Wrong configuration file (ffconf.h).
 #endif

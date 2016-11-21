@@ -44,7 +44,7 @@
 #ifndef LWIP_HDR_AUTOIP_H
 #define LWIP_HDR_AUTOIP_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_IPV4 && LWIP_AUTOIP /* don't build if not configured for use in lwipopts.h */
 

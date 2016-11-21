@@ -42,15 +42,15 @@
 #ifndef LWIP_HDR_NETIF_ETHARP_H
 #define LWIP_HDR_NETIF_ETHARP_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_ARP || LWIP_ETHERNET /* don't build if not configured for use in lwipopts.h */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/pbuf.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip4_addr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip4.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ethernet.h"
+#include "lwip/pbuf.h"
+#include "lwip/ip4_addr.h"
+#include "lwip/netif.h"
+#include "lwip/ip4.h"
+#include "netif/ethernet.h"
 
 #ifdef __cplusplus
 extern "C" {

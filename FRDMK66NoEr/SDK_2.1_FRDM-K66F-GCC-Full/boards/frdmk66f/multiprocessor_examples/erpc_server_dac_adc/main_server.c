@@ -28,33 +28,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "fsl_debug_console.h"
+#include "board.h"
+#include "fsl_adc16.h"
+#include "fsl_gpio.h"
+#include "erpc_server_setup.h"
+#include "erpc_transport_setup.h"
+#include "erpc_dac_adc_server.h"
+#include "erpc_error_handler.h"
+#include "erpc_dac_adc.h"
 #include "string.h" //strcpy
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_common/erpc_error_handler.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_server_dac_adc/board.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_server_dac_adc/service/erpc_dac_adc.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_server_dac_adc/service/erpc_dac_adc_server.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_adc16.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/setup/erpc_server_setup.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/setup/erpc_transport_setup.h"
 #ifdef BOARD_DAC_BASEADDR
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_dac.h"
+#include "fsl_dac.h"
 #endif
 
 #if BOARD_DEBUG_UART_TYPE == DEBUG_CONSOLE_DEVICE_TYPE_UART
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/cmsis_drivers/fsl_uart_cmsis.h"
+#include "fsl_uart_cmsis.h"
 #elif BOARD_DEBUG_UART_TYPE == DEBUG_CONSOLE_DEVICE_TYPE_LPUART
 #include "fsl_lpuart_cmsis.h"
 #elif BOARD_DEBUG_UART_TYPE == DEBUG_CONSOLE_DEVICE_TYPE_LPSCI
 #include "fsl_lpsci_cmsis.h"
 #endif
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_server_dac_adc/clock_config.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_server_dac_adc/pin_mux.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_port.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "clock_config.h"
+#include "pin_mux.h"
+#include "fsl_port.h"
+#include "fsl_common.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

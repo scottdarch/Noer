@@ -37,7 +37,7 @@
 #include "fsl_device_registers.h"
 #include "bootloader_common.h"
 #else
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
 #endif
 
 /*******************************************************************************

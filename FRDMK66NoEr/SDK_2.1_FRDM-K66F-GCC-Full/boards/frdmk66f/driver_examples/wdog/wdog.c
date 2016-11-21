@@ -32,12 +32,14 @@
  * Includes
  ******************************************************************************/
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/wdog/board.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/wdog/clock_config.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/wdog/pin_mux.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_rcm.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_wdog.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
+#include "fsl_debug_console.h"
+#include "board.h"
+
+#include "fsl_wdog.h"
+#include "fsl_rcm.h"
+
+#include "pin_mux.h"
+#include "clock_config.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

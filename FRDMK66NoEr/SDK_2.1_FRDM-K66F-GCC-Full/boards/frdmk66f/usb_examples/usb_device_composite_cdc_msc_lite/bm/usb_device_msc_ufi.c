@@ -28,13 +28,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_lite/bm/usb_device_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/device/usb_device.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb.h"
+#include "usb_device_config.h"
+#include "usb.h"
+#include "usb_device.h"
 
 #if USB_DEVICE_CONFIG_MSC
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_lite/bm/usb_device_msc_ufi.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_lite/bm/usb_device_msc.h"
+#include "usb_device_msc_ufi.h"
+#include "usb_device_msc.h"
 
 /*******************************************************************************
 * Variables

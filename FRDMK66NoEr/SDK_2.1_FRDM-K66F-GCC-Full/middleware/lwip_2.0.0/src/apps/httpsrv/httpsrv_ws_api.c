@@ -29,10 +29,10 @@
  */
 /*   This file contains API functions for WebSocket protocol.*/
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_port.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_ws_prv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
+#include "httpsrv.h"
+#include "httpsrv_ws_prv.h"
+#include "httpsrv_port.h"
+#include "lwip/sys.h"
 
 
 #if HTTPSRV_CFG_WEBSOCKET_ENABLED

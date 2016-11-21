@@ -33,7 +33,7 @@
 #ifndef __httpsrv_base64_h__
 #define __httpsrv_base64_h__
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/inet.h"
+#include "lwip/inet.h"
 #ifdef __cplusplus
 extern "C" {
 #endif

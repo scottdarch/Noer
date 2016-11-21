@@ -31,9 +31,8 @@
 #define _EMBEDDED_RPC__DSPI_MASTER_TRANSPORT_H_
 
 #include <stdlib.h>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_dspi.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/framed_transport.h"
+#include "framed_transport.h"
+#include "fsl_dspi.h"
 
 /*!
  * @addtogroup dspi_master_transport

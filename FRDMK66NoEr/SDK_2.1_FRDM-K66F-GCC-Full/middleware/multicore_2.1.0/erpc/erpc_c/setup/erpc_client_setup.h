@@ -31,9 +31,8 @@
 #define _EMBEDDED_RPC__CLIENT_SETUP_H_
 
 #include <stdint.h>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/erpc_common.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/setup/erpc_transport_setup.h"
+#include "erpc_transport_setup.h"
+#include "erpc_common.h"
 
 /*!
  * @addtogroup client_setup

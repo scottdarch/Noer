@@ -31,8 +31,8 @@
 #ifndef _FSL_DMAMGR_H_
 #define _FSL_DMAMGR_H_
 
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_dmamux.h"
+#include "fsl_common.h"
+#include "fsl_dmamux.h"
 #if defined(FSL_FEATURE_SOC_DMA_COUNT) && FSL_FEATURE_SOC_DMA_COUNT > 0U
 #include "fsl_dma.h"
 #endif /* FSL_FEATURE_SOC_DMA_COUNT */

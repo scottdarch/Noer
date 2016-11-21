@@ -28,12 +28,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host_hci.h"
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_cdc/bm/usb_host_config.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host_devices.h"
+#include "usb_host_config.h"
+#include "usb_host.h"
+#include "usb_host_hci.h"
+#include "usb_host_devices.h"
+#include "fsl_device_registers.h"
 
 /*******************************************************************************
  * Definitions
@@ -87,7 +86,7 @@ extern void USB_HostEhciTestModeInit(usb_device_handle devHandle);
 usb_host_instance_t g_UsbHostInstance[USB_HOST_CONFIG_MAX_HOST];
 
 #if ((defined USB_HOST_CONFIG_EHCI) && (USB_HOST_CONFIG_EHCI))
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host_ehci.h"
+#include "usb_host_ehci.h"
 static const usb_host_controller_interface_t s_EhciInterface = \
 {
     USB_HostEhciCreate,    USB_HostEhciDestory,  USB_HostEhciOpenPipe, USB_HostEhciClosePipe,
@@ -96,7 +95,7 @@ static const usb_host_controller_interface_t s_EhciInterface = \
 #endif /* USB_HOST_CONFIG_EHCI */
 
 #if ((defined USB_HOST_CONFIG_KHCI) && (USB_HOST_CONFIG_KHCI))
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host_khci.h"
+#include "usb_host_khci.h"
 static const usb_host_controller_interface_t s_KhciInterface = \
 {
     USB_HostKhciCreate,    USB_HostKhciDestory,  USB_HostKhciOpenPipe, USB_HostKhciClosePipe,

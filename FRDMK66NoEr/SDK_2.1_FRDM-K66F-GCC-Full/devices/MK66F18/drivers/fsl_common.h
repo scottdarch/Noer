@@ -35,8 +35,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
+#include "fsl_device_registers.h"
 
 /*!
  * @addtogroup ksdk_common
@@ -129,7 +128,7 @@ typedef int32_t status_t;
  * The fsl_clock.h is included here because it needs MAKE_VERSION/MAKE_STATUS/status_t
  * defined in previous of this file.
  */
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_clock.h"
+#include "fsl_clock.h"
 
 /*
  * Chip level peripheral reset API, for MCUs that implement peripheral reset control external to a peripheral

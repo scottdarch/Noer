@@ -30,10 +30,10 @@
 #ifndef _EMBEDDED_RPC__UNIONTYPE_H_
 #define _EMBEDDED_RPC__UNIONTYPE_H_
 
+#include "DataType.h"
+#include "UnionCase.h"
+#include "StructType.h"
 #include <map>
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/DataType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/StructType.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/UnionCase.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

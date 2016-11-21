@@ -1,4 +1,4 @@
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_fs.h"
+#include <httpsrv_fs.h>
 
 extern const HTTPSRV_FS_DIR_ENTRY httpsrv_fs_data[];
 

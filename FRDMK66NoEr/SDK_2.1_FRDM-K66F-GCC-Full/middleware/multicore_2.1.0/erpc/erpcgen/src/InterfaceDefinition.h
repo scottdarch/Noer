@@ -31,10 +31,10 @@
 #define _EMBEDDED_RPC__INTERFACEDEFINITION_H_
 
 #include <iostream>
+#include "AstNode.h"
+#include "types/SymbolScope.h"
+#include "types/Program.h"
 #include <boost/filesystem.hpp>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/AstNode.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/Program.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/types/SymbolScope.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

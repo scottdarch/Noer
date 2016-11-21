@@ -37,8 +37,8 @@
 #ifndef LWIP_HDR_DEBUG_H
 #define LWIP_HDR_DEBUG_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/arch.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/arch.h"
+#include "lwip/opt.h"
 
 /** lower two bits indicate debug level
  * - 0 all

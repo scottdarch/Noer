@@ -30,8 +30,8 @@
 #ifndef _EMBEDDED_RPC__PORT_H_
 #define _EMBEDDED_RPC__PORT_H_
 
+#include "erpc_config_internal.h"
 #include <stddef.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/port/erpc_config_internal.h"
 
 /*!
  * @addtogroup port_mem

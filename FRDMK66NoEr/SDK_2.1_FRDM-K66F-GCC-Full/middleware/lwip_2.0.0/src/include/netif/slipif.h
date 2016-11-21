@@ -40,8 +40,8 @@
 #ifndef LWIP_HDR_NETIF_SLIPIF_H
 #define LWIP_HDR_NETIF_SLIPIF_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
+#include "lwip/netif.h"
 
 /** Set this to 1 to start a thread that blocks reading on the serial line
  * (using sio_read()).

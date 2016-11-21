@@ -30,7 +30,7 @@
 #ifndef _ERPC_DETECT_H_
 #define _ERPC_DETECT_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/config/erpc_config.h"
+#include "erpc_config.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Declarations

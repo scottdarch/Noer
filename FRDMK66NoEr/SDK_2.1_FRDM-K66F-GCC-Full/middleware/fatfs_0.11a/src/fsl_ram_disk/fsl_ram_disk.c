@@ -28,10 +28,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/fsl_ram_disk/fsl_ram_disk.h"
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/sdcard_fatfs/ffconf.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
+#include "fsl_ram_disk.h"
+#include "ffconf.h"
 
 /*******************************************************************************
  * Definitions

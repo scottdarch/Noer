@@ -28,22 +28,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/ieee11073_agent.h"
-
+#include "usb_device_config.h"
+#include "usb.h"
+#include "ieee11073_timer.h"
+#include "ieee11073_types.h"
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/ieee11073_timer.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/ieee11073_timer.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/ieee11073_types.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/usb_device_class.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/usb_device_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/usb_device_descriptor.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_phdc_weighscale/freertos/usb_shim_agent.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/device/usb_device.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb.h"
+#include "fsl_debug_console.h"
+#include "ieee11073_timer.h"
+#include "ieee11073_agent.h"
+#include "usb_device.h"
+#include "usb_device_class.h"
+#include "usb_device_descriptor.h"
+#include "usb_shim_agent.h"
 
 /*******************************************************************************
  * Definitions

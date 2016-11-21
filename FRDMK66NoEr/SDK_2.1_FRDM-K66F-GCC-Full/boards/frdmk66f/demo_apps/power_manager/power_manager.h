@@ -31,8 +31,8 @@
 #ifndef _POWER_MANAGER_H_
 #define _POWER_MANAGER_H_
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_notifier.h"
+#include "fsl_common.h"
+#include "fsl_notifier.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

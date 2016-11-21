@@ -40,12 +40,11 @@
 //    - Added PARSE_POS control flag and POSITIONAL return value.
 // ^^**************************************************************************
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/options.h"
-
 #include <ctype.h>
 #include <string.h>
 #include <cstdlib>
 
+#include "options.h"
 
 using namespace std;
 

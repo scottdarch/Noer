@@ -32,13 +32,13 @@
 #ifndef __httpsrv_ws_prv_h__
 #define __httpsrv_ws_prv_h__
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
+#include "httpsrv.h"
 
 #if HTTPSRV_CFG_WEBSOCKET_ENABLED
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_ws.h"
+#include "httpsrv_ws.h"
 
 /* GUID as defined in RFC6455. */
 #define WS_GUID_STRING "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"

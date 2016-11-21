@@ -35,7 +35,7 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netdb.h"
+#include "lwip/netdb.h"
 
 #if LWIP_DNS && LWIP_SOCKET
 

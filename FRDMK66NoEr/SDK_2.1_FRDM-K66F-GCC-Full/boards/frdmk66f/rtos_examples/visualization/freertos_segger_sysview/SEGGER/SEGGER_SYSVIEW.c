@@ -145,11 +145,11 @@ Additional information:
 **********************************************************************
 */
 
+#include "SEGGER_SYSVIEW_Int.h"
+#include "SEGGER_RTT.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER_RTT.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER_SYSVIEW_Int.h"
 
 /*********************************************************************
 *

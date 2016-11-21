@@ -33,12 +33,12 @@
  *         Dirk Ziegelmeier <dirk@ziegelmeier.net>
  */
 
+#include "lwip/apps/snmpv3.h"
+#include "snmpv3_priv.h"
+#include "lwip/arch.h"
+#include "snmp_msg.h"
+#include "lwip/sys.h"
 #include <string.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/snmp/snmp_msg.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/snmp/snmpv3_priv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmpv3.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/arch.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
 
 #if LWIP_SNMP && LWIP_SNMP_V3 && LWIP_SNMP_V3_MBEDTLS
 

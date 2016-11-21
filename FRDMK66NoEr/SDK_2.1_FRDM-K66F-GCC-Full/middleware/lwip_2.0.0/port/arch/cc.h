@@ -86,7 +86,7 @@ typedef u32_t mem_ptr_t;
 #define PACK_STRUCT_FIELD(x) x
 
 // Platform specific diagnostic output
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/arch/sys_arch.h"//FSL
+#include "sys_arch.h"//FSL
 
 // non-fatal, print a message.
 #define LWIP_PLATFORM_DIAG(x)                     do {PRINTF x;PRINTF("\r\n");} while(0)

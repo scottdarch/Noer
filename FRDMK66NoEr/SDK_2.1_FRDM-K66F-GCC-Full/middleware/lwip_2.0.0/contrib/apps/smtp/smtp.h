@@ -6,7 +6,7 @@
 #define SMTP_BODYDH               0
 #endif
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/err.h"
+#include "lwip/err.h"
 
 /** The default TCP port used for SMTP */
 #define SMTP_DEFAULT_PORT  25

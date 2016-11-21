@@ -31,8 +31,8 @@
 #ifndef _BOARD_H_
 #define _BOARD_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/cmsis_driver_examples/i2c/interrupt_transfer/clock_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
+#include "clock_config.h"
+#include "fsl_gpio.h"
 
 /*******************************************************************************
  * Definitions

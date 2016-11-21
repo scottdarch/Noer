@@ -43,8 +43,7 @@
 #define TRCTYPES_H
 
 #include <stdint.h>
-
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/trcConfig.h"
+#include <trcConfig.h>
 
 typedef uint16_t traceLabel;
 

@@ -40,10 +40,9 @@ PinsProfile:
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR THE PINS TOOL ***
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/driver_examples/ftm/combine_pwm/pin_mux.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_port.h"
+#include "fsl_common.h"
+#include "fsl_port.h"
+#include "pin_mux.h"
 
 #define PIN8_IDX                         8u   /*!< Pin number for pin 8 in a port */
 #define PIN9_IDX                         9u   /*!< Pin number for pin 9 in a port */

@@ -45,10 +45,10 @@
 
 #ifndef _FSL_I2C_CMSIS_H_
 #define _FSL_I2C_CMSIS_H_
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/cmsis_driver_examples/i2c/edma_transfer/RTE_Device.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/CMSIS/Driver/Include/Driver_I2C.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_i2c.h"
+#include "fsl_common.h"
+#include "Driver_I2C.h"
+#include "RTE_Device.h"
+#include "fsl_i2c.h"
 #if (defined(FSL_FEATURE_SOC_DMAMUX_COUNT) && FSL_FEATURE_SOC_DMAMUX_COUNT)
 #include "fsl_dmamux.h"
 #endif

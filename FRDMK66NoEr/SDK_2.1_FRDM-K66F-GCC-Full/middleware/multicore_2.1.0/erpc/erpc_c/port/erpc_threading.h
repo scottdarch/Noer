@@ -30,8 +30,8 @@
 #ifndef __embedded_rpc__thread__
 #define __embedded_rpc__thread__
 
+#include "erpc_config_internal.h"
 #include <stdint.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/port/erpc_config_internal.h"
 
 // Exclude the rest of the file if threading is disabled.
 #if ERPC_THREADS

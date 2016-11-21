@@ -28,15 +28,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/fsl_sdspi_disk/fsl_sdspi_disk.h"
-
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_dspi.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_gpio.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/sdmmc_2.1.1/inc/fsl_sdspi.h"
+#include "fsl_dspi.h"
+#include "fsl_sdspi.h"
+#include "fsl_gpio.h"
+#include "fsl_sdspi_disk.h"
 
 /*******************************************************************************
  * Definitons

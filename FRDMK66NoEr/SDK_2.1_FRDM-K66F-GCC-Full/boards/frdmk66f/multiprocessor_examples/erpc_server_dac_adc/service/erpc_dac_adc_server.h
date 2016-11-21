@@ -9,8 +9,8 @@
 
 
 #ifdef __cplusplus
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/multiprocessor_examples/erpc_server_dac_adc/service/erpc_dac_adc.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/server.h"
+#include "erpc_dac_adc.h"
+#include "server.h"
 #include <stdint.h>
 #include <stdbool.h>
 

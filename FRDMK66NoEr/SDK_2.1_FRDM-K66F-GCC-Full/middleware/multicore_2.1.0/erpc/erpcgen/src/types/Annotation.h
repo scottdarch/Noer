@@ -31,10 +31,9 @@
 #define _EMBEDDED_RPC__ANNOTATION_H_
 
 #include <string>
-
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/AstNode.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Token.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Value.h"
+#include "Value.h"
+#include "Token.h"
+#include "AstNode.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

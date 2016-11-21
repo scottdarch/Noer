@@ -37,7 +37,7 @@
 #ifndef LWIP_HDR_TCPIP_H
 #define LWIP_HDR_TCPIP_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if !NO_SYS /* don't build if not configured for use in lwipopts.h */
 

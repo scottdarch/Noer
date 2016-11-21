@@ -33,11 +33,10 @@
 *   HTTPSRV script functions.
 */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_script.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_prv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_supp.h"
+#include "httpsrv.h"
+#include "httpsrv_prv.h"
+#include "httpsrv_supp.h"
+#include "httpsrv_script.h"
 
 /*
 ** Function for searching callback for name in function table (SSI/CGI)

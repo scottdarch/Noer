@@ -41,7 +41,7 @@
 #ifndef LWIP_HDR_LOWPAN6_OPTS_H
 #define LWIP_HDR_LOWPAN6_OPTS_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #ifndef LWIP_6LOWPAN
 #define LWIP_6LOWPAN                     0

@@ -44,17 +44,17 @@ extern "C" {
 
 /* run once with empty definition to handle all custom includes in lwippools.h */
 #define LWIP_MEMPOOL(name,num,size,desc)
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/memp_std.h"
+#include "lwip/priv/memp_std.h"
 
 /** Create the list of all memory pools managed by memp. MEMP_MAX represents a NULL pool at the end */
 typedef enum {
 #define LWIP_MEMPOOL(name,num,size,desc)  MEMP_##name,
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/memp_std.h"
+#include "lwip/priv/memp_std.h"
   MEMP_MAX
 } memp_t;
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/priv/memp_priv.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
+#include "lwip/priv/memp_priv.h"
+#include "lwip/stats.h"
 
 extern const struct memp_desc* const memp_pools[MEMP_MAX];
 

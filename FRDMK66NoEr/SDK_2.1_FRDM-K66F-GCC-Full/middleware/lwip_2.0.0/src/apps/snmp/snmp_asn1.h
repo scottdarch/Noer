@@ -38,13 +38,13 @@
 #ifndef LWIP_HDR_APPS_SNMP_ASN1_H
 #define LWIP_HDR_APPS_SNMP_ASN1_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_opts.h"
+#include "lwip/apps/snmp_opts.h"
 
 #if LWIP_SNMP
 
 #include "lwip/err.h"
 #include "lwip/apps/snmp_core.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/snmp/snmp_pbuf_stream.h"
+#include "snmp_pbuf_stream.h"
 
 #ifdef __cplusplus
 extern "C" {

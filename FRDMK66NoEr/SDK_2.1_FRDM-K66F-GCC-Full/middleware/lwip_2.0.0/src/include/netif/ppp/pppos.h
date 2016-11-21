@@ -31,7 +31,7 @@
  *
  */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 #if PPP_SUPPORT && PPPOS_SUPPORT /* don't build if not configured for use in lwipopts.h */
 
 #ifndef PPPOS_H
@@ -39,8 +39,8 @@
 
 #include "lwip/sys.h"
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/vj.h"
+#include "ppp.h"
+#include "vj.h"
 
 /* PPP packet parser states.  Current state indicates operation yet to be
  * completed. */

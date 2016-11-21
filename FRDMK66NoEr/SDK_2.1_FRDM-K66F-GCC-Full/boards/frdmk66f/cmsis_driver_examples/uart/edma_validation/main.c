@@ -47,13 +47,13 @@
  *---------------------------------------------------------------------------*/
 
 #define osObjectsPublic // define objects in main module
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/cmsis_driver_examples/uart/edma_validation/osObjects.h"  // RTOS object definitions
+#include "osObjects.h"  // RTOS object definitions
 #include "cmsis_dv.h"
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/cmsis_driver_examples/uart/edma_validation/pin_mux.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/cmsis_driver_examples/uart/edma_validation/board.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/cmsis_driver_examples/uart/edma_validation/clock_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/dma_manager_2.0.0/fsl_dma_manager.h"
+#include "pin_mux.h"
+#include "board.h"
+#include "clock_config.h"
+#include "fsl_dma_manager.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

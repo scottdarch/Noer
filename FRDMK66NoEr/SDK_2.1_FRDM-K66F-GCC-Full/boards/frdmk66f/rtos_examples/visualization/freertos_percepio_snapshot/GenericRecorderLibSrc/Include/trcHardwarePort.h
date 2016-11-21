@@ -120,7 +120,7 @@
 #define PORT_ARM_CORTEX_A9					16	/*	Yes			Any					*/
 #define PORT_ARM_CORTEX_M0					17	/*	Yes			Any					*/
 
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/trcConfig.h"
+#include "trcConfig.h"
 
 /*******************************************************************************
  * IRQ_PRIORITY_ORDER

@@ -67,7 +67,7 @@ Revision: $Rev: 3667 $
 #ifndef SEGGER_RTT_H
 #define SEGGER_RTT_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/Config/SEGGER_RTT_Conf.h"
+#include "SEGGER_RTT_Conf.h"
 
 /*********************************************************************
 *

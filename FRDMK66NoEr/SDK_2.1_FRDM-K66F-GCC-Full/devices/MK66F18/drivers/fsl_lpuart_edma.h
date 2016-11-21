@@ -30,9 +30,9 @@
 #ifndef _FSL_LPUART_EDMA_H_
 #define _FSL_LPUART_EDMA_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_dmamux.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_edma.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_lpuart.h"
+#include "fsl_lpuart.h"
+#include "fsl_dmamux.h"
+#include "fsl_edma.h"
 
 /*!
  * @addtogroup lpuart_edma_driver

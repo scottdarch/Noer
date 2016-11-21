@@ -32,7 +32,7 @@
  * Includes
  ******************************************************************************/
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_SOCKET
 #include <stdio.h>
@@ -50,13 +50,13 @@
 #include "netif/etharp.h"
 
 #include "ethernetif.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_httpsrv/freertos/board.h"
+#include "board.h"
 
 #include "httpsrv.h"
 
 #include "fsl_device_registers.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_httpsrv/freertos/pin_mux.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/lwip/lwip_httpsrv/freertos/clock_config.h"
+#include "pin_mux.h"
+#include "clock_config.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/

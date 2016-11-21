@@ -277,8 +277,8 @@ typedef enum IRQn {
 #define __Vendor_SysTickConfig         0         /**< Vendor specific implementation of SysTickConfig is defined */
 #define __FPU_PRESENT                  1         /**< Defines if an FPU is present or not */
 
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/CMSIS/Include/core_cm4.h"                  /* Core Peripheral Access Layer */
-#include "../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/system_MK66F18.h"            /* Device specific configuration file */
+#include "core_cm4.h"                  /* Core Peripheral Access Layer */
+#include "system_MK66F18.h"            /* Device specific configuration file */
 
 /*!
  * @}

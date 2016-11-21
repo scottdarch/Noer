@@ -31,7 +31,7 @@
 #ifndef __httpsrv_ws_h__
 #define __httpsrv_ws_h__
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv.h"
+#include "httpsrv.h"
 
 #if HTTPSRV_CFG_WEBSOCKET_ENABLED
 

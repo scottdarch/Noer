@@ -42,7 +42,7 @@
 #ifndef LWIP_HDR_LOWPAN6_H
 #define LWIP_HDR_LOWPAN6_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/lowpan6_opts.h"
+#include "netif/lowpan6_opts.h"
 
 #if LWIP_IPV6 && LWIP_6LOWPAN /* don't build if not configured for use in lwipopts.h */
 

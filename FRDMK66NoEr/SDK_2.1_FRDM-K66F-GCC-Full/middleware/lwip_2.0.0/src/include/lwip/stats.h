@@ -37,9 +37,10 @@
 #ifndef LWIP_HDR_STATS_H
 #define LWIP_HDR_STATS_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mem.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/memp.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
+
+#include "lwip/mem.h"
+#include "lwip/memp.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -1,3 +1,9 @@
+/**
+ * CLEMENTINE! NO!                                ^ ^
+ *                                                O O
+ *                                                 ~
+ *----------------------------------------------U-----U------------------------
+ */
 #include "fsl_debug_console.h"
 #include "fsl_smc.h"
 #include "fsl_pmc.h"
@@ -6,6 +12,46 @@
 #include "arm_math.h"
 #include "pin_mux.h"
 #include "clock_config.h"
+
+#include "fsl_i2c.h"
+
+typedef struct VL6180X_ID_t {
+    uint8_t id : 8;
+    uint8_t reserved_0 : 5;
+    uint8_t model_maj : 3;
+    uint8_t reserved_1 : 5;
+    uint8_t model_min : 3;
+    uint8_t reserved_2 : 5;
+    uint8_t mod_maj : 3;
+    uint8_t reserved_3 : 5;
+    uint8_t mod_min : 3;
+    uint8_t man_year : 4;
+    uint8_t man_mon : 4;
+    uint8_t man_day : 5;
+    uint8_t man_phase : 3;
+    uint16_t man_time : 16;
+} VL6180X_ID;
+
+#define VL6180X_I2C_ADDRESS 0x29
+
+#define VL6180X_REG_IDENTIFICATION__MODEL_ID 0x000
+
+i2c_master_handle_t _sensor_bus;
+i2c_master_config_t _sensor_bus_config;
+i2c_master_transfer_t _sensor_bus_tranfer;
+
+/* Delay some time united in milliseconds. */
+void Delay(uint32_t milliseconds)
+{
+    uint32_t i;
+    uint32_t j;
+
+    for (i = 0; i < milliseconds; i++) {
+        for (j = 0; j < 10000U; j++) {
+            __asm("NOP");
+        }
+    }
+}
 
 void SysTick_Handler(void)
 {
@@ -23,7 +69,37 @@ int main()
     BOARD_BootClockHSRUN();
     BOARD_InitDebugConsole();
 
+    PRINTF("FRDMK66 is pretty cool\n");
+    LED_RED_INIT(0);
+    LED_BLUE_INIT(1);
+
+    I2C_MasterGetDefaultConfig(&_sensor_bus_config);
+    _sensor_bus_config.baudRate_Bps    = 200000U;
+    _sensor_bus_config.enableHighDrive = false;
+    _sensor_bus_config.enableMaster    = true;
+
+    I2C_MasterInit(I2C1, &_sensor_bus_config, CLOCK_GetFreq(I2C1_CLK_SRC));
+
+    memset(&_sensor_bus_tranfer, 0, sizeof(_sensor_bus_tranfer));
+    memset(&_sensor_bus, 0, sizeof(_sensor_bus));
+    uint16_t addr = VL6180X_REG_IDENTIFICATION__MODEL_ID;
+    VL6180X_ID id;
+
+    _sensor_bus_tranfer.slaveAddress   = VL6180X_I2C_ADDRESS;
+    _sensor_bus_tranfer.direction      = kI2C_Write;
+    _sensor_bus_tranfer.subaddress     = 0;
+    _sensor_bus_tranfer.subaddressSize = 0;
+    _sensor_bus_tranfer.data           = (uint8_t *)&addr;
+    _sensor_bus_tranfer.dataSize       = 2;
+    _sensor_bus_tranfer.flags          = kI2C_TransferDefaultFlag;
+
+    LED_RED_OFF();
+
     while (1) {
-        PRINTF("Hello Teensy\n");
+        LED_BLUE_ON();
+        I2C_MasterTransferBlocking(I2C1, &_sensor_bus_tranfer);
+        Delay(100);
+        LED_BLUE_OFF();
+        Delay(100);
     }
 }

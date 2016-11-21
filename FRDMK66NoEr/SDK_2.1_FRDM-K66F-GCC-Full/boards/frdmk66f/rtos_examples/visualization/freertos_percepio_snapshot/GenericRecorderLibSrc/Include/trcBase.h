@@ -49,7 +49,7 @@
 #define TRACE_DATA_ALLOCATION_DYNAMIC 2
 #define TRACE_DATA_ALLOCATION_CUSTOM 3
 
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcKernelPort.h"
+#include "trcKernelPort.h"
 
 #if (USE_TRACEALYZER_RECORDER == 1)
 

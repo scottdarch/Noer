@@ -1,0 +1,6 @@
+r
+h
+loadfile %BINARY 0x00000000
+g
+r
+q

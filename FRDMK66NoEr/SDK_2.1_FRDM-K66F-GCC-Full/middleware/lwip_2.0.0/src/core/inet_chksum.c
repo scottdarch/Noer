@@ -45,13 +45,14 @@
  *
  */
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/inet_chksum.h"
+#include "lwip/opt.h"
+
+#include "lwip/inet_chksum.h"
+#include "lwip/def.h"
+#include "lwip/ip_addr.h"
 
 #include <stddef.h>
 #include <string.h>
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
 
 #ifndef LWIP_CHKSUM
 # define LWIP_CHKSUM lwip_standard_chksum

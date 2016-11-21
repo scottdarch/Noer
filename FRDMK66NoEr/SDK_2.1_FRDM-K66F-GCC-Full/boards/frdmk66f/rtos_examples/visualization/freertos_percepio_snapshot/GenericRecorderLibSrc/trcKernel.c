@@ -39,7 +39,7 @@
  * Tabs are used for indent in this file (1 tab = 4 spaces)
  ******************************************************************************/
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcKernel.h"
+#include "trcKernel.h"
 
 #if (USE_TRACEALYZER_RECORDER == 1)
 

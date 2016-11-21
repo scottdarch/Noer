@@ -32,10 +32,9 @@
 
 #include <stdint.h>
 #include <cstring>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/erpc_common.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/message_buffer.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/transport.h"
+#include "erpc_common.h"
+#include "transport.h"
+#include "message_buffer.h"
 
 /*!
  * @addtogroup infra_codec

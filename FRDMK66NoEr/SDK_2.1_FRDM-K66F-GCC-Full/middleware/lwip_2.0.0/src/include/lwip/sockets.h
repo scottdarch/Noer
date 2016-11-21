@@ -39,7 +39,7 @@
 #ifndef LWIP_HDR_SOCKETS_H
 #define LWIP_HDR_SOCKETS_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #if LWIP_SOCKET /* don't build if not configured for use in lwipopts.h */
 

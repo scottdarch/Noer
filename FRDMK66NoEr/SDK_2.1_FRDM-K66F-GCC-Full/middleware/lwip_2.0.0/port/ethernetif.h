@@ -33,8 +33,8 @@
 #ifndef ETHERNETIF_H
 #define ETHERNETIF_H
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_enet.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/err.h"
+#include "lwip/err.h"
+#include "fsl_enet.h"
 
 /*******************************************************************************
  * Definitions

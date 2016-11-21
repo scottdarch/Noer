@@ -95,13 +95,13 @@ extern "C" {
 #endif
 
 /* Application specific configuration options. */
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/template_application/FreeRTOSConfig.h"
+#include "FreeRTOSConfig.h"
 
 /* Basic FreeRTOS definitions. */
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/projdefs.h"
+#include "projdefs.h"
 
 /* Definitions specific to the port being used. */
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/portable.h"
+#include "portable.h"
 
 /* Must be defaulted before configUSE_NEWLIB_REENTRANT is used below. */
 #ifndef configUSE_NEWLIB_REENTRANT

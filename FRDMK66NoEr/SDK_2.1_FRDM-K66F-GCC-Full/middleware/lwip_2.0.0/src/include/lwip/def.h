@@ -38,8 +38,8 @@
 #define LWIP_HDR_DEF_H
 
 /* arch.h might define NULL already */
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/arch.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/arch.h"
+#include "lwip/opt.h"
 #if LWIP_PERF
 #include "arch/perf.h"
 #else /* LWIP_PERF */

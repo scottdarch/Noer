@@ -30,7 +30,7 @@
 #ifndef HTTPSRV_SCRIPT_H_
 #define HTTPSRV_SCRIPT_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_prv.h"
+#include "httpsrv_prv.h"
 
 #ifdef __cplusplus
 extern "C" {

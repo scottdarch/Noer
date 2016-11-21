@@ -30,12 +30,12 @@
 
 #ifndef __USB_DEVICE_COMPOSITE_H__
 #define __USB_DEVICE_COMPOSITE_H__ 1
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "event_groups.h"
+
 #include "audio_generator.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_audio/freertos/audio_generator.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_audio/freertos/mouse.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/event_groups.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
+#include "mouse.h"
 
 /*******************************************************************************
 * Definitions

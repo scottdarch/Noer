@@ -29,10 +29,9 @@
  */
 
 /*   This file contains the HTTPSRV TLS implementation.*/
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_tls.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_port.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_supp.h"
+#include "httpsrv_tls.h"
+#include "httpsrv_port.h"
+#include "httpsrv_supp.h"
 
 #if HTTPSRV_CFG_WOLFSSL_ENABLE || HTTPSRV_CFG_MBEDTLS_ENABLE
 

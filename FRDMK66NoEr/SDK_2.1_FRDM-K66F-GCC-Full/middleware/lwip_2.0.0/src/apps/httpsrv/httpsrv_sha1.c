@@ -34,12 +34,11 @@ By Steve Reid <sreid@sea-to-sky.net>
 100% Public Domain
 */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_sha1.h"
-
 #include <stdio.h>
 #include <string.h>
 
 #include <stdint.h>
+#include "httpsrv_sha1.h"
 
 void SHA1_Transform(uint32_t state[5], const uint8_t buffer[64]);
 

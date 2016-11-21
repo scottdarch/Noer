@@ -31,9 +31,9 @@
 #ifndef __USB_OTG_H__
 #define __USB_OTG_H__
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb_misc.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb_spec.h"
+#include "usb.h"
+#include "usb_misc.h"
+#include "usb_spec.h"
 
 /*!
  * @addtogroup usb_otg_drv

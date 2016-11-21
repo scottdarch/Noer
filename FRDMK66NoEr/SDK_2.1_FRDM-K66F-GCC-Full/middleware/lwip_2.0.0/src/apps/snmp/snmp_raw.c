@@ -32,14 +32,14 @@
  * Author: Dirk Ziegelmeier <dziegel@gmx.de>
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_opts.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
+#include "lwip/apps/snmp_opts.h"
+#include "lwip/ip_addr.h"
 
 #if LWIP_SNMP && SNMP_USE_RAW
 
 #include "lwip/udp.h"
 #include "lwip/ip.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/snmp/snmp_msg.h"
+#include "snmp_msg.h"
 
 /* lwIP UDP receive callback function */
 static void

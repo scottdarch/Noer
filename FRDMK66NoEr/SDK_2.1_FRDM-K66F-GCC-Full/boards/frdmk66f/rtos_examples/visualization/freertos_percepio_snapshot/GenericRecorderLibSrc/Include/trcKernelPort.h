@@ -42,8 +42,8 @@
 #ifndef TRCKERNELPORTFREERTOS_H
 #define TRCKERNELPORTFREERTOS_H
 
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcHardwarePort.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"	/* Defines configUSE_TRACE_FACILITY */
+#include "FreeRTOS.h"	/* Defines configUSE_TRACE_FACILITY */
+#include "trcHardwarePort.h"
 
 extern int uiInEventGroupSetBitsFromISR;
 
@@ -150,13 +150,13 @@ extern int uiInEventGroupSetBitsFromISR;
 #define FREERTOS_VERSION_9_X				4
 
 /* Includes */
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/trcConfig.h" /* Must be first, even before trcTypes.h */
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcHardwarePort.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcTypes.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcKernelHooks.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcBase.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcKernel.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_percepio_snapshot/GenericRecorderLibSrc/Include/trcUser.h"
+#include "trcConfig.h" /* Must be first, even before trcTypes.h */
+#include "trcHardwarePort.h"
+#include "trcTypes.h"
+#include "trcKernelHooks.h"
+#include "trcBase.h"
+#include "trcKernel.h"
+#include "trcUser.h"
 
 #if (INCLUDE_NEW_TIME_EVENTS == 1 && configUSE_TICKLESS_IDLE != 0)
 #error "NewTime events can not be used in combination with tickless idle!"

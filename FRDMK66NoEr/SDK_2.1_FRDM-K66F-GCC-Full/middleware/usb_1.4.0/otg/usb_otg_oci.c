@@ -28,12 +28,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/otg/usb_otg_oci.h"
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/otg/usb_otg.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/otg/usb_otg_khci.h"
 #include "usb_otg_config.h"
+#include "usb_otg.h"
+#include "usb_otg_oci.h"
+#include "fsl_device_registers.h"
+#include "usb_otg_khci.h"
 
 /*******************************************************************************
  * Definitions

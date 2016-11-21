@@ -28,14 +28,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host_devices.h"
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_cdc/bm/usb_host_config.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host_hci.h"
+#include "usb_host_config.h"
+#include "usb_host.h"
+#include "usb_host_hci.h"
+#include "usb_host_devices.h"
 
 #if ((defined USB_HOST_CONFIG_HUB) && (USB_HOST_CONFIG_HUB))
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/class/usb_host_hub.h"
+#include "usb_host_hub.h"
 #endif /* USB_HOST_CONFIG_HUB */
 
 /*******************************************************************************

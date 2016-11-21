@@ -83,7 +83,7 @@ Additional information:
 ----------------------------------------------------------------------
 */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER_RTT.h"
+#include "SEGGER_RTT.h"
 
 #include <string.h>                 // for memcpy
 

@@ -30,9 +30,9 @@
 #ifndef _EMBEDDED_RPC__CGENERATOR_H_
 #define _EMBEDDED_RPC__CGENERATOR_H_
 
+#include "Generator.h"
+#include "cpptempl.h"
 #include <set>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/cpptemplate/cpptempl.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Generator.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

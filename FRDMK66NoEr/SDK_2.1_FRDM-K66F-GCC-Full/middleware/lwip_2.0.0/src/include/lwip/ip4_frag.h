@@ -38,12 +38,12 @@
 #ifndef LWIP_HDR_IP4_FRAG_H
 #define LWIP_HDR_IP4_FRAG_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/err.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip_addr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/netif.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/pbuf.h"
+#include "lwip/opt.h"
+#include "lwip/err.h"
+#include "lwip/pbuf.h"
+#include "lwip/netif.h"
+#include "lwip/ip_addr.h"
+#include "lwip/ip.h"
 
 #if LWIP_IPV4
 

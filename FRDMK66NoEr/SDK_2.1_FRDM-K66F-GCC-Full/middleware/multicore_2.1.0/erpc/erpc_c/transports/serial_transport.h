@@ -30,9 +30,9 @@
 #ifndef _EMBEDDED_RPC__SERIAL_TRANSPORT_H_
 #define _EMBEDDED_RPC__SERIAL_TRANSPORT_H_
 
+#include "framed_transport.h"
 #include <string>
 #include <termios.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/framed_transport.h"
 
 /*!
  * @addtogroup serial_transport

@@ -3,7 +3,7 @@
 /* CP936 (Simplified Chinese GBK)                                         */
 /*------------------------------------------------------------------------*/
 
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/ff.h"
+#include "../ff.h"
 
 
 #if !_USE_LFN || _CODE_PAGE != 936

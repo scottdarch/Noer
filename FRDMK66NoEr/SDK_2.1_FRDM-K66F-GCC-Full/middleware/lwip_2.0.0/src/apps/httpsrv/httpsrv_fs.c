@@ -33,9 +33,8 @@
 *   This file contains the functions that are used to initialize FS
 *   It also contains the FS driver functions.
 */
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_fs.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_port.h"
+#include "httpsrv_fs.h"
+#include "httpsrv_port.h"
 
 static int32_t httpsrv_fs_cmp(char *, char *);
 static const HTTPSRV_FS_DIR_ENTRY *httpsrv_fs_open_file(char *, int32_t *);

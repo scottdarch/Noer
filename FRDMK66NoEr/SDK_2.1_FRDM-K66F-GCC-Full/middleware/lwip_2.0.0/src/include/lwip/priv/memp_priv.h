@@ -38,13 +38,13 @@
 #ifndef LWIP_HDR_MEMP_PRIV_H
 #define LWIP_HDR_MEMP_PRIV_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
+#include "lwip/opt.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mem.h"
+#include "lwip/mem.h"
 
 #if MEMP_OVERFLOW_CHECK
 /* if MEMP_OVERFLOW_CHECK is turned on, we reserve some bytes at the beginning

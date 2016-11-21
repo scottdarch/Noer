@@ -31,8 +31,8 @@
 #ifndef __USB_DEVICE_COMPOSITE_H__
 #define __USB_DEVICE_COMPOSITE_H__ 1
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_audio_lite/bm/audio_generator.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_hid_audio_lite/bm/mouse.h"
+#include "audio_generator.h"
+#include "mouse.h"
 /*******************************************************************************
 * Definitions
 ******************************************************************************/

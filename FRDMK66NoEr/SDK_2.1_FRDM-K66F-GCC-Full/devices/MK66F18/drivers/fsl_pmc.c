@@ -27,7 +27,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_pmc.h"
+#include "fsl_pmc.h"
 
 #if (defined(FSL_FEATURE_PMC_HAS_PARAM) && FSL_FEATURE_PMC_HAS_PARAM)
 void PMC_GetParam(PMC_Type *base, pmc_param_t *param)

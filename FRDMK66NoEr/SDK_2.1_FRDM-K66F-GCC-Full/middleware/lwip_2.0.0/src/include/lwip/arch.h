@@ -45,7 +45,7 @@
 #define BIG_ENDIAN 4321
 #endif
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/arch/cc.h"
+#include "arch/cc.h"
 
 /** Define this to 1 in arch/cc.h of your port if your compiler does not provide
  * the stdint.h header. This cannot be \#defined in lwipopts.h since 

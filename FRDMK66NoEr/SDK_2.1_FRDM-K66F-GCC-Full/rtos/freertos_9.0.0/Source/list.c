@@ -68,11 +68,9 @@
 */
 
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/list.h"
-
 #include <stdlib.h>
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
+#include "FreeRTOS.h"
+#include "list.h"
 
 /*-----------------------------------------------------------
  * PUBLIC LIST API documented in list.h

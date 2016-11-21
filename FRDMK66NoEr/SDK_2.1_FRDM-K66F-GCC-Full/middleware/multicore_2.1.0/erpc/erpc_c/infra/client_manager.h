@@ -30,7 +30,7 @@
 #ifndef _EMBEDDED_RPC__CLIENT_MANAGER_H_
 #define _EMBEDDED_RPC__CLIENT_MANAGER_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/infra/codec.h"
+#include "codec.h"
 
 /*!
  * @addtogroup infra_client

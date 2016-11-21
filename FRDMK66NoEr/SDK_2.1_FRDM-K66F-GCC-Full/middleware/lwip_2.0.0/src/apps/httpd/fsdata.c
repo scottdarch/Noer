@@ -1,7 +1,6 @@
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpd/fsdata.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/fs.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
+#include "lwip/apps/fs.h"
+#include "lwip/def.h"
+#include "fsdata.h"
 
 
 #define file_NULL (struct fsdata_file *) NULL

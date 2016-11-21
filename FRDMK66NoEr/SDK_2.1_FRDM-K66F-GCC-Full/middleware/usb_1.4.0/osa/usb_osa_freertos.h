@@ -80,9 +80,9 @@
 #endif
 
 MISRAC_DISABLE
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/event_groups.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "event_groups.h"
 MISRAC_ENABLE
 
 /*******************************************************************************

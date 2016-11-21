@@ -32,8 +32,7 @@
 #define _PIN_MUX_H_
 
 #include <stdbool.h>
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
+#include "fsl_common.h"
 
 #if defined(__cplusplus)
 extern "C" {

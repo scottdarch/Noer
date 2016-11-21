@@ -31,7 +31,7 @@
 #ifndef _USB_HOST_DEV_MNG_H_
 #define _USB_HOST_DEV_MNG_H_
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
+#include "usb_host.h"
 
 /*******************************************************************************
  * Definitions

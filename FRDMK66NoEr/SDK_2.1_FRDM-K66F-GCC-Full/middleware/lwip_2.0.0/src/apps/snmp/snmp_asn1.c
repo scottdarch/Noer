@@ -35,11 +35,11 @@
  *         Martin Hentschel <info@cl-soft.de>
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/snmp_opts.h"
+#include "lwip/apps/snmp_opts.h"
 
 #if LWIP_SNMP /* don't build if not configured for use in lwipopts.h */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/snmp/snmp_asn1.h"
+#include "snmp_asn1.h"
 
 #define PBUF_OP_EXEC(code) \
   if ((code) != ERR_OK) { \

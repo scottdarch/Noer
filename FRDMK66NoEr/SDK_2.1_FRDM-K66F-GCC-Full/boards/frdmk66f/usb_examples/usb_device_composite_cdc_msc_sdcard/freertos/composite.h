@@ -30,12 +30,12 @@
 
 #ifndef _USB_DEVICE_COMPOSITE_H_
 #define _USB_DEVICE_COMPOSITE_H_ 1
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "event_groups.h"
+
 #include "virtual_com.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard/freertos/disk_sdcard.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc_sdcard/freertos/virtual_com.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/event_groups.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/semphr.h"
+#include "disk_sdcard.h"
 
 /*******************************************************************************
 * Definitions

@@ -40,10 +40,9 @@ PinsProfile:
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR THE PINS TOOL ***
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_suspend_resume_host_hid_mouse/freertos/pin_mux.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_port.h"
+#include "fsl_common.h"
+#include "fsl_port.h"
+#include "pin_mux.h"
 
 #define PIN10_IDX 10u                  /*!< Pin number for pin 10 in a port */
 #define PIN16_IDX 16u                  /*!< Pin number for pin 16 in a port */

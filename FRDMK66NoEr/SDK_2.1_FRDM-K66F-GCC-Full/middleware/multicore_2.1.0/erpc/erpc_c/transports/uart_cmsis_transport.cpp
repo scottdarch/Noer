@@ -27,12 +27,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpc_c/transports/uart_cmsis_transport.h"
-
 #include <cassert>
 #include <cstdio>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/sai/board.h"
+#include "uart_cmsis_transport.h"
+#include "board.h"
 
 using namespace erpc;
 

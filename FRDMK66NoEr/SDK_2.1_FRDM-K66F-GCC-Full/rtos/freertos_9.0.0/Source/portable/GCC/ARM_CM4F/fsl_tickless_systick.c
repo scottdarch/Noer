@@ -66,9 +66,9 @@
 
     1 tab == 4 spaces!
 */
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/task.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/portable/GCC/ARM_CM4F/fsl_tickless_generic.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "fsl_tickless_generic.h"
 
 extern uint32_t SystemCoreClock; /* in Kinetis SDK, this contains the system core clock speed */
 

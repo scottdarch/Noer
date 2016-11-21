@@ -41,12 +41,11 @@
  */
 
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/tcpecho_raw/tcpecho_raw.h"
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/debug.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/tcp.h"
+#include "lwip/opt.h"
+#include "lwip/debug.h"
+#include "lwip/stats.h"
+#include "lwip/tcp.h"
+#include "tcpecho_raw.h"
 
 #if LWIP_TCP
 

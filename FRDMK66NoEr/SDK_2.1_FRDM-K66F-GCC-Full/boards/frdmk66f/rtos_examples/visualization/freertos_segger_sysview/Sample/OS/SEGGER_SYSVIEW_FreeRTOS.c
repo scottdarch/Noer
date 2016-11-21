@@ -61,12 +61,11 @@ File    : SEGGER_SYSVIEW_FreeRTOS.c
 Purpose : Interface between FreeRTOS and SystemView.
 Revision: $Rev: 3734 $
 */
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/Sample/OS/SEGGER_SYSVIEW_FreeRTOS.h"
-
+#include "FreeRTOS.h"
+#include "task.h"
+#include "SEGGER_SYSVIEW.h"
+#include "SEGGER_SYSVIEW_FreeRTOS.h"
 #include "string.h" // Required for memset
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER_SYSVIEW.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
-#include "../../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/task.h"
 
 
 

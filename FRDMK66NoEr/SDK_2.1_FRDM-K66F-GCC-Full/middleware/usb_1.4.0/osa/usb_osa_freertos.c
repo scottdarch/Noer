@@ -29,10 +29,9 @@
  */
 
 #include "stdint.h"
-
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/fsl_device_registers.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb.h"
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/osa/usb_osa.h"
+#include "fsl_device_registers.h"
+#include "usb.h"
+#include "usb_osa.h"
 
 /*******************************************************************************
  * Definitions

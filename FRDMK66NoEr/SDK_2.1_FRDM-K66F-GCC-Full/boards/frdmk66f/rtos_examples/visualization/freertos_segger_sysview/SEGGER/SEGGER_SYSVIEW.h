@@ -71,7 +71,7 @@ Revision: $Rev: 3807 $
 **********************************************************************
 */
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/rtos_examples/visualization/freertos_segger_sysview/SEGGER/SEGGER.h"
+#include "SEGGER.h"
 
 #ifdef __cplusplus
 extern "C" {

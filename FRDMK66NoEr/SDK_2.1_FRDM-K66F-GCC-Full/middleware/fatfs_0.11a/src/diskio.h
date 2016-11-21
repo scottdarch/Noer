@@ -12,7 +12,7 @@ extern "C" {
 #define _USE_WRITE	1	/* 1: Enable disk_write function */
 #define _USE_IOCTL	1	/* 1: Enable disk_ioctl fucntion */
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/integer.h"
+#include "integer.h"
 
 /* Definitions of physical drive number for each drive */
 #define RAMDISK         0       /* Example: ram disk to physical drive 0 */

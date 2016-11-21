@@ -64,7 +64,7 @@
 #include <stdio.h>
 #endif
 #include <math.h>
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/utilities/fsl_debug_console.h"
+#include "fsl_debug_console.h"
 
 #if defined(FSL_FEATURE_SOC_UART_COUNT) && (FSL_FEATURE_SOC_UART_COUNT > 0)
 #include "fsl_uart.h"

@@ -35,9 +35,8 @@
 #include <vector>
 #include <map>
 #include <stack>
-
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/smart_ptr.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/multicore_2.1.0/erpc/erpcgen/src/Token.h"
+#include "smart_ptr.h"
+#include "Token.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Classes

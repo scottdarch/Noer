@@ -31,7 +31,7 @@
 #ifndef __USB_DEVICE_EHCI_H__
 #define __USB_DEVICE_EHCI_H__
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/include/usb_ehci.h"
+#include "usb_ehci.h"
 
 /*!
  * @addtogroup usb_device_controller_ehci_driver

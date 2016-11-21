@@ -32,10 +32,9 @@
 #define _FSL_SDSPI_DISK_H_
 
 #include <stdint.h>
-
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/demo_apps/sai/board.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/fatfs_0.11a/src/diskio.h"
+#include "diskio.h"
+#include "fsl_common.h"
+#include "board.h"
 
 /*!
  * @addtogroup SD Disk over SPI

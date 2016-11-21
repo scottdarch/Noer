@@ -47,14 +47,14 @@
  * embedded system where you might not have fork().
  */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/contrib/apps/chargen/chargen.h"
+#include "lwip/opt.h"
+#include "lwip/sys.h"
+#include "lwip/sockets.h"
+#include "lwip/mem.h"
 
 #include <string.h>
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/mem.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/opt.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sockets.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/sys.h"
+#include "chargen.h"
 
 #if LWIP_SOCKET
 

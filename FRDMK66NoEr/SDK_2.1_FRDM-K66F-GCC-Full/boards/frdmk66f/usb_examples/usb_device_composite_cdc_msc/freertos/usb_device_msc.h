@@ -31,7 +31,7 @@
 #ifndef __USB_DEVICE_MSC_H__
 #define __USB_DEVICE_MSC_H__
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_device_composite_cdc_msc/freertos/usb_device_msc_ufi.h"
+#include "usb_device_msc_ufi.h"
 /*!
  * @addtogroup usb_msc
  * @{

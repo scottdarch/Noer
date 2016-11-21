@@ -78,11 +78,11 @@ typedef enum _usb_osa_event_mode
 /* Include required header file based on RTOS selection */
 #if defined(USB_STACK_BM)
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/osa/usb_osa_bm.h"
+#include "usb_osa_bm.h"
 
 #elif defined(USB_STACK_FREERTOS)
 
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/osa/usb_osa_freertos.h"
+#include "usb_osa_freertos.h"
 
 #elif defined(USB_STACK_UCOSII)
 
@@ -96,12 +96,12 @@ typedef enum _usb_osa_event_mode
 #if defined(SDK_OS_BAREMETAL)
 
 #define USB_STACK_BM
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/osa/usb_osa_bm.h"
+#include "usb_osa_bm.h"
 
 #elif defined(SDK_OS_FREE_RTOS)
 
 #define USB_STACK_FREERTOS
-#include "../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/osa/usb_osa_freertos.h"
+#include "usb_osa_freertos.h"
 
 #elif defined(SDK_OS_UCOSII)
 

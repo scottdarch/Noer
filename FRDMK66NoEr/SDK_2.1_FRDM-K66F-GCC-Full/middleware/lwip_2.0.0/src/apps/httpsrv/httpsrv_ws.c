@@ -29,14 +29,14 @@
  */
 /*   This file contains implementation of WebSocket protocol.*/
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_ws_prv.h"
+#include "httpsrv_ws_prv.h"
 
 #if HTTPSRV_CFG_WEBSOCKET_ENABLED
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_sha1.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_base64.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_utf8.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_supp.h"
+#include "httpsrv_sha1.h"
+#include "httpsrv_base64.h"
+#include "httpsrv_utf8.h"
+#include "httpsrv_supp.h"
 
 #define UINT16MAX 65536
 

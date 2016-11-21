@@ -32,8 +32,8 @@
 #ifndef LWIP_FSDATA_H
 #define LWIP_FSDATA_H
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/fs.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/httpd_opts.h"
+#include "lwip/apps/httpd_opts.h"
+#include "lwip/apps/fs.h"
 
 struct fsdata_file {
   const struct fsdata_file *next;

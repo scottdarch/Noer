@@ -491,15 +491,6 @@ void BOARD_InitOSCs(void);
 #define BOARD_INITVL6180_TOF_RDY_NAME "TOF_RDY"                    /*!< Identifier name */
 #define BOARD_INITVL6180_TOF_RDY_DIRECTION kPIN_MUX_DirectionInput /*!< Direction */
 
-/* PORTD2 (coord C4), J2[8]/SPI0_SOUT/FB_AD4 */
-#define BOARD_INITVL6180_TOF_INT_GPIO GPIOD                        /*!< GPIO device name: GPIOD */
-#define BOARD_INITVL6180_TOF_INT_PORT PORTD                        /*!< PORT device name: PORTD */
-#define BOARD_INITVL6180_TOF_INT_GPIO_PIN 2U                       /*!< PORTD pin index: 2 */
-#define BOARD_INITVL6180_TOF_INT_PIN_NAME PTD2                     /*!< Pin name */
-#define BOARD_INITVL6180_TOF_INT_LABEL "J2[8]/SPI0_SOUT/FB_AD4"    /*!< Label */
-#define BOARD_INITVL6180_TOF_INT_NAME "TOF_INT"                    /*!< Identifier name */
-#define BOARD_INITVL6180_TOF_INT_DIRECTION kPIN_MUX_DirectionInput /*!< Direction */
-
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *

@@ -88,19 +88,19 @@
  * about an unknown extension, make sure to add it (and its doctype) to
  * the 'g_psHTTPHeaders' list.
  */
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/httpd.h"
+#include "lwip/init.h"
+#include "lwip/apps/httpd.h"
+#include "lwip/debug.h"
+#include "lwip/stats.h"
+#include "lwip/apps/fs.h"
+#include "httpd_structs.h"
+#include "lwip/def.h"
+#include "lwip/ip.h"
+#include "lwip/tcp.h"
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpd/httpd_structs.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/apps/fs.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/debug.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/def.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/init.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/ip.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/stats.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/tcp.h"
 
 #if LWIP_TCP
 

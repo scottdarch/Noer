@@ -31,8 +31,8 @@
 #ifndef _EVENT_H_
 #define _EVENT_H_
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_common.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/devices/MK66F18/drivers/fsl_sdhc.h"
+#include "fsl_common.h"
+#include "fsl_sdhc.h"
 
 /*******************************************************************************
  * Definitions

@@ -28,8 +28,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/boards/frdmk66f/usb_examples/usb_host_audio_speaker/bm/usb_host_config.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/usb_1.4.0/host/usb_host.h"
+#include "usb_host_config.h"
+#include "usb_host.h"
 
 const unsigned char wav_data[] = {
     0x58, 0x01, 0xF0, 0x00, 0x1A, 0x00, 0xB6, 0xFF, 0x63, 0xFF, 0xE7, 0xFD, 0xFC, 0x02, 0x87, 0xFF, 0x92, 0x04, 0x1A,

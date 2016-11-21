@@ -31,11 +31,10 @@
 *   This file contains various UTF-8 functions.
 */
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/apps/httpsrv/httpsrv_utf8.h"
-
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "httpsrv_utf8.h"
 
 static inline bool utf8_check_boundary(uint8_t *position, uint32_t n, uint8_t *max);
 

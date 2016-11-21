@@ -48,8 +48,8 @@
  * Include user defined options first. Anything not defined in these files
  * will be set to standard values. Override anything you don't like!
  */
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/port/lwipopts.h"
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/lwip/debug.h"
+#include "lwipopts.h"
+#include "lwip/debug.h"
 
 /** 
  * @defgroup lwip_opts Options (lwipopts.h)

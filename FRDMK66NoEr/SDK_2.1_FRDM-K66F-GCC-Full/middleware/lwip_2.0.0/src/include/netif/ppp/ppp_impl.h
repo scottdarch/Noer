@@ -33,7 +33,7 @@
 #ifndef LWIP_HDR_PPP_IMPL_H
 #define LWIP_HDR_PPP_IMPL_H
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp_opts.h"
+#include "netif/ppp/ppp_opts.h"
 
 #if PPP_SUPPORT /* don't build if not configured for use in lwipopts.h */
 
@@ -50,8 +50,8 @@
 #include "lwip/def.h"
 #include "lwip/timeouts.h"
 
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/ppp.h"
-#include "../../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/middleware/lwip_2.0.0/src/include/netif/ppp/pppdebug.h"
+#include "ppp.h"
+#include "pppdebug.h"
 
 /*
  * Memory used for control packets.

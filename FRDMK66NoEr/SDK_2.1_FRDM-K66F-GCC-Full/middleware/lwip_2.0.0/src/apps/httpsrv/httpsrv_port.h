@@ -30,7 +30,7 @@
 #ifndef __httpsrv_port_h__
 #define __httpsrv_port_h__
 
-#include "../../../../../../SDK_2.1_FRDM-K66F-GCC-Full/rtos/freertos_9.0.0/Source/include/FreeRTOS.h"
+#include "FreeRTOS.h"
 
 #define httpsrv_mem_alloc(x) pvPortMalloc(x)
 #define httpsrv_mem_free(x) vPortFree(x)
