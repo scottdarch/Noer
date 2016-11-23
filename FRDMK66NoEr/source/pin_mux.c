@@ -52,6 +52,9 @@ label: 'J2[8]/SPI0_SOUT/FB_AD4', identifier: TOF_INT}
 #include "fsl_port.h"
 #include "pin_mux.h"
 
+#define PCR_PS_DOWN                                                                                \
+    0x00u /*!< Pull Select: Internal pulldown resistor is enabled on the corresponding pin, if the \
+             corresponding PE field is set. */
 #define PIN1_IDX 1u                    /*!< Pin number for pin 1 in a port */
 #define PIN16_IDX 16u                  /*!< Pin number for pin 16 in a port */
 #define PIN17_IDX 17u                  /*!< Pin number for pin 17 in a port */
@@ -63,9 +66,10 @@ BOARD_InitPins:
 - options: {prefix: BOARD_, coreID: singlecore, enableClock: 'true'}
 - pin_list:
   - {pin_num: E10, peripheral: UART0, signal: RX, pin_signal:
-TSI0_CH9/PTB16/SPI1_SOUT/UART0_RX/FTM_CLKIN0/FB_AD17/SDRAM_D17/EWM_IN/TPM_CLKIN0}
+TSI0_CH9/PTB16/SPI1_SOUT/UART0_RX/FTM_CLKIN0/FB_AD17/SDRAM_D17/EWM_IN/TPM_CLKIN0, pull_select: down}
   - {pin_num: E9, peripheral: UART0, signal: TX, pin_signal:
-TSI0_CH10/PTB17/SPI1_SIN/UART0_TX/FTM_CLKIN1/FB_AD16/SDRAM_D16/EWM_OUT_b/TPM_CLKIN1}
+TSI0_CH10/PTB17/SPI1_SIN/UART0_TX/FTM_CLKIN1/FB_AD16/SDRAM_D16/EWM_OUT_b/TPM_CLKIN1, pull_select:
+down}
   - {pin_num: J3, peripheral: ADC0, signal: 'SE, 16', pin_signal: ADC0_SE16/CMP1_IN2/ADC0_SE21}
   - {pin_num: J6, peripheral: GPIOA, signal: 'GPIO, 1', pin_signal:
 TSI0_CH2/PTA1/UART0_RX/FTM0_CH6/I2C3_SDA/LPUART0_RX/JTAG_TDI/EZP_DI, direction: OUTPUT, pull_select:
@@ -88,8 +92,20 @@ void BOARD_InitPins(void)
     PORT_SetPinMux(PORTA, PIN1_IDX, kPORT_MuxAsGpio); /* PORTA1 (pin J6) is configured as PTA1 */
     PORT_SetPinMux(PORTB, PIN16_IDX,
                    kPORT_MuxAlt3); /* PORTB16 (pin E10) is configured as UART0_RX */
+    PORTB->PCR[16] =
+        ((PORTB->PCR[16] &
+          (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
+         | PORT_PCR_PS(PCR_PS_DOWN) /* Pull Select: Internal pulldown resistor is enabled on the
+                                       corresponding pin, if the corresponding PE field is set. */
+         );
     PORT_SetPinMux(PORTB, PIN17_IDX,
                    kPORT_MuxAlt3); /* PORTB17 (pin E9) is configured as UART0_TX */
+    PORTB->PCR[17] =
+        ((PORTB->PCR[17] &
+          (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
+         | PORT_PCR_PS(PCR_PS_DOWN) /* Pull Select: Internal pulldown resistor is enabled on the
+                                       corresponding pin, if the corresponding PE field is set. */
+         );
     SIM->SOPT5 =
         ((SIM->SOPT5 & (~(SIM_SOPT5_UART0TXSRC_MASK))) /* Mask bits to zero which are setting */
          | SIM_SOPT5_UART0TXSRC(
@@ -767,8 +783,9 @@ void BOARD_InitENET(void)
         &porte26_pinK4_config); /* PORTE26 (pin K4) is configured as ENET_1588_CLKIN */
     SIM->SOPT2 =
         ((SIM->SOPT2 & (~(SIM_SOPT2_RMIISRC_MASK))) /* Mask bits to zero which are setting */
-         | SIM_SOPT2_RMIISRC(SOPT2_RMIISRC_ENET) /* RMII clock source select: External bypass clock
-                                                    (ENET_1588_CLKIN). */
+         |
+         SIM_SOPT2_RMIISRC(SOPT2_RMIISRC_ENET) /* RMII clock source select: External bypass clock
+                                                  (ENET_1588_CLKIN). */
          );
 }
 
@@ -854,6 +871,12 @@ void BOARD_InitOSCs(void)
                    kPORT_PinDisabledOrAnalog); /* PORTA19 (pin M11) is configured as XTAL0 */
 }
 
+#define PCR_ODE_ENABLED                                                                         \
+    0x01u /*!< Open Drain Enable: Open drain output is enabled on the corresponding pin, if the \
+             pin is configured as a digital output. */
+#define PCR_PE_ENABLED                                                                           \
+    0x01u /*!< Pull Enable: Internal pullup or pulldown resistor is enabled on the corresponding \
+             pin, if the pin is configured as a digital input. */
 #define PCR_PS_UP                                                                                \
     0x01u /*!< Pull Select: Internal pullup resistor is enabled on the corresponding pin, if the \
              corresponding PE field is set. */
@@ -861,21 +884,26 @@ void BOARD_InitOSCs(void)
 #define PIN3_IDX 3u   /*!< Pin number for pin 3 in a port */
 #define PIN10_IDX 10u /*!< Pin number for pin 10 in a port */
 #define PIN11_IDX 11u /*!< Pin number for pin 11 in a port */
-                      /*
-                       * TEXT BELOW IS USED AS SETTING FOR THE PINS TOOL *****************************
-                      BOARD_InitVL6180:
-                      - options: {coreID: singlecore, enableClock: 'true'}
-                      - pin_list:
-                        - {pin_num: B7, peripheral: I2C1, signal: SDA, pin_signal:
-                      ADC1_SE7b/PTC11/LLWU_P11/I2C1_SDA/FTM3_CH7/I2S0_RXD1/FB_RW_b, pull_select: up}
-                        - {pin_num: C7, peripheral: I2C1, signal: SCL, pin_signal:
-                      ADC1_SE6b/PTC10/I2C1_SCL/FTM3_CH6/I2S0_RX_FS/FB_AD5/SDRAM_A13, pull_select: up}
-                        - {pin_num: D4, peripheral: GPIOD, signal: 'GPIO, 1', pin_signal:
-                      ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b/FTM3_CH1/FB_CS0_b, direction: OUTPUT, pull_select: up}
-                        - {pin_num: B4, peripheral: GPIOD, signal: 'GPIO, 3', pin_signal:
-                      PTD3/SPI0_SIN/UART2_TX/FTM3_CH3/FB_AD3/SDRAM_A11/I2C0_SDA, direction: INPUT, pull_select: up}
-                       * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR THE PINS TOOL ***
-                       */
+
+/*
+ * TEXT BELOW IS USED AS SETTING FOR THE PINS TOOL *****************************
+BOARD_InitVL6180:
+- options: {coreID: singlecore, enableClock: 'true'}
+- pin_list:
+  - {pin_num: B7, peripheral: I2C1, signal: SDA, pin_signal:
+ADC1_SE7b/PTC11/LLWU_P11/I2C1_SDA/FTM3_CH7/I2S0_RXD1/FB_RW_b, open_drain: enable, pull_select:
+no_init,
+    pull_enable: enable}
+  - {pin_num: C7, peripheral: I2C1, signal: SCL, pin_signal:
+ADC1_SE6b/PTC10/I2C1_SCL/FTM3_CH6/I2S0_RX_FS/FB_AD5/SDRAM_A13, open_drain: enable, pull_select:
+no_init,
+    pull_enable: enable}
+  - {pin_num: D4, peripheral: GPIOD, signal: 'GPIO, 1', pin_signal:
+ADC0_SE5b/PTD1/SPI0_SCK/UART2_CTS_b/FTM3_CH1/FB_CS0_b, direction: OUTPUT, pull_select: up}
+  - {pin_num: B4, peripheral: GPIOD, signal: 'GPIO, 3', pin_signal:
+PTD3/SPI0_SIN/UART2_TX/FTM3_CH3/FB_AD3/SDRAM_A11/I2C0_SDA, direction: INPUT, pull_select: up}
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR THE PINS TOOL ***
+ */
 
 /*FUNCTION**********************************************************************
  *
@@ -890,16 +918,30 @@ void BOARD_InitVL6180(void)
 
     PORT_SetPinMux(PORTC, PIN10_IDX,
                    kPORT_MuxAlt2); /* PORTC10 (pin C7) is configured as I2C1_SCL */
-    PORTC->PCR[10] =
-        ((PORTC->PCR[10] &
-          (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
-         );
+    PORTC->PCR[10] = ((PORTC->PCR[10] &
+                       (~(PORT_PCR_PE_MASK | PORT_PCR_ODE_MASK |
+                          PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
+                      |
+                      PORT_PCR_PE(PCR_PE_ENABLED)     /* Pull Enable: Internal pullup or pulldown
+                                                         resistor is enabled on the corresponding pin,
+                                                         if the pin is configured as a digital input. */
+                      | PORT_PCR_ODE(PCR_ODE_ENABLED) /* Open Drain Enable: Open drain output is
+                                                         enabled on the corresponding pin, if the
+                                                         pin is configured as a digital output. */
+                      );
     PORT_SetPinMux(PORTC, PIN11_IDX,
                    kPORT_MuxAlt2); /* PORTC11 (pin B7) is configured as I2C1_SDA */
-    PORTC->PCR[11] =
-        ((PORTC->PCR[11] &
-          (~(PORT_PCR_PS_MASK | PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
-         );
+    PORTC->PCR[11] = ((PORTC->PCR[11] &
+                       (~(PORT_PCR_PE_MASK | PORT_PCR_ODE_MASK |
+                          PORT_PCR_ISF_MASK))) /* Mask bits to zero which are setting */
+                      |
+                      PORT_PCR_PE(PCR_PE_ENABLED)     /* Pull Enable: Internal pullup or pulldown
+                                                         resistor is enabled on the corresponding pin,
+                                                         if the pin is configured as a digital input. */
+                      | PORT_PCR_ODE(PCR_ODE_ENABLED) /* Open Drain Enable: Open drain output is
+                                                         enabled on the corresponding pin, if the
+                                                         pin is configured as a digital output. */
+                      );
     PORT_SetPinMux(PORTD, PIN1_IDX, kPORT_MuxAsGpio); /* PORTD1 (pin D4) is configured as PTD1 */
     PORTD->PCR[1] =
         ((PORTD->PCR[1] &

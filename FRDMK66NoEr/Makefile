@@ -1,5 +1,5 @@
 
-PROJECT_NAME               := ArtTouch
+PROJECT_NAME               := Noer
 PROJECT_BOARD              := FRDM-K66F
 PROJECT_DEVICE             := MK66F18
 PROJECT_MCU                := MK66FN2M0VMD18

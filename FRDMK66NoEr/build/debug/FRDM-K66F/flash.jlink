@@ -1,6 +1,0 @@
-r
-h
-loadfile build/debug/FRDM-K66F/ArtTouch.hex 0x00000000
-g
-r
-q

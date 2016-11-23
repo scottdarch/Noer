@@ -70,11 +70,17 @@ int main()
     BOARD_InitDebugConsole();
 
     PRINTF("FRDMK66 is pretty cool\n");
+    GPIO_WritePinOutput(BOARD_INITVL6180_I2C1_CS_GPIO, BOARD_INITVL6180_I2C1_CS_GPIO_PIN, 1U);
+    BOARD_INITVL6180_I2C1_CS_GPIO->PDDR |= (1U << BOARD_INITVL6180_I2C1_CS_GPIO_PIN);
+
+    GPIO_WritePinOutput(BOARD_INITVL6180_TOF_RDY_GPIO, BOARD_INITVL6180_TOF_RDY_GPIO_PIN, 1U);
+    BOARD_INITVL6180_TOF_RDY_GPIO->PDDR |= (1U << BOARD_INITVL6180_TOF_RDY_GPIO_PIN);
+
     LED_RED_INIT(0);
     LED_BLUE_INIT(1);
 
     I2C_MasterGetDefaultConfig(&_sensor_bus_config);
-    _sensor_bus_config.baudRate_Bps    = 200000U;
+    _sensor_bus_config.baudRate_Bps    = 400000U;
     _sensor_bus_config.enableHighDrive = false;
     _sensor_bus_config.enableMaster    = true;
 
@@ -82,22 +88,31 @@ int main()
 
     memset(&_sensor_bus_tranfer, 0, sizeof(_sensor_bus_tranfer));
     memset(&_sensor_bus, 0, sizeof(_sensor_bus));
-    uint16_t addr = VL6180X_REG_IDENTIFICATION__MODEL_ID;
+    uint16_t addr    = VL6180X_REG_IDENTIFICATION__MODEL_ID;
+    uint8_t model_id = 0;
     VL6180X_ID id;
 
     _sensor_bus_tranfer.slaveAddress   = VL6180X_I2C_ADDRESS;
-    _sensor_bus_tranfer.direction      = kI2C_Write;
     _sensor_bus_tranfer.subaddress     = 0;
     _sensor_bus_tranfer.subaddressSize = 0;
-    _sensor_bus_tranfer.data           = (uint8_t *)&addr;
-    _sensor_bus_tranfer.dataSize       = 2;
-    _sensor_bus_tranfer.flags          = kI2C_TransferDefaultFlag;
 
     LED_RED_OFF();
 
     while (1) {
         LED_BLUE_ON();
+        _sensor_bus_tranfer.direction = kI2C_Write;
+        _sensor_bus_tranfer.flags     = kI2C_TransferNoStopFlag;
+        _sensor_bus_tranfer.data      = (uint8_t *)&addr;
+        _sensor_bus_tranfer.dataSize = 2;
         I2C_MasterTransferBlocking(I2C1, &_sensor_bus_tranfer);
+        _sensor_bus_tranfer.direction = kI2C_Read;
+        _sensor_bus_tranfer.flags     = kI2C_TransferRepeatedStartFlag;
+        _sensor_bus_tranfer.data      = (uint8_t *)&model_id;
+        _sensor_bus_tranfer.dataSize = 1;
+        I2C_MasterTransferBlocking(I2C1, &_sensor_bus_tranfer);
+
+        PRINTF("ID:%X\n", model_id);
+
         Delay(100);
         LED_BLUE_OFF();
         Delay(100);
