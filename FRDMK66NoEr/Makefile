@@ -81,6 +81,7 @@ PROJECT_ARCHIVES           :=
 PROJECT_LD_SCRIPT          := $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/gcc/MK66FN2M0xxx18_flash.ld
 PROJECT_ASSEMBLY           := $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/gcc/startup_MK66F18.S
 PROJECT_SOURCE             := source/board.c \
+                              source/VL6180.c \
                               source/clock_config.c \
                               source/pin_mux.c \
                               source/main.c \
