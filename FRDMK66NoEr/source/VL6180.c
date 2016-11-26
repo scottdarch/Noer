@@ -9,7 +9,6 @@
 #include "fsl_i2c.h"
 #include "fsl_gpio.h"
 #include "pin_mux.h"
-#include "fsl_debug_console.h"
 
 typedef struct _VL6180Private {
     uint16_t transfer_buffer;
@@ -169,8 +168,8 @@ void _vl6180x_setup_for_range(VL6180 *self)
     _vl6180_write(self, VL6180X_REG_SYSTEM_GROUPED_PARAMETER_HOLD, 0x1, true);
 
     _vl6180_write(self, VL6180X_REG_SYSTEM_MODE_GPIO1, 0x10, true);
-    _vl6180_write(self, VL6180X_REG_SYSTEM_INTERRUPT_CONFIG_GPIO, 0x01, true);
-    _vl6180_write(self, VL6180X_REG_SYSRANGE_THRESH_LOW, 50, true);
+    _vl6180_write(self, VL6180X_REG_SYSTEM_INTERRUPT_CONFIG_GPIO, 0x0, true);
+    _vl6180_write(self, VL6180X_REG_SYSRANGE_THRESH_LOW, 0, true);
     _vl6180_write(self, VL6180X_REG_SYSRANGE_MAX_CONVERGENCE_TIME, 30, true);
     _vl6180_write(self, VL6180X_REG_SYSRANGE_INTERMEASUREMENT_PERIOD, 10, true);
     _vl6180_write(self, VL6180X_REG_SYSRANGE_EARLY_CONVERGENCE_ESTIMATE, 204, true);
@@ -189,24 +188,25 @@ static status_t _vl6180_enable_continuous_ranging(TOFDriver *self)
     return _vl6180_write((VL6180 *)self, VL6180X_REG_SYSRANGE_START, 0x03, false);
 }
 
-static void _foo(VL6180 *self)
+static status_t _vl6180_get_range(TOFDriver *self, uint8_t *out_range, uint8_t *out_range_status)
 {
-    uint8_t int_status;
-    _vl6180_read(self, VL6180X_REG_RESULT_INTERRUPT_STATUS_GPIO, &int_status, 1, false);
-    if (int_status & 1) {
-        _vl6180_write(self, VL6180X_REG_SYSTEM_INTERRUPT_CLEAR, 1, false);
-        PRINTF("NEAR.\n");
-    } else {
-        uint8_t status;
-        _vl6180_read(self, VL6180X_REG_RESULT_RANGE_STATUS, &status, 1, false);
-        if (!(0xF0 & status)) {
-            uint8_t range;
-            _vl6180_read(self, VL6180X_REG_RESULT_RANGE_VAL, &range, 1, false);
-            PRINTF("RANGE: %d\n", range);
-        } else {
-            PRINTF("ERROR: %s\n", _vl6180x_get_error_description(status >> 4));
+    status_t bus_status;
+    uint8_t range_status;
+    if (out_range) {
+        *out_range = 0;
+    }
+    bus_status =
+        _vl6180_read((VL6180 *)self, VL6180X_REG_RESULT_RANGE_STATUS, &range_status, 1, false);
+    if (!bus_status) {
+        if (out_range_status) {
+            *out_range_status = range_status;
+        }
+        if (!(0xF0 & range_status)) {
+            bus_status =
+                _vl6180_read((VL6180 *)self, VL6180X_REG_RESULT_RANGE_VAL, out_range, 1, false);
         }
     }
+    return bus_status;
 }
 
 VL6180 _singleton;
@@ -234,11 +234,11 @@ static VL6180 *init_vl6180(VL6180 *driver)
 
         I2C_MasterInit(I2C1, &_singleton_private.sensor_bus_config, CLOCK_GetFreq(I2C1_CLK_SRC));
 
-        driver->super.enable_continuous_ranging = _vl6180_enable_continuous_ranging;
-        driver->get_id                          = _vl6180_get_id;
-        driver->get_error_description           = _vl6180x_get_error_description;
-        driver->_private                        = &_singleton_private;
-        driver->foo                             = _foo;
+        driver->super.enable_continuous_ranging    = _vl6180_enable_continuous_ranging;
+        driver->super.get_range                    = _vl6180_get_range;
+        driver->super.get_range_status_description = _vl6180x_get_error_description;
+        driver->get_id                             = _vl6180_get_id;
+        driver->_private                           = &_singleton_private;
 
         _vl6180x_wait_for_standby(driver);
         _vl6180x_sr03(driver);

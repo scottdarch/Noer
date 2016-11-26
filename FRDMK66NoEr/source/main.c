@@ -44,16 +44,29 @@ int main()
 
     PRINTF("FRDMK66 is pretty cool\n");
     LED_RED_INIT(0);
+    LED_GREEN_INIT(1);
     LED_BLUE_INIT(1);
 
-    VL6180 *tof = get_instance_vl6180();
-    tof->super.enable_continuous_ranging(&tof->super);
+    TOFDriver *tof = (TOFDriver *)&get_instance_vl6180()->super;
+    tof->enable_continuous_ranging(tof);
     LED_RED_OFF();
 
+    uint8_t range, range_status;
+    status_t bus_status;
     while (1) {
         LED_BLUE_ON();
 
-        tof->foo(tof);
+        bus_status = tof->get_range(tof, &range, &range_status);
+        if (!bus_status) {
+            if (!(0xF0 & range_status) && range > 0) {
+                LED_RED_ON();
+            } else {
+                LED_RED_OFF();
+            }
+            PRINTF("RANGE: %d, %s\n", range, tof->get_range_status_description(range_status >> 4));
+        } else {
+            PRINTF("BUS ERROR: %d\n", bus_status);
+        }
         Delay(100);
         LED_BLUE_OFF();
         Delay(100);

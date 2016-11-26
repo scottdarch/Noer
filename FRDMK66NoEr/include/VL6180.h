@@ -78,10 +78,6 @@ typedef struct _VL6180 {
 
     status_t (*get_id)(struct _VL6180 *self, VL6180X_ID *out_id);
 
-    const char *(*get_error_description)(uint8_t error);
-
-    void (*foo)(struct _VL6180 *self);
-
     void *_private;
 } VL6180;
 
