@@ -48,30 +48,40 @@ int main()
     LED_BLUE_INIT(1);
 
     TOFDriver *tof = (TOFDriver *)&get_instance_vl6180()->super;
-    while (0 != tof->enable_continuous_ranging(tof)) {
-        tof->service(tof);
-    }
-    LED_RED_OFF();
-
-    uint8_t range, range_status;
-    status_t bus_status;
     while (1) {
-        LED_BLUE_ON();
-
-        tof->service(tof);
-        bus_status = tof->get_range(tof, &range, &range_status);
-        if (!bus_status) {
-            if (!(0xF0 & range_status) && range > 0) {
-                LED_RED_ON();
-            } else {
-                LED_RED_OFF();
-            }
-            PRINTF("RANGE: %d, %s\n", range, tof->get_range_status_description(range_status >> 4));
-        } else {
-            PRINTF("BUS ERROR: %d\n", bus_status);
+        LED_RED_ON();
+        while (0 != tof->enable_continuous_ranging(tof)) {
+            tof->service(tof);
         }
-        Delay(100);
+        LED_RED_OFF();
+
+        uint8_t range, range_status;
+        status_t bus_status;
+        while (1) {
+            LED_BLUE_ON();
+
+            tof->service(tof);
+            bus_status = tof->get_range(tof, &range, &range_status);
+            if (!bus_status) {
+                if (!(0xF0 & range_status) && range > 0) {
+                    LED_RED_ON();
+                } else {
+                    LED_RED_OFF();
+                }
+                PRINTF("RANGE: %d, %s\n", range,
+                       tof->get_range_status_description(range_status >> 4));
+            } else {
+                PRINTF("BUS ERROR: %d\n", bus_status);
+                goto TOF_RESET;
+            }
+            Delay(100);
+            LED_BLUE_OFF();
+            Delay(100);
+        }
+    TOF_RESET:
         LED_BLUE_OFF();
-        Delay(100);
+        LED_GREEN_OFF();
+        LED_RED_OFF();
+        tof->reset(tof);
     }
 }

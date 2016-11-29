@@ -288,6 +288,12 @@ static void _vl6180_service(TOFDriver *self)
     vl6180_state_irq_runCycle((Vl6180_state_irq *)driver_private);
 }
 
+static void _vl6180_reset(TOFDriver *self)
+{
+    VL6180Private *driver_private = (VL6180Private *)((VL6180 *)self)->_private;
+    vl6180_state_irqIfaceSensor_raise_reset((Vl6180_state_irq *)driver_private);
+}
+
 // +---------------------------------------------------------------------------+
 // | VL6180::PUBLIC
 // +---------------------------------------------------------------------------+
@@ -323,6 +329,7 @@ static VL6180 *init_vl6180(VL6180 *driver)
         I2C_MasterInit(I2C1, &_singleton_private.sensor_bus_config, CLOCK_GetFreq(I2C1_CLK_SRC));
 
         driver->super.service                      = _vl6180_service;
+        driver->super.reset                        = _vl6180_reset;
         driver->super.enable_continuous_ranging    = _vl6180_enable_continuous_ranging;
         driver->super.get_range                    = _vl6180_get_range;
         driver->super.get_range_status_description = _vl6180x_get_error_description;

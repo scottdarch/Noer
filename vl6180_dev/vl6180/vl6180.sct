@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_aje-MLUJEeaStYfdi17Bvw" specification="interface sensor:&#xA;&#x9;operation is_done_calibrating() : bool&#xA;&#x9;operation is_done_configuring() : bool&#xA;&#x9;in event near_threshold_breach&#xA;&#x9;operation on_start_configuration() : void&#xA;&#x9;operation on_done_configuration() : void&#xA;&#x9;operation on_start_calibration() : void&#xA;&#x9;&#xA;interface vl6180:&#xA;&#x9;operation is_fresh_out_of_reset() : bool&#xA;&#x9;operation did_reset_interrupt() : bool&#xA;&#x9;operation is_ready() : bool&#xA;&#x9;var config_memo : uint32_t = 0" name="vl6180_state_irq" domainID="com.yakindu.domain.c">
+  <sgraph:Statechart xmi:id="_aje-MLUJEeaStYfdi17Bvw" specification="interface sensor:&#xA;&#x9;operation is_done_calibrating() : bool&#xA;&#x9;operation is_done_configuring() : bool&#xA;&#x9;operation on_start_configuration() : void&#xA;&#x9;operation on_done_configuration() : void&#xA;&#x9;operation on_start_calibration() : void&#xA;&#x9;in event near_threshold_breach&#xA;&#x9;in event reset&#xA;&#x9;&#xA;interface vl6180:&#xA;&#x9;operation is_fresh_out_of_reset() : bool&#xA;&#x9;operation did_reset_interrupt() : bool&#xA;&#x9;operation is_ready() : bool&#xA;&#x9;var config_memo : uint32_t" name="vl6180_state_irq" domainID="com.yakindu.domain.c">
     <regions xmi:id="_aj2xoLUJEeaStYfdi17Bvw" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_akSPcLUJEeaStYfdi17Bvw">
         <outgoingTransitions xmi:id="_akY9ILUJEeaStYfdi17Bvw" target="_akUEoLUJEeaStYfdi17Bvw"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_akUEoLUJEeaStYfdi17Bvw" name="booting" incomingTransitions="_akY9ILUJEeaStYfdi17Bvw">
+      <vertices xsi:type="sgraph:State" xmi:id="_akUEoLUJEeaStYfdi17Bvw" name="booting" incomingTransitions="_akY9ILUJEeaStYfdi17Bvw _FpyucLX5EeakCesP1I7yLg">
         <outgoingTransitions xmi:id="_y16AQLUJEeaStYfdi17Bvw" specification="[vl6180.is_fresh_out_of_reset()]" target="_pL2VwLUJEeaStYfdi17Bvw"/>
       </vertices>
-      <vertices xsi:type="sgraph:State" xmi:id="_pL2VwLUJEeaStYfdi17Bvw" specification="exit/sensor.on_done_configuration()" name="initializing" incomingTransitions="_y16AQLUJEeaStYfdi17Bvw">
+      <vertices xsi:type="sgraph:State" xmi:id="_pL2VwLUJEeaStYfdi17Bvw" specification="entry/vl6180.config_memo = 0&#xA;exit/sensor.on_done_configuration()" name="initializing" incomingTransitions="_y16AQLUJEeaStYfdi17Bvw">
         <outgoingTransitions xmi:id="_9jAKMLULEeaStYfdi17Bvw" specification="" target="_s4HhQLULEeaStYfdi17Bvw"/>
         <regions xmi:id="_pL5ZELUJEeaStYfdi17Bvw" name="default">
           <vertices xsi:type="sgraph:State" xmi:id="_kErMQLXoEeaStYfdi17Bvw" name="not_ready_to_configure" incomingTransitions="_meLaQLXoEeaStYfdi17Bvw">
@@ -35,6 +35,7 @@
         </regions>
       </vertices>
       <vertices xsi:type="sgraph:State" xmi:id="_s4HhQLULEeaStYfdi17Bvw" name="running" incomingTransitions="_9jAKMLULEeaStYfdi17Bvw">
+        <outgoingTransitions xmi:id="_FpyucLX5EeakCesP1I7yLg" specification="sensor.reset" target="_akUEoLUJEeaStYfdi17Bvw"/>
         <regions xmi:id="_s4IIUbULEeaStYfdi17Bvw" name="default">
           <vertices xsi:type="sgraph:State" xmi:id="_N1-CYLUMEeaStYfdi17Bvw" name="sleeping" incomingTransitions="_QhaU8LUMEeaStYfdi17Bvw _IBhiELUNEeaStYfdi17Bvw">
             <outgoingTransitions xmi:id="_eCpFULUMEeaStYfdi17Bvw" specification="sensor.near_threshold_breach" target="_X1zIkLUMEeaStYfdi17Bvw"/>
@@ -451,6 +452,17 @@
       <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_djhdUrXxEeaStYfdi17Bvw" points="[-45, 12, 175, -45]$[-215, 91, 5, 34]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_djircLXxEeaStYfdi17Bvw" id="(0.007751937984496124,0.8020833333333334)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_djircbXxEeaStYfdi17Bvw" id="(0.9849246231155779,0.8125)"/>
+    </edges>
+    <edges xmi:id="_Fp2Y0LX5EeakCesP1I7yLg" type="Transition" element="_FpyucLX5EeakCesP1I7yLg" source="_s4IvYLULEeaStYfdi17Bvw" target="_akV50LUJEeaStYfdi17Bvw">
+      <children xsi:type="notation:DecorationNode" xmi:id="_Fp4OALX5EeakCesP1I7yLg" type="TransitionExpression">
+        <styles xsi:type="notation:ShapeStyle" xmi:id="_Fp4OAbX5EeakCesP1I7yLg"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_Fp4OArX5EeakCesP1I7yLg" y="10"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle" xmi:id="_Fp2Y0bX5EeakCesP1I7yLg" lineColor="4210752"/>
+      <styles xsi:type="notation:FontStyle" xmi:id="_Fp3m8LX5EeakCesP1I7yLg" fontName="Verdana"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_Fp2Y0rX5EeakCesP1I7yLg" points="[-44, 16, 20, 567]$[-90, -8, -26, 543]$[-90, -521, -26, 30]$[-67, -547, -3, 4]"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_Fp6DMLX5EeakCesP1I7yLg" id="(0.11335012594458438,0.0)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_Fp6DMbX5EeakCesP1I7yLg" id="(0.23529411764705882,0.9245283018867925)"/>
     </edges>
   </notation:Diagram>
 </xmi:XMI>
