@@ -68,6 +68,8 @@ PROJECT_HEX                := $(DIR_BUILD)/$(PROJECT_NAME).hex
 PROJECT_ELF                := $(DIR_BUILD)/$(PROJECT_NAME).elf
 PROJECT_LSS                := $(DIR_BUILD)/$(PROJECT_NAME).lss
 PROJECT_INCLUDE_PATHS      := include \
+                              source/vl6180 \
+                              source/vl6180/src-gen \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE) \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/cmsis_drivers \
@@ -81,10 +83,11 @@ PROJECT_ARCHIVES           :=
 PROJECT_LD_SCRIPT          := $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/gcc/MK66FN2M0xxx18_flash.ld
 PROJECT_ASSEMBLY           := $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/gcc/startup_MK66F18.S
 PROJECT_SOURCE             := source/board.c \
-                              source/VL6180.c \
                               source/clock_config.c \
                               source/pin_mux.c \
                               source/main.c \
+                              $(call CALL_FIND_ALL_C_FILES, source/vl6180) \
+                              $(call CALL_FIND_ALL_C_FILES, source/vl6180/src-gen) \
                               $(call CALL_FIND_ALL_C_FILES, $(DIR_KSDK)/devices/$(PROJECT_DEVICE)) \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/drivers/fsl_clock.c \
                               $(DIR_KSDK)/devices/$(PROJECT_DEVICE)/utilities/fsl_debug_console.c \

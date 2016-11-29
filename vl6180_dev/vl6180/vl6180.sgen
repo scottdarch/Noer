@@ -1,0 +1,11 @@
+GeneratorModel for yakindu::c {
+
+	statechart vl6180_state_irq {
+
+		feature Outlet {
+			targetProject = "vl6180"
+			targetFolder = "src-gen"
+			libraryTargetFolder = "src-gen"
+		}
+	}
+}

@@ -11,6 +11,8 @@
 struct _TOFDriver;
 
 typedef struct _TOFDriver {
+    void (*service)(struct _TOFDriver *self);
+
     status_t (*enable_continuous_ranging)(struct _TOFDriver *self);
 
     status_t (*get_range)(struct _TOFDriver *self, uint8_t *out_range, uint8_t *out_range_status);

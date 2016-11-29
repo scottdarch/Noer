@@ -48,7 +48,9 @@ int main()
     LED_BLUE_INIT(1);
 
     TOFDriver *tof = (TOFDriver *)&get_instance_vl6180()->super;
-    tof->enable_continuous_ranging(tof);
+    while (0 != tof->enable_continuous_ranging(tof)) {
+        tof->service(tof);
+    }
     LED_RED_OFF();
 
     uint8_t range, range_status;
@@ -56,6 +58,7 @@ int main()
     while (1) {
         LED_BLUE_ON();
 
+        tof->service(tof);
         bus_status = tof->get_range(tof, &range, &range_status);
         if (!bus_status) {
             if (!(0xF0 & range_status) && range > 0) {
